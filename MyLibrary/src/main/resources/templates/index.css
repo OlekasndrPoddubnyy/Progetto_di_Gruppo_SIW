@@ -1,0 +1,29 @@
+.header{
+    background-color: #111111;
+    padding: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.footer {
+    background-color: #222222;
+    margin: 0 auto;
+    margin-left: -10px;
+    margin-right: -10px;
+    text-align: center;
+}
+
+.footer-text1{
+    color: #666666;
+    padding-top: 30px;
+    font-size: 20px;
+    font-family: "Times New Roman";
+}
+
+.footer-text2{
+    color: #777777;
+    padding-bottom: 30px;
+    font-size: 20px;
+    font-family: "papyrus";
+}
