@@ -15,8 +15,8 @@ public class FilmValidator implements Validator {
 	private FilmService filmService;
 	
 	@Override
-	public boolean supports(Class<?> fClass) {
-		return Film.class.equals(fClass);
+	public boolean supports(Class<?> clazz) {
+		return Film.class.equals(clazz);
 	}
 
 	@Override
