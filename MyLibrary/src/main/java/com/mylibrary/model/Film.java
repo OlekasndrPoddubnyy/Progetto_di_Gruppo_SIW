@@ -21,6 +21,8 @@ public class Film {
 	@NotBlank
 	private String descrizione;
 	
+	@Column(nullable = false)
+	@NotBlank
 	private String anno;
 	
 	@Column(nullable = false)
