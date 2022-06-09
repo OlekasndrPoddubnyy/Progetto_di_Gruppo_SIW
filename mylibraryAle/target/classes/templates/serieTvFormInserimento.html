@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento serie tv</title>
+</head>
+
+<body>
+	<form th:action="@{/serieTv/save}" method="post" th:object="${serieTv}">
+		</div>
+
+		<div>nome: <input type="text" th:field="*{nome}" /> </div>
+		<div>numero stagioni: <input type="text" th:field="*{numeroStagioni}" /> </div>
+		<div>genere: <input type="text" th:field="*{genere}"> </div>
+		<div>descrizione: <input type="text" th:field="*{descrizione}"> </div>
+		<div><button type="submit">conferma</button></div>
+	</form>
+</body>
+
+</html>
