@@ -48,7 +48,7 @@ public class GiocoController {
 	}
 	
 	@GetMapping("/giocoForm")
-	public String getGioco(Model model) {
+	public String getNewGioco(Model model) {
 		model.addAttribute("gioco", new Gioco());
 		return "giocoForm.html";
 	}

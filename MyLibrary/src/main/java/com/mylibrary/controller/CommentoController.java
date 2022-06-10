@@ -41,7 +41,7 @@ public class CommentoController {
 	}
 	
 	@GetMapping("/commentoForm")
-	public String getCommento(Model model) {
+	public String getNewCommento(Model model) {
 		model.addAttribute("commento", new Commento());
 		return "commentoForm.html";
 	}
