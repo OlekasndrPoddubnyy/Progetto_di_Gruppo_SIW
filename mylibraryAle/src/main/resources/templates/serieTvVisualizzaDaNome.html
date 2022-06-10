@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Persone</title>
+</head>
+
+<body>
+	<div>
+		<h4>SerieTv:</h4>
+		<ul>
+			<li th:each="serie : ${serieTv}">
+			<p th:text="${serie.nome} + ' ' + ${serie.descrizione}">SerieTv</p>
+			</li>
+		</ul>
+
+	</div>
+	<footer>
+		<a href="/">Home</a>
+	</footer>
+</body>
+
+</html>

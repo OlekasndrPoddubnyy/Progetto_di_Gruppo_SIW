@@ -1,10 +1,13 @@
 package com.mylibrary.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -28,6 +31,9 @@ public class Film {
 	@Column(nullable = false)
 	@NotBlank
 	private String genere;
+	
+	@OneToMany(mappedBy = "film")
+	private List<Commento> commenti;
 
 	public Long getId() {
 		return id;
@@ -67,6 +73,14 @@ public class Film {
 
 	public void setGenere(String genere) {
 		this.genere = genere;
+	}
+
+	public List<Commento> getCommenti() {
+		return commenti;
+	}
+
+	public void setCommenti(List<Commento> commenti) {
+		this.commenti = commenti;
 	}
 	
 }
