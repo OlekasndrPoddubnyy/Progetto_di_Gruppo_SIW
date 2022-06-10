@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.mylibrary.controller.validator.FilmValidator;
-import com.mylibrary.model.Film;
 import com.mylibrary.model.Gioco;
-import com.mylibrary.service.FilmService;
 import com.mylibrary.service.GiocoService;
 
 @Controller
@@ -51,7 +48,7 @@ public class GiocoController {
 	}
 	
 	@GetMapping("/giocoForm")
-	public String getGioco(Model model) {
+	public String getNewGioco(Model model) {
 		model.addAttribute("gioco", new Gioco());
 		return "giocoForm.html";
 	}
