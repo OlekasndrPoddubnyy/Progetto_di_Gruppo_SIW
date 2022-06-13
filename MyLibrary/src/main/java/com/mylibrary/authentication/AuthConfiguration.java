@@ -10,12 +10,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
 import static com.mylibrary.model.Credentials.ADMIN_ROLE;
-//import static it.uniroma3.siw.spring.model.Credentials.DEFAULT_ROLE;
+import static com.mylibrary.model.Credentials.DEFAULT_ROLE;
 
 /**
  * The AuthConfiguration is a Spring Security Configuration.
@@ -27,10 +26,10 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * The datasource is automatically injected into the AuthConfiguration (using its getters and setters)
-     * and it is used to access the DB to get the Credentials to perform authentication and authorization
+     * and it is used to access the DB to get the Credentials to perform authentiation and authorization
      */
     @Autowired
-    private DataSource datasource;
+    DataSource datasource;
 
     /**
      * This method provides the whole authentication and authorization configuration to use.
@@ -40,29 +39,29 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         http
                 // authorization paragraph: qui definiamo chi può accedere a cosa
                 .authorizeRequests()
-                // chiunque (autenticato o no) può accedere alle pagine index, informazioni, login, register, ai css e alle immagini
-                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**").permitAll()
-                // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
+                // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css, al js e alle immagini
+                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
+                // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
-                // tutti gli utenti autenticati possono accere alle pagine rimanenti 
+                // tutti gli utenti autenticati possono accere alle pagine rimanenti
                 .anyRequest().authenticated()
 
                 // login paragraph: qui definiamo come è gestita l'autenticazione
-                // usiamo il protocollo formlogin 
+                // usiamo il protocollo formlogin
                 .and().formLogin()
                 // la pagina di login si trova a /login
                 // NOTA: Spring gestisce il post di login automaticamente
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
-                
+
                 // logout paragraph: qui definiamo il logout
                 .and().logout()
                 // il logout è attivato con una richiesta GET a "/logout"
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutUrl("/logout")
                 // in caso di successo, si viene reindirizzati alla /index page
                 .logoutSuccessUrl("/index")
                 .invalidateHttpSession(true)
