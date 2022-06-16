@@ -40,8 +40,11 @@
             <li class="navbar__item">
                 <a href="#game" class="navbar__links" id="games-page">Giochi</a>
             </li>
-            <li class="navbar__btn user__icon" sec:authorize="isAuthenticated()">
-                <a href="#login" class="button" id="login-page"><i class="fas fa-user"></i></a>
+            <li class="navbar__btn" sec:authorize="isAuthenticated()">
+                <a href="#login" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
+            </li>
+            <li class="navbar__btn">
+                <a href="#" class="button" id="login-page">Login</a>
             </li>
         </ul>
     </div>
@@ -230,6 +233,6 @@
 
 
 
-<script src="/js/home.js"></script>
+<script src="/static/js/home.js"></script>
 </body>
 </html>
