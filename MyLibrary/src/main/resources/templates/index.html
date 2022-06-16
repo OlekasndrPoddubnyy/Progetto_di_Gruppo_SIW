@@ -124,7 +124,7 @@
 </div>
 
 <!-- Books Section-->
-<div class="services sfondo" id="book">
+<div class="services" id="book">
     <h1>Libri</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -195,6 +195,15 @@
 </div>
 
 
+<div>
+    <h4 th:text="#{header.index}">Welcome Page</h4>
+    <div>
+        <a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
+    </div>
+    <div>
+        <a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+    </div>
+</div>
 
 
 <!-- Footer Section -->
