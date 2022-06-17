@@ -15,7 +15,11 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
+<<<<<<< HEAD
+    z-index: 998;
+=======
     z-index: 999;
+>>>>>>> main
 }
 
 .navbar__container {
@@ -81,10 +85,17 @@
     text-decoration: none;
     padding: 10px 20px;
     height: 100%;
+<<<<<<< HEAD
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+=======
     width: 50%;
     border: none;
     outline: none;
     border-radius: 100%;
+>>>>>>> main
     background: #833ab4;
     background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
     background: linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
@@ -92,6 +103,18 @@
     transition: all 0.3s ease;
 }
 
+<<<<<<< HEAD
+.user__icon{
+    border-radius: 100%;
+    width: 50%;
+    margin-right: 15px;
+    background: #c31432;
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);
+    background: linear-gradient(to right, #240b36, #c31432);
+}
+
+=======
+>>>>>>> main
 .navbar__links:hover {
     color: #9518fc;
     transition: all 0.3s ease;
@@ -101,7 +124,11 @@
     .navbar__container {
         display: flex;
         justify-content: space-between;
+<<<<<<< HEAD
+        height: 60px;
+=======
         height: 80px;
+>>>>>>> main
         z-index: 1;
         width: 100%;
         max-width: 1300px;
@@ -127,7 +154,11 @@
         transition: all 0.5s ease;
         z-index: 99;
         height: 82vh;
+<<<<<<< HEAD
+        font-size: 1.2rem;
+=======
         font-size: 1.6rem;
+>>>>>>> main
 
     }
 
@@ -145,6 +176,10 @@
 
     .navbar__item {
         width: 100%;
+<<<<<<< HEAD
+        margin: -30px 0;
+=======
+>>>>>>> main
     }
 
     .navbar__links {
@@ -163,8 +198,18 @@
         justify-content: center;
         align-items: center;
         width: 80px;
+<<<<<<< HEAD
+        height: 55px;
+        margin: -30px 0;
+    }
+
+    .user__icon{
+        width: 60px;
+        height: 60px;
+=======
         height: 80px;
         margin: 0;
+>>>>>>> main
     }
 
     #mobile-menu {

@@ -1,22 +1,12 @@
-const container = document.querySelector(".container"),
+const containerlog = document.querySelector(".login"),
+    containersing = document.querySelector(".signup"),
     pwShowHide = document.querySelectorAll(".showHidePw"),
     pwFields = document.querySelectorAll(".password"),
     signUp = document.querySelector(".signup-link"),
+    blur = document.querySelector(".sfondo"),
+    pulsante = document.querySelector("#login-page"),
+    chiudiform = document.querySelectorAll(".close-bar"),
     login = document.querySelector(".login-link");
-
-const showLogin = document.querySelector('.show-login');
-const hideLogin = document.querySelector('.hide-login');
-
-const shLogin = () => {
-    showLogin.classList.toggle('is-active');
-};
-
-const hidLogin = () => {
-    hideLogin.classList.toggle('is-active');
-};
-
-showLogin.addEventListener('click', shLogin);
-hideLogin.addEventListener('click', hidLogin);
 
 //   js code to show/hide password and change icon
 pwShowHide.forEach(eyeIcon =>{
@@ -39,10 +29,26 @@ pwShowHide.forEach(eyeIcon =>{
     })
 })
 
+pulsante.addEventListener("click", ( )=>{
+    containerlog.classList.add("active");
+    pulsante.classList.add("blur");
+})
+
+chiudiform.forEach(closeIcon =>{
+    closeIcon.addEventListener("click", ( )=>{
+        containerlog.classList.remove("active");
+        containersing.classList.remove("active");
+        pulsante.classList.remove("blur");
+    })
+})
+
 // js code to appear signup and login form
 signUp.addEventListener("click", ( )=>{
-    container.classList.add("active");
-});
+    containersing.classList.add("active");
+    containerlog.classList.remove("active");
+})
+
 login.addEventListener("click", ( )=>{
-    container.classList.remove("active");
-});
+    containerlog.classList.add("active");
+    containersing.classList.remove("active");
+})

@@ -3,14 +3,20 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
-    <link th:href="@{/css/my-style.css}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/css/base.css}" />
+<<<<<<< HEAD
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+=======
 
+>>>>>>> main
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
           crossorigin="anonymous"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="This site permits you vote and comment movies, books and games">
     <title th:text="${title}">MBG Home</title>
@@ -42,16 +48,26 @@
             <li class="navbar__item">
                 <a href="#game" class="navbar__links" id="games-page">Giochi</a>
             </li>
-            <li class="navbar__btn user__icon" sec:authorize="isAuthenticated()">
-                <a href="#login" class="button" id="login-page"><i class="fas fa-user"></i></a>
+            <li class="navbar__btn" sec:authorize="isAuthenticated()">
+                <a href="#" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
+            </li>
+            <li class="navbar__btn">
+                <a href="#" class="button" id="login-page">Login</a>
+            </li>
+            <li class="navbar__btn2 user__icon" sec:authorize="isAuthenticated()">
+                <a href="#login" class="button" id="logout-page"><i class="fas fa-user"></i></a>
             </li>
         </ul>
     </div>
 </nav>
 
 
+<!--Login Form -->
+
+
+
 <!-- Hero Section-->
-<div class="hero" id="home">
+<div class="hero sfondo" id="home">
     <div class="hero__container">
         <h1 class="hero__heading">Explore your <span>hobby</span> </h1>
         <p class="hero__description">Unlimited Possibilities</p>
@@ -60,7 +76,7 @@
 </div>
 
 <!-- Film Section-->
-<div class="services" id="film">
+<div class="services sfondo" id="film">
     <h1>Film</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -89,7 +105,7 @@
 
 
 <!-- Serie TV Section-->
-<div class="services" id="tv-serie">
+<div class="services sfondo" id="tv-serie">
     <h1>Serie TV</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -117,7 +133,7 @@
 </div>
 
 <!-- Books Section-->
-<div class="services" id="book">
+<div class="services sfondo" id="book">
     <h1>Libri</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -145,7 +161,7 @@
 </div>
 
 <!-- Games Section-->
-<div class="services" id="game">
+<div class="services sfondo" id="game">
     <h1>Giochi</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -173,7 +189,7 @@
 </div>
 
 <!-- Features Section -->
-<div class="main" id="login">
+<div class="main sfondo" id="login">
     <div class="main__container">
         <div class="main__content">
             <h1>Join Our Team</h1>
@@ -188,15 +204,6 @@
 </div>
 
 
-<div>
-    <h4 th:text="#{header.index}">Welcome Page</h4>
-    <div>
-        <a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
-    </div>
-    <div>
-        <a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
-    </div>
-</div>
 
 
 <!-- Footer Section -->
@@ -244,6 +251,7 @@
 </div>
 
 <script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
 
 </body>
 </html>
