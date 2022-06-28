@@ -1,6 +1,6 @@
-const menu = document.querySelector('#mobile-menu');
-const menuLinks = document.querySelector('.navbar__menu');
-const navLogo = document.querySelector('#navbar__logo');
+const menu = document.querySelector('#mobile-menu'),
+  menuLinks = document.querySelector('.navbar__menu'),
+ navLogo = document.querySelector('#navbar__logo');
 
 // Display Mobile Menu
 const mobileMenu = () => {
@@ -58,8 +58,8 @@ window.addEventListener('click', highlightMenu);
 //Close mobile Menu when clicking on a menu item
 const hideMobileMenu = () => {
     const menuBars = document.querySelector('.is-active');
-    if(window.innerWidth <= 768 && menuBars) {
-        menu.classList.toggle('is-active');
+    if(window.innerWidth <= 1300 && menuBars) {
+        menu.classList.remove('is-active');
         menuLinks.classList.remove('active');
     }
 };

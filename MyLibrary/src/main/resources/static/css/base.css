@@ -6,6 +6,32 @@
     scroll-behavior: smooth;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #131313;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1a2a6c;
+    background: -webkit-linear-gradient(to bottom, #b21f1f, #1a2a6c);
+    background: linear-gradient(to bottom, #b21f1f, #1a2a6c);
+    transition: all 0.8s ease;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c31432;
+    background: -webkit-linear-gradient(to bottom, #240b36, #c31432);
+    background: linear-gradient(to bottom, #240b36, #c31432);
+}
+
 .navbar {
     background: #131313;
     height: 80px;
@@ -15,6 +41,7 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
+    overflow: hidden;
     z-index: 998;
 }
 
@@ -124,7 +151,7 @@
         width: 100%;
         position: absolute;
         top: -1000px;
-        opacity: 1;
+        opacity: 0;
         transition: all 0.5s ease;
         z-index: -1;
     }
@@ -356,7 +383,7 @@
     width: 0;
     height: 100%;
     background: rgb(132, 0, 255);
-    transition: all 0.35s;
+    transition: all 0.8s;
     border-radius: 4px;
 }
 
