@@ -6,6 +6,32 @@
     scroll-behavior: smooth;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #131313;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1a2a6c;
+    background: -webkit-linear-gradient(to bottom, #b21f1f, #1a2a6c);
+    background: linear-gradient(to bottom, #b21f1f, #1a2a6c);
+    transition: all 0.8s ease;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c31432;
+    background: -webkit-linear-gradient(to bottom, #240b36, #c31432);
+    background: linear-gradient(to bottom, #240b36, #c31432);
+}
+
 .navbar {
     background: #131313;
     height: 80px;
@@ -15,11 +41,8 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-<<<<<<< HEAD
+    overflow: hidden;
     z-index: 998;
-=======
-    z-index: 999;
->>>>>>> main
 }
 
 .navbar__container {
@@ -85,17 +108,10 @@
     text-decoration: none;
     padding: 10px 20px;
     height: 100%;
-<<<<<<< HEAD
     width: 100%;
     border-radius: 4px;
     border: none;
     outline: none;
-=======
-    width: 50%;
-    border: none;
-    outline: none;
-    border-radius: 100%;
->>>>>>> main
     background: #833ab4;
     background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
     background: linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
@@ -103,7 +119,6 @@
     transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
 .user__icon{
     border-radius: 100%;
     width: 50%;
@@ -113,8 +128,6 @@
     background: linear-gradient(to right, #240b36, #c31432);
 }
 
-=======
->>>>>>> main
 .navbar__links:hover {
     color: #9518fc;
     transition: all 0.3s ease;
@@ -124,11 +137,7 @@
     .navbar__container {
         display: flex;
         justify-content: space-between;
-<<<<<<< HEAD
         height: 60px;
-=======
-        height: 80px;
->>>>>>> main
         z-index: 1;
         width: 100%;
         max-width: 1300px;
@@ -142,7 +151,7 @@
         width: 100%;
         position: absolute;
         top: -1000px;
-        opacity: 1;
+        opacity: 0;
         transition: all 0.5s ease;
         z-index: -1;
     }
@@ -154,11 +163,7 @@
         transition: all 0.5s ease;
         z-index: 99;
         height: 82vh;
-<<<<<<< HEAD
         font-size: 1.2rem;
-=======
-        font-size: 1.6rem;
->>>>>>> main
 
     }
 
@@ -176,10 +181,7 @@
 
     .navbar__item {
         width: 100%;
-<<<<<<< HEAD
         margin: -30px 0;
-=======
->>>>>>> main
     }
 
     .navbar__links {
@@ -198,7 +200,6 @@
         justify-content: center;
         align-items: center;
         width: 80px;
-<<<<<<< HEAD
         height: 55px;
         margin: -30px 0;
     }
@@ -206,10 +207,6 @@
     .user__icon{
         width: 60px;
         height: 60px;
-=======
-        height: 80px;
-        margin: 0;
->>>>>>> main
     }
 
     #mobile-menu {
@@ -386,7 +383,7 @@
     width: 0;
     height: 100%;
     background: rgb(132, 0, 255);
-    transition: all 0.35s;
+    transition: all 0.8s;
     border-radius: 4px;
 }
 

@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <title>Login</title>
+</head>
 <body>
-<<<<<<< HEAD
-=======
-<header th:replace="fragments/base.html :: intestazione"></header>
->>>>>>> main
-<div>
-    <h4>Login</h4>
-</div>
-<form th:action="@{/login}" method="POST">
-    <div>
-        <div>
-            <span>Username:</span>
-            <span><input name="username" type="text" required /></span>
-        </div>
-        <div>
-            <span>Password:</span>
-            <span><input name="password" type="password" required /></span>
-        </div>
-        <div>
-            <span><button type="submit">Login</button></span>
+<div class="forms">
+    <div class="form login">
+        <span class="title">Login </span>
+        <a th:href="@{/}">
+            <div class="close-btn">
+                <i class="uil uil-times close-bar"></i>
+            </div>
+        </a>
+
+
+        <form th:action="@{/login}" method="POST" >
+            <i class="bi bi-x-lg close-btn"></i>
+            <div class="input-field">
+                <input name="username" type="text" placeholder="Enter your email" required>
+                <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+                <input name="password" type="password" class="password input" placeholder="Enter your password" required>
+                <i class="uil uil-lock icon"></i>
+                <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+
+
+            <div class="button__container">
+                <button class="login__btn button" type="submit">Login</button>
+            </div>
+        </form>
+
+        <div class="login-signup">
+                    <span class="text">Sei nuovo?
+                        <a th:href="@{/register}" class="text signup-link">Registrati</a>
+                    </span>
         </div>
     </div>
-</form>
-<<<<<<< HEAD
-=======
-<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
->>>>>>> main
+</div>
+
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
 </html>
