@@ -15,7 +15,7 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-    z-index: 998;
+    z-index: 999;
 }
 
 .navbar__container {
@@ -81,24 +81,15 @@
     text-decoration: none;
     padding: 10px 20px;
     height: 100%;
-    width: 100%;
-    border-radius: 4px;
+    width: 50%;
     border: none;
     outline: none;
+    border-radius: 100%;
     background: #833ab4;
     background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
     background: linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
     color: #fff;
     transition: all 0.3s ease;
-}
-
-.user__icon{
-    border-radius: 100%;
-    width: 50%;
-    margin-right: 15px;
-    background: #c31432;
-    background: -webkit-linear-gradient(to right, #240b36, #c31432);
-    background: linear-gradient(to right, #240b36, #c31432);
 }
 
 .navbar__links:hover {
@@ -110,7 +101,7 @@
     .navbar__container {
         display: flex;
         justify-content: space-between;
-        height: 60px;
+        height: 80px;
         z-index: 1;
         width: 100%;
         max-width: 1300px;
@@ -136,7 +127,7 @@
         transition: all 0.5s ease;
         z-index: 99;
         height: 82vh;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
 
     }
 
@@ -154,7 +145,6 @@
 
     .navbar__item {
         width: 100%;
-        margin: -30px 0;
     }
 
     .navbar__links {
@@ -173,13 +163,8 @@
         justify-content: center;
         align-items: center;
         width: 80px;
-        height: 55px;
-        margin: -30px 0;
-    }
-
-    .user__icon{
-        width: 60px;
-        height: 60px;
+        height: 80px;
+        margin: 0;
     }
 
     #mobile-menu {
@@ -355,7 +340,7 @@
     left: 0;
     width: 0;
     height: 100%;
-    background: rgb(132, 0, 255);
+    background: #ff1ead;
     transition: all 0.35s;
     border-radius: 4px;
 }
