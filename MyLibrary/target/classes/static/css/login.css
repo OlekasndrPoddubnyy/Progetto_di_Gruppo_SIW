@@ -1,12 +1,17 @@
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #131313;
+    color: white;
 }
 
 .forms{
-    position: fixed;
+    position: center;
+    margin-top: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,47 +19,13 @@
     transition: height 0.2s ease;
 }
 
-
 .forms .form{
     width: 500px;
     padding: 30px;
     color: #fff;
     background-color: #202020;
     border-radius: 30px;
-}
-
-.forms .login{
-    opacity: 0;
-    position: absolute;
-    top: -1000px;
-    z-index: -1;
-}
-
-.forms .login.active{
-    opacity: 1;
-    z-index: 999;
-    top: 10px;
-    transition: all 0.5s ease;
-    filter: none;
-    -webkit-filter: none;
-}
-
-.forms .signup{
-    opacity: 0;
-    position: absolute;
-    top: -1000px;
-    z-index: -1;
-    transition: opacity 0.09s ease;
-}
-
-.forms .signup.active{
-    position: fixed;
-    opacity: 1;
-    z-index: 999;
-    top: 50px;
-    filter: none;
-    -webkit-filter: none;
-    transition: all 0.5s ease;
+    z-index: 1;
 }
 
 .close-btn {
@@ -65,11 +36,11 @@
 }
 
 .close-bar{
-    position: absolute;
+    position: relative;
     font-size: 24px;
     color: white;
-    right: 10%;
-    top: 30px;
+    right: -430px;
+    top: -45px;
     transition: all 0.9s ease-in-out;
     cursor: pointer;
 }
@@ -84,7 +55,6 @@
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
-
 
 .forms .form .title{
     position: relative;
@@ -192,6 +162,7 @@
     -moz-text-fill-color: transparent;
 }
 
+
 .forms .form .login-signup{
     margin-top: 30px;
     text-align: center;
@@ -230,26 +201,3 @@
     background: linear-gradient(to right, #6f0000, #200122);
 }
 
-.forms .errori{
-    padding-top: 10px;
-    padding-left: 40px;
-}
-
-.blur{
-    filter: blur(2px);
-}
-
-@media screen and (max-width: 600px) {
-
-    .forms .login.active{
-        position: fixed;
-        width: 80%;;
-        top: 80px;
-    }
-
-    .forms .signup.active{
-        position: fixed;
-        width: 80%;;
-    }
-
-}
