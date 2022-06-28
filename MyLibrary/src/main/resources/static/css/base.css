@@ -41,7 +41,6 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-    overflow: hidden;
     z-index: 998;
 }
 
