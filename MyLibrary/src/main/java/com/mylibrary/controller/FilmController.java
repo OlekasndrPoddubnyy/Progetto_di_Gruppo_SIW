@@ -54,7 +54,7 @@ public class FilmController {
 	}
 	
 	@GetMapping("/filmForm")
-	public String getNewFilm(Model model) {
+	public String getFilm(Model model) {
 		model.addAttribute("film", new Film());
 		return "filmForm.html";
 	}
