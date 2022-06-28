@@ -53,7 +53,7 @@ public class AuthenticationController {
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			return "admin/home";
 		}
-		return "home";
+		return "index";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class AuthenticationController {
 			// this also stores the User, thanks to Cascade.ALL policy
 			credentials.setUser(user);
 			credentialsService.saveCredentials(credentials);
-			return "registrationSuccessful";
+			return "registrationSuccessfull";
 		}
 		return "registerUser";
 	}
