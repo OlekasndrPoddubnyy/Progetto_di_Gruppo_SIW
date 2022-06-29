@@ -70,27 +70,15 @@
 <div class="services sfondo" id="film">
     <h1>Film</h1>
     <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Film 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+        <div th:each="film : ${films}">
+            <a href="film.html" th:href="@{'/film' + '/' + ${film.id}}">
+                <div class="services__card">
+                    <h2 th:text="${film.nome}">Film 1</h2>
+                    <p th:text="${film.genere} + ' ' + ${film.anno}">Powered Tecnology</p>
+                <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                </div>
+            </a>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-
     </div>
 </div>
 
@@ -102,22 +90,22 @@
         <div class="services__card">
             <h2>Serie 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Serie 2</h2>
             <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Serie 3</h2>
             <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Serie 4</h2>
             <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
 
     </div>
@@ -130,22 +118,22 @@
         <div class="services__card">
             <h2>Libro 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 2</h2>
             <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 3</h2>
             <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 4</h2>
             <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
 
     </div>
@@ -158,22 +146,22 @@
         <div class="services__card">
             <h2>Gioco 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 2</h2>
             <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 3</h2>
             <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 4</h2>
             <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
 
     </div>
