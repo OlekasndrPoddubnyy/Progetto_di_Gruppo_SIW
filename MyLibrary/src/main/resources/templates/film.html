@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div th:if="${film}" th:object="${film}">
+        <h5 th:text="*{nome}">nome</h5>
+        <span th:text="*{descrizione}">descrizione </span>
+    </div>
+    <div th:unless="${film}">Questo prodotto non esiste</div>
+</div>
+</body>
+</html>
