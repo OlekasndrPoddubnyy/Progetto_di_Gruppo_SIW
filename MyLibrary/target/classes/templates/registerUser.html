@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <title th:text="#{title.register}">Registrazione</title>
 </head>
 <body>
 
@@ -23,33 +25,32 @@
       <div class="input-field">
         <input type="text" placeholder="Enter your name" required
                th:field="${user.nome}" >
-        <i class="uil uil-user"></i>
+        <i class="uil uil-user icon"></i>
+        <div class="errori" th:if="${#fields.hasErrors('user.nome')}"
+             th:errors="${user.nome}"></div>
       </div>
-      <div class="errori" th:if="${#fields.hasErrors('user.nome')}"
-           th:errors="${user.nome}" th:style="'color:red'"></div>
-      <div class="input-field">
+        <div class="input-field">
         <input type="text" placeholder="Enter your email" required
                th:field="${credentials.username}">
         <i class="uil uil-envelope icon"></i>
+        <div class="errori" th:if="${#fields.hasErrors('credentials.username')}"
+             th:errors="*{credentials.username}"></div>
       </div>
-      <div class="errori" th:if="${#fields.hasErrors('credentials.username')}"
-           th:errors="${credentials.username}" th:style="'color:red'"></div>
       <div class="input-field">
         <input type="password" class="password" placeholder="Create a password" required
                th:field="${credentials.password}">
         <i class="uil uil-lock icon"></i>
         <i class="uil uil-eye-slash showHidePw"></i>
+        <div class="errori" th:if="${#fields.hasErrors('credentials.password')}"
+             th:errors="${credentials.password}"></div>
       </div>
-      <div class="errori" th:if="${#fields.hasErrors('credentials.password')}"
-           th:errors="${credentials.password}" th:style="'color:red'"></div>
-
       <div class="button__container">
-        <button class="login__btn button" type="submit">SingUp</button>
+        <button class="login__btn button" type="submit" th:text="#{button.register}">SingIn</button>
       </div>
     </form>
 
     <div class="login-signup">
-                    <span class="text">Sei già dei nostri?
+                    <span class="text">You're already part of our team...
                         <a th:href="@{/login}" class="text login-link">Login Now</a>
                     </span>
     </div>
