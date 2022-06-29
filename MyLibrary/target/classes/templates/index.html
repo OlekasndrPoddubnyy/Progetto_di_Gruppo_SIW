@@ -67,7 +67,21 @@
 </div>
 
 
-<div th:replace="fragments/filmFragment.html :: #film"></div>
+<!-- Film Section-->
+<div class="services sfondo" id="film" th:fragment="film">
+    <h1>Film</h1>
+    <div class="services__wrapper">
+        <div th:each="film : ${films}" th:object="${film}">
+            <a class="links-services" href="film.html" th:href="@{'/film' + '/' + *{id}}">
+                <div class="services__card">
+                    <h2 th:text="*{nome}">Film 1</h2>
+                    <p th:text="*{anno} + ' ' + *{genere}">Powered Tecnology</p>
+                    <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
 
 <!-- Serie TV Section-->
@@ -176,9 +190,9 @@
             <p class="website__rights">© MBG Library 2022. All rights reserved</p>
             <div class="social__icons">
                 <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>
