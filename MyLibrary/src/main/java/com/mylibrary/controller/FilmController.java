@@ -40,14 +40,6 @@ public class FilmController {
 		return "filmForm";
 	}
 
-
-	@RequestMapping(value = "/film", method = RequestMethod.GET)
-	public String getProdotti(Model model) {
-		model.addAttribute("films", this.filmService.findAllFilms());
-		return "index";
-	}
-
-
 	
 	@GetMapping("/deleteFilm/{id}")
 	public String toDeleteFilm(@PathVariable("id") Long id, Model model) {
@@ -72,7 +64,7 @@ public class FilmController {
 		return "film";
 	}
 	
-	@GetMapping("/films")
+	@GetMapping("film")
 	public String getAllFilms(Model model) {
 		List<Film> films = this.filmService.findAllFilms();
 		model.addAttribute("films", films);

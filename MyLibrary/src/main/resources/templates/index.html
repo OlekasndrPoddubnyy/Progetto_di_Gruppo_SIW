@@ -66,48 +66,23 @@
     </div>
 </div>
 
-<!-- Film Section-->
-<div class="services sfondo" id="film">
-    <h1>Film</h1>
-    <div class="services__wrapper">
-        <div th:each="film : ${films}">
-            <a href="film.html" th:href="@{'/film' + '/' + ${film.id}}">
-                <div class="services__card">
-                    <h2 th:text="${film.nome}">Film 1</h2>
-                    <p th:text="${film.genere} + ' ' + ${film.anno}">Powered Tecnology</p>
-                <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+
+<div th:replace="fragments/filmFragment.html :: #film"></div>
 
 
 <!-- Serie TV Section-->
 <div class="services sfondo" id="tv-serie">
     <h1>Serie TV</h1>
     <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Serie 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+        <div th:each="serieTv : ${serieTv}">
+            <a href="serieTV.html" th:href="@{'/serieTV' + '/' + ${serieTV.id}}">
+                <div class="services__card">
+                    <h2 th:text="${serieTV.nome}">Film 1</h2>
+                    <p th:text="${serieTV.anno} + ' ' + ${serieTV.genere}">Powered Tecnology</p>
+                    <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                </div>
+            </a>
         </div>
-        <div class="services__card">
-            <h2>Serie 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-
     </div>
 </div>
 
