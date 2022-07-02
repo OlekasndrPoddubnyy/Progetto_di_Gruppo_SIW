@@ -15,7 +15,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import javax.sql.DataSource;
 
 import static com.mylibrary.model.Credentials.ADMIN_ROLE;
-import static com.mylibrary.model.Credentials.DEFAULT_ROLE;
 
 /**
  * The AuthConfiguration is a Spring Security Configuration.
@@ -41,7 +40,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // authorization paragraph: qui definiamo chi può accedere a cosa
                 .authorizeRequests()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/js/**", "/css/**", "/images/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/film", "/register", "/js/**", "/css/**", "/images/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
@@ -58,6 +57,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
+                .failureUrl("/login?error=true")
 
                 // logout paragraph: qui definiamo il logout
                 .and().logout()
@@ -68,6 +68,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll();
     }
+
 
     /**
      * This method provides the SQL queries to get username and password.

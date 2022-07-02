@@ -41,13 +41,13 @@
                 <a href="#game" class="navbar__links" id="games-page">Giochi</a>
             </li>
             <li class="navbar__btn" sec:authorize="isAuthenticated()">
-                <a href="#" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
+                <a th:href="@{/default}" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
             </li>
             <li class="navbar__btn" sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login}" class="button" id="login-page">Login</a>
             </li>
             <li class="navbar__btn2 user__icon" sec:authorize="isAuthenticated()">
-                <a href="#login" class="button" id="logout-page"><i class="fas fa-user"></i></a>
+                <a th:href="@{/logout}" class="button" id="logout-page">Logout</a>
             </li>
         </ul>
     </div>
@@ -66,31 +66,20 @@
     </div>
 </div>
 
+
 <!-- Film Section-->
-<div class="services sfondo" id="film">
+<div class="services sfondo" id="film" th:fragment="film">
     <h1>Film</h1>
     <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Film 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+        <div th:each="film : ${films}" th:object="${film}">
+            <a class="links-services" href="film.html" th:href="@{'/film' + '/' + *{id}}">
+                <div class="services__card">
+                    <h2 th:text="*{nome}">Film 1</h2>
+                    <p th:text="*{anno} + ' ' + *{genere}">Powered Tecnology</p>
+                    <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                </div>
+            </a>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-
     </div>
 </div>
 
@@ -99,27 +88,15 @@
 <div class="services sfondo" id="tv-serie">
     <h1>Serie TV</h1>
     <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Serie 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+        <div th:each="serieTv : ${serieTv}">
+            <a href="serieTV.html" th:href="@{'/serieTV' + '/' + ${serieTV.id}}">
+                <div class="services__card">
+                    <h2 th:text="${serieTV.nome}">Film 1</h2>
+                    <p th:text="${serieTV.anno} + ' ' + ${serieTV.genere}">Powered Tecnology</p>
+                    <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                </div>
+            </a>
         </div>
-        <div class="services__card">
-            <h2>Serie 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-
     </div>
 </div>
 
@@ -130,22 +107,22 @@
         <div class="services__card">
             <h2>Libro 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 2</h2>
             <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 3</h2>
             <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Libro 4</h2>
             <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
 
     </div>
@@ -158,53 +135,41 @@
         <div class="services__card">
             <h2>Gioco 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 2</h2>
             <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 3</h2>
             <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
         <div class="services__card">
             <h2>Gioco 4</h2>
             <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
         </div>
 
     </div>
 </div>
 
 <!-- Features Section -->
-<div class="main sfondo" id="login">
+<div class="main sfondo" id="login" sec:authorize="!isAuthenticated()">
     <div class="main__container">
         <div class="main__content">
             <h1>Join Our Team</h1>
             <h2>Sign Up Today</h2>
             <p>See what makes us different</p>
-            <button class="main__btn"><a href="#">Login</a></button>
+            <button class="main__btn"><a th:href="@{/login}">Login</a></button>
         </div>
         <div class="main__img--container">
             <div class="main__img--card"><i class="fas fa-users"></i></div>
         </div>
     </div>
 </div>
-
-
-<div>
-    <h4 th:text="#{header.index}">Welcome Page</h4>
-    <div>
-        <a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
-    </div>
-    <div>
-        <a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
-    </div>
-</div>
-
 
 <!-- Footer Section -->
 <div class="footer__container">
@@ -214,23 +179,6 @@
                 <h2>About Us</h2>
                 <a href="/login">How it works</a> <a href="/">Testimonials</a>
                 <a href="/">Careers</a> <a href="/">Terms of Service</a>
-            </div>
-            <div class="footer__link--items">
-                <h2>Contact Us</h2>
-                <a href="/">Contact</a> <a href="/">Support</a>
-                <a href="/">Destinations</a>
-            </div>
-        </div>
-        <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-                <h2>Videos</h2>
-                <a href="/">Submit Video</a> <a href="/">Ambassadors</a>
-                <a href="/">Agency</a>
-            </div>
-            <div class="footer__link--items">
-                <h2>Social Media</h2>
-                <a href="/">Instagram</a> <a href="/">Facebook</a>
-                <a href="/">Youtube</a> <a href="/">Twitter</a>
             </div>
         </div>
     </div>
@@ -242,9 +190,9 @@
             <p class="website__rights">© MBG Library 2022. All rights reserved</p>
             <div class="social__icons">
                 <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>

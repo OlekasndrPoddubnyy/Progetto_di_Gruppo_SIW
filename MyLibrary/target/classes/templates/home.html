@@ -1,9 +1,103 @@
 <!DOCTYPE html>
-<html lang="it">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title>User Page</title> <!-- Or MBG(Movie Books Games) library -->
 </head>
 <body>
+
+<!-- Nav Bar -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="#home" id="navbar__logo">MBG Library</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a th:href="@{/}" class="navbar__links" id="main-page">Home</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#bookmarks" class="navbar__links" id="home-page">Bookmarks</a>
+            </li>
+            <li class="navbar__btn2 user__icon homepg" sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}" class="button" id="logout-page">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<!-- Bookmark Section-->
+<div class="services sfondo" id="bookmarks">
+    <h1>Bookmarks</h1>
+    <div class="services__wrapper">
+        <div class="services__card">
+            <h2>Film 1</h2>
+            <p>Powered Tecnology</p>
+            <div class="services__btn"><button>Vota</button></div>
+        </div>
+        <div class="services__card">
+            <h2>Film</h2>
+            <p>Take the lepa</p>
+            <div class="services__btn"><button>Vota</button></div>
+        </div>
+        <div class="services__card">
+            <h2>Film</h2>
+            <p>100 Combination</p>
+            <div class="services__btn"><button>Vota</button></div>
+        </div>
+        <div class="services__card">
+            <h2>Film</h2>
+            <p>1000's of colors</p>
+            <div class="services__btn"><button>Vota</button></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Footer Section -->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+                <h2>About Us</h2>
+                <a href="/login">How it works</a> <a href="/">Testimonials</a>
+                <a href="/">Careers</a> <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <section class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="/" id="footer__logo">MBG Library</a>
+            </div>
+            <p class="website__rights">© MBG Library 2022. All rights reserved</p>
+            <div class="social__icons">
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
 
 </body>
 </html>
