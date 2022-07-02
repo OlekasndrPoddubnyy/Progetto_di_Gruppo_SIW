@@ -5,6 +5,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mylibrary.model.Film;
+import com.mylibrary.model.Gioco;
+import com.mylibrary.model.SerieTv;
 import com.mylibrary.model.User;
 import com.mylibrary.repository.UserRepository;
 
@@ -56,5 +59,21 @@ public class UserService {
             result.add(user);
         return result;
     }
+    
+    @Transactional
+    public void addGiocoToPreferiti(User user, Gioco gioco) {
+    	user.addGiocoToPreferiti(gioco);
+    }
+    
+    @Transactional
+    public void addFilmToPreferiti(User user, Film film) {
+    	user.addFilmToPreferiti(film);
+    }
+    
+    @Transactional
+    public void addSerieTvToPreferiti(User user, SerieTv serieTv) {
+    	user.addSerieTvToPreferiti(serieTv);
+    }
+    
 }
 

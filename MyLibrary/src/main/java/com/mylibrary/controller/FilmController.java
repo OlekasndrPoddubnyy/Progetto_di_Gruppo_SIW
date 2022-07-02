@@ -28,6 +28,7 @@ public class FilmController {
 		model.addAttribute("film", new Film());
 		return "filmForm";
 	}
+	
 	@RequestMapping(value = "/admin/film", method = RequestMethod.POST)
 	public String addFilm(@ModelAttribute("film") Film film,
 							  Model model, BindingResult bindingResult) {
@@ -54,8 +55,6 @@ public class FilmController {
 		this.filmService.deleteFilm(film);
 		return "films";
 	}
-	
-
 	
 	@GetMapping("/film/{id}")
 	public String getFilm(@PathVariable("id") Long id, Model model) {
