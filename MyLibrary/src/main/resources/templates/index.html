@@ -43,7 +43,7 @@
             <li class="navbar__btn" sec:authorize="isAuthenticated()">
                 <a href="#" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
             </li>
-            <li class="navbar__btn">
+            <li class="navbar__btn" sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login}" class="button" id="login-page">Login</a>
             </li>
             <li class="navbar__btn2 user__icon" sec:authorize="isAuthenticated()">
