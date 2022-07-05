@@ -75,5 +75,20 @@ public class UserService {
     	user.addSerieTvToPreferiti(serieTv);
     }
     
+    @Transactional
+    public void deleteGiocoFromPreferiti(User user, Gioco gioco) {
+    	user.getGiochiPreferiti().remove(gioco);
+    }
+    
+    @Transactional
+    public void deleteFilmFromPreferiti(User user, Film film) {
+    	user.getFilmPreferiti().remove(film);
+    }
+    
+    @Transactional
+    public void deleteSerieTvFromPreferiti(User user, SerieTv serieTv) {
+    	user.getSerieTvPreferite().remove(serieTv);
+    }
+    
 }
 

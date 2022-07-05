@@ -40,5 +40,9 @@ public class GiocoService {
 	public void deleteGioco(Gioco gioco) {
 		this.giocoRepository.delete(gioco);
 	}
-
+	
+	public boolean alreadyExists(Gioco gioco) {
+		return this.giocoRepository.existsByNomeAndGenere(gioco.getNome(), gioco.getGenere());
+	}
+	
 }

@@ -8,4 +8,6 @@ import com.mylibrary.model.Gioco;
 @Repository
 public interface GiocoRepository extends CrudRepository<Gioco,Long> {
 	
+	public boolean existsByNomeAndGenere(String nome, String genere);
+	
 }
