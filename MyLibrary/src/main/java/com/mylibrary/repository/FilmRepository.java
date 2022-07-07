@@ -8,6 +8,6 @@ import com.mylibrary.model.Film;
 @Repository
 public interface FilmRepository extends CrudRepository<Film,Long> {
 	
-	public boolean existsByNomeAndAnno(String nome, String anno);
+	public boolean existsByNomeAndAnnoAndGenere(String nome, String anno, String genere);
 	
 }

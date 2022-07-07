@@ -42,7 +42,7 @@ public class FilmService {
 	}
 	
 	public boolean alreadyExists(Film film) {
-		return this.filmRepository.existsByNomeAndAnno(film.getNome(), film.getAnno());
+		return this.filmRepository.existsByNomeAndAnnoAndGenere(film.getNome(), film.getAnno(), film.getGenere());
 	}
 	
 }

@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.mylibrary.controller.validator.FilmValidator;
 import com.mylibrary.model.Film;
@@ -25,52 +22,51 @@ public class FilmController {
 	
 	@Autowired
 	private FilmValidator filmValidator;
-	
-	@PostMapping("/film")
-	public String addFilm(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
-		this.filmValidator.validate(film, bindingResult);
-		
-		if(!bindingResult.hasErrors()) {
-			this.filmService.save(film);
-			model.addAttribute("film", film);
-			return "film.html";
-		}
-		
-		return "filmForm.html";
-	}
-	
-	@GetMapping("/deleteFilm/{id}")
-	public String toDeleteFilm(@PathVariable("id") Long id, Model model) {
-		Film film = this.filmService.findFilmById(id);
-		model.addAttribute("film", film);
-		return "toDeleteFilm.html";
-	}
-	
-	@PostMapping("/deleteFilm")
-	public String deleteFilm(Model model) {
-		Film film = (Film)model.getAttribute("film");
-		this.filmService.deleteFilm(film);
-		return "films.html";
-	}
-	
-	@GetMapping("/filmForm")
-	public String getFilm(Model model) {
+
+	@RequestMapping(value="/admin/film", method = RequestMethod.GET)
+	public String addFilm(Model model) {
 		model.addAttribute("film", new Film());
-		return "filmForm.html";
+		return "filmForm";
+	}
+	
+	@RequestMapping(value = "/admin/film", method = RequestMethod.POST)
+	public String addFilm(@Valid @ModelAttribute("film") Film film,
+							  Model model, BindingResult bindingResult) {
+		this.filmValidator.validate(film, bindingResult);
+		if (!bindingResult.hasErrors()) {
+			this.filmService.save(film);
+			model.addAttribute("films", this.filmService.findAllFilms());
+			return "index";
+		}
+		return "filmForm";
+	}
+	
+	@PostMapping("/deleteFilm/{id}")
+	public String deleteFilm(@PathVariable("id") Long id, Model model) {
+		Film film = this.filmService.findFilmById(id);
+		this.filmService.deleteFilm(film);
+		return "films";
 	}
 	
 	@GetMapping("/film/{id}")
 	public String getFilm(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		model.addAttribute("film", film);
-		return "film.html";
+		return "film";
 	}
 	
-	@GetMapping("/films")
+	@GetMapping("film")
 	public String getAllFilms(Model model) {
 		List<Film> films = this.filmService.findAllFilms();
 		model.addAttribute("films", films);
-		return "films.html";
+		return "index";
+	}
+	
+	@GetMapping("/modifyFilmData/{id}")
+	public String modifyFilmData(@PathVariable("id") Long id, Model model) {
+		Film film = this.filmService.findFilmById(id);
+		model.addAttribute("film", film);
+		return "modifyFilmDataForm.html";
 	}
 	
 }

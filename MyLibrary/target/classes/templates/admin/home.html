@@ -1,20 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title>Admin Page</title>
+</head>
 <body>
-<header th:replace="fragments/base.html :: intestazione"></header>
-<div>
-    <h4 th:text="#{header.menuAdmin}">Menu</h4>
-    <div>
-        <a th:href="@{/prodotto}">Elenco prodotti</a>
+
+<!-- Nav Bar -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="#home" id="navbar__logo">MBG Library</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a th:href="@{/}" class="navbar__links" id="main-page">Home</a>
+            </li>
+            <li class="navbar__btn2 user__icon homepg" sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}" class="button" id="logout-page">Logout</a>
+            </li>
+        </ul>
     </div>
-    <div>
-        <a th:href="@{/admin/prodotto}">Inserisci dati prodotto</a>
+</nav>
+
+
+<div class="services sfondo">
+    <h4 class="admin__heading" th:text="#{header.menuAdmin}">Menu</h4>
+    <div class="menu__list">
+        <a th:href="@{/film}">Elenco film</a>
     </div>
-    <div>
-        <a th:href="@{/logout}">Logout</a>
+    <div class="menu__list">
+        <a th:href="@{/admin/film}">Inserisci dati del film</a>
     </div>
+    <span class="menu__separ"></span>
+
+    <div class="menu__list">
+        <a th:href="@{serieTv/getByNome}">Elenco serie TV</a>
+    </div>
+    <div class="menu__list">
+        <a th:href="@{/serieTvFormInserimento}">Inserisci dati della serie Tv</a>
+    </div>
+    <span class="menu__separ"></span>
 </div>
-<footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+
+
+
+
+<!-- Footer Section -->
+<div class="footer__container">
+    <section class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="/" id="footer__logo">MBG Library</a>
+            </div>
+            <p class="website__rights">© MBG Library 2022. All rights reserved</p>
+            <div class="social__icons">
+                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
+                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
 </body>
 </html>

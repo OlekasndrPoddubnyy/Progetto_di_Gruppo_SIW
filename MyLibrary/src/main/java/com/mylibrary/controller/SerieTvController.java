@@ -22,6 +22,7 @@ public class SerieTvController {
     private SerieTvService serieTvService;
 
 
+    
 
     @GetMapping("/serieTvFormInserimento")
     public String getSerieTvFormInserimento(Model model) {
@@ -54,11 +55,11 @@ public class SerieTvController {
         return "ciao";
     }
 
-    @GetMapping("serieTv/getByNome")
+    @GetMapping("/serieTv")
     public String getAllByName(@ModelAttribute("serieTv") SerieTv serieTv, Model model) {
         List<SerieTv> listaSerie = this.serieTvService.findAllByName(serieTv.getNome());
         model.addAttribute("serieTv", listaSerie);
-        return "serieTvVisualizzaDaNome.html";
+        return "index";
     }
 
     @GetMapping("/serieTvFormCerca")
