@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.controller.validator.SerieTvValidator;
 import com.mylibrary.model.SerieTv;
 import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +22,42 @@ public class SerieTvController {
     @Autowired
     private SerieTvService serieTvService;
 
+    @Autowired
+    private SerieTvValidator serieTvValidator;
+
 
     
 
-    @GetMapping("/serieTvFormInserimento")
+    @GetMapping("/episodioForm")
     public String getSerieTvFormInserimento(Model model) {
         model.addAttribute("serieTv", new SerieTv());
-        return "serieTvFormInserimento.html";
+        return "serieTvForm";
     }
 
-    @PostMapping("serieTv/save")
+    @PostMapping("/admin/serieTv")
     public String saveSerieTv(@Valid @ModelAttribute("serietv") SerieTv serieTv,
                               BindingResult bindingResult, Model model) {
 
+        serieTvValidator.validate(serieTv, bindingResult);
         if(!bindingResult.hasErrors()) {
             this.serieTvService.saveSerieTv(serieTv);
             model.addAttribute("serieTv", serieTv);
-            return "serietvVisualizza.html";
+            return "index";
         }
-        return "serieTvFormInserimento.html";
+        return "serieTvForm";
     }
 
-    @GetMapping("serieTv/getSerie/{id}")
+    @GetMapping("serieTv/{id}")
     public String getSerieTv(@PathVariable("id") long id, Model model) {
 
         model.addAttribute("serieTv", this.serieTvService.findById(id));
-        return "serieTvVisualizza.html";
+        return "serieTv";
     }
 
     @GetMapping("serieTv/delete/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
         this.serieTvService.deleteById(id);
-        return "ciao";
+        return "serieTvs";
     }
 
     @GetMapping("/serieTv")
