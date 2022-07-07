@@ -1,5 +1,6 @@
 package com.mylibrary.controller;
 
+import com.mylibrary.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +29,9 @@ public class AuthenticationController {
 	@Autowired
 	private CredentialsValidator credentialsValidator;
 
+	@Autowired
+	private FilmService filmService;
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterForm (Model model) {
 		model.addAttribute("user", new User());
@@ -51,6 +55,7 @@ public class AuthenticationController {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("films", this.filmService.findAllFilms());
 			return "admin/home";
 		}
 		return "home";

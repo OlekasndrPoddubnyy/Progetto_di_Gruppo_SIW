@@ -60,132 +60,34 @@
 </div>
 
 <!-- Film Section-->
-<div class="services" id="film">
-    <h1>Film</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Film 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+<div class="container-card">
+    <div class="card rgb">
+        <div class="card-text">
+            <h2>Post One</h2>
+            <span class="date">4 days ago</span>
+            <p>Lorem ipsum dolor sit demoise amet consectetur, Ducimusele, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+        <div class="card-stats">
+            <div class="vote-btn"><button>Vota</button></div>
         </div>
 
+    </div>
+    <div class="card rgb">
+        <div class="card-text card2">
+            <h2>Non Aprote Quella Porta</h2>
+            <span class="date">Voto 5/5</span>
+            <p>Film horr</p>
+            <p>Repudiandae repudiandae de corrupti amet temporibus omnis si provident illum maxime. Ducimus, lorem ipsum dolor adipisicing elit</p>
+        </div>
     </div>
 </div>
 
 
-<!-- Serie TV Section-->
-<div class="services" id="tv-serie">
-    <h1>Serie TV</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Serie 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Serie 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
 
-    </div>
-</div>
 
-<!-- Books Section-->
-<div class="services" id="book">
-    <h1>Libri</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Libro 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
 
-    </div>
-</div>
 
-<!-- Games Section-->
-<div class="services" id="game">
-    <h1>Giochi</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Gioco 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
-        </div>
 
-    </div>
-</div>
-
-<!-- Features Section -->
-<div class="main" id="login">
-    <div class="main__container">
-        <div class="main__content">
-            <h1>Join Our Team</h1>
-            <h2>Sign Up Today</h2>
-            <p>See what makes us different</p>
-            <button class="main__btn"><a href="#">Login</a></button>
-        </div>
-        <div class="main__img--container">
-            <div class="main__img--card"><i class="fas fa-users"></i></div>
-        </div>
-    </div>
-</div>
 
 <!-- Footer Section -->
 <div class="footer__container">
@@ -234,5 +136,13 @@
 
 
 <script src="/static/js/home.js"></script>
+<script src="/static/js/vanilla-tilt.min.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".card"),{
+        glare: true,
+        reverse: true,
+        "max-glare": 0.15
+    });
+</script>
 </body>
 </html>
