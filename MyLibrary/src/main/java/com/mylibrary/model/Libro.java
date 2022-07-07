@@ -1,40 +1,29 @@
 package com.mylibrary.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-public class SerieTv {
+public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotBlank
     private String nome;
 
     private String descrizione;
 
-    @NotNull
-    @Min(0)
-    private Integer numeroStagioni;
+    @NotBlank
+    private String autore;
 
-
+    @NotBlank
     private String genere;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
-    List<Episodio> episodi;
-
-    @OneToMany()
-    private List<Commento> commenti;
-
+    @OneToMany
+    List<Commento> commenti;
 
     public List<Commento> getCommenti() {
         return commenti;
@@ -44,11 +33,11 @@ public class SerieTv {
         this.commenti = commenti;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,12 +57,12 @@ public class SerieTv {
         this.descrizione = descrizione;
     }
 
-    public Integer getNumeroStagioni() {
-        return numeroStagioni;
+    public String getAutore() {
+        return autore;
     }
 
-    public void setNumeroStagioni(Integer numeroStagioni) {
-        this.numeroStagioni = numeroStagioni;
+    public void setAutore(String autore) {
+        this.autore = autore;
     }
 
     public String getGenere() {
@@ -82,13 +71,5 @@ public class SerieTv {
 
     public void setGenere(String genere) {
         this.genere = genere;
-    }
-
-    public List<Episodio> getEpisodi() {
-        return episodi;
-    }
-
-    public void setEpisodi(List<Episodio> episodi) {
-        this.episodi = episodi;
     }
 }
