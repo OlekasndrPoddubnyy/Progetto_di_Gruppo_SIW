@@ -6,6 +6,10 @@
     scroll-behavior: smooth;
 }
 
+body{
+    background: #131313;;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -921,6 +925,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin-bottom: 100px;
     background: #131313;
 }
 
@@ -948,7 +953,7 @@
 
 .main-box .container{
     top:150px;
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
