@@ -822,7 +822,8 @@
 }
 .card-text .date {
     color: rgb(255, 7, 110);
-    font-size:13px;
+    font-size:15px;
+    margin: 15px;
 }
 .card-text p {
     margin-top: 10px;
@@ -832,7 +833,9 @@
 }
 .card-text h2 {
     margin-top:0px;
-    font-size:28px;
+    justify-content: left;
+    text-align: left;
+    font-size:26px;
 }
 .card-stats {
     grid-area: stats;
@@ -895,3 +898,6 @@
     border-left: 1px solid rgb(185, 67, 20);
     border-right: 1px solid rgb(185, 67, 20);
 }
+
+
+/*-----------------------Bookmarks cards----------------------------------------------*/

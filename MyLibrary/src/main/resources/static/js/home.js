@@ -1,6 +1,6 @@
 const menu = document.querySelector('#mobile-menu'),
-  menuLinks = document.querySelector('.navbar__menu'),
- navLogo = document.querySelector('#navbar__logo');
+    menuLinks = document.querySelector('.navbar__menu'),
+    navLogo = document.querySelector('#navbar__logo');
 
 // Display Mobile Menu
 const mobileMenu = () => {
@@ -34,16 +34,16 @@ const highlightMenu = () => {
     } else if(window.innerWidth > 960 && scrollPos < 2450) {
         tvSerieMenu.classList.add('highlight');
         filmMenu.classList.remove('highlight');
-        bookMenu.classList.remove('highlight');
-        return;
-    } else if(window.innerWidth > 960 && scrollPos < 3300) {
-        bookMenu.classList.add('highlight');
-        tvSerieMenu.classList.remove('highlight');
         gameMenu.classList.remove('highlight');
         return;
-    }else if(window.innerWidth > 960 && scrollPos < 4300) {
+    } else if(window.innerWidth > 960 && scrollPos < 3300) {
         gameMenu.classList.add('highlight');
         bookMenu.classList.remove('highlight');
+        tvSerieMenu.classList.remove('highlight');
+        return;
+    }else if(window.innerWidth > 960 && scrollPos < 4300) {
+        bookMenu.classList.add('highlight');
+        gameMenu.classList.remove('highlight');
         return;
     }
 
