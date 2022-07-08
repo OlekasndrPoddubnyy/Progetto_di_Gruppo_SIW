@@ -1,6 +1,7 @@
 package com.mylibrary.service;
 
 
+import com.mylibrary.model.Film;
 import com.mylibrary.model.SerieTv;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,5 +33,8 @@ public class SerieTvService {
     public SerieTv findById(long id) {
         return this.serieTvRepository.findById(id);
     }
+
+    public List<SerieTv> serieTvs() { return this.serieTvRepository.findAll(); }
+
 
 }

@@ -60,10 +60,10 @@ public class SerieTvController {
         return "serieTvs";
     }
 
-    @GetMapping("/serieTv")
-    public String getAllByName(@ModelAttribute("serieTv") SerieTv serieTv, Model model) {
-        List<SerieTv> listaSerie = this.serieTvService.findAllByName(serieTv.getNome());
-        model.addAttribute("serieTv", listaSerie);
+    @GetMapping("/serieTvs")
+    public String getAll( Model model) {
+
+        model.addAttribute("serieTvs", this.serieTvService.serieTvs());
         return "index";
     }
 
@@ -72,6 +72,27 @@ public class SerieTvController {
         model.addAttribute("serieTv", new SerieTv());
         return "serieTvFormCerca.html";
     }
+
+
+    @GetMapping("/admin/updateSerieTVForm/{id}")
+    public String modifySerieTVData(@PathVariable("id") Long id, Model model) {
+        SerieTv serieTv = this.serieTvService.findById(id);
+        model.addAttribute("serieTv", serieTv);
+        return "serieTvFormUpdate.html";
+    }
+
+
+    @PostMapping("/admin/updateSerieTV")
+    public String modifySerieTVData(@Valid @ModelAttribute("serieTv") SerieTv serieTv, BindingResult bindingResult, Model model) {
+        if(!bindingResult.hasErrors()) {
+            this.serieTvService.saveSerieTv(serieTv);
+            model.addAttribute("serieTVs", this.serieTvService.serieTvs());
+            return "admin/home.html";
+        }
+
+        return "serieTvFormUpdate.html";
+    }
+
 
 
 
