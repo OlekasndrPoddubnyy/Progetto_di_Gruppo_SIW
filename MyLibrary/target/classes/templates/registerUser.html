@@ -23,22 +23,25 @@
 
     <form th:action="@{/register}" method="POST">
       <div class="input-field">
-        <input type="text" placeholder="Enter your name" required
+        <input class="input" type="text" placeholder="Enter your name" required
                th:field="${user.nome}" >
+        <span class="focus-input"></span>
         <i class="uil uil-user icon"></i>
         <div class="errori" th:if="${#fields.hasErrors('user.nome')}"
              th:errors="${user.nome}"></div>
       </div>
         <div class="input-field">
-        <input type="text" placeholder="Enter your email" required
+        <input class="input" type="text" placeholder="Enter your email" required
                th:field="${credentials.username}">
+          <span class="focus-input"></span>
         <i class="uil uil-envelope icon"></i>
         <div class="errori" th:if="${#fields.hasErrors('credentials.username')}"
              th:errors="*{credentials.username}"></div>
       </div>
       <div class="input-field">
-        <input type="password" class="password" placeholder="Create a password" required
+        <input type="password" class="password input" placeholder="Create a password" required
                th:field="${credentials.password}">
+        <span class="focus-input"></span>
         <i class="uil uil-lock icon"></i>
         <i class="uil uil-eye-slash showHidePw"></i>
         <div class="errori" th:if="${#fields.hasErrors('credentials.password')}"
