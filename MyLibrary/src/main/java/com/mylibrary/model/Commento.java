@@ -20,13 +20,7 @@ public class Commento {
 	
 	@Column(nullable = false)
 	@NotBlank
-	private String voto;
-	
-	@ManyToOne
-	private Film film;
-	
-	@ManyToOne
-	private Gioco gioco;
+	private Integer voto;
 
 	public Long getId() {
 		return id;
@@ -44,28 +38,12 @@ public class Commento {
 		this.descrizione = descrizione;
 	}
 
-	public String getVoto() {
+	public Integer getVoto() {
 		return voto;
 	}
 
-	public void setVoto(String voto) {
+	public void setVoto(Integer voto) {
 		this.voto = voto;
-	}
-
-	public Film getFilm() {
-		return film;
-	}
-
-	public void setFilm(Film film) {
-		this.film = film;
-	}
-
-	public Gioco getGioco() {
-		return gioco;
-	}
-
-	public void setGioco(Gioco gioco) {
-		this.gioco = gioco;
 	}
 	
 }

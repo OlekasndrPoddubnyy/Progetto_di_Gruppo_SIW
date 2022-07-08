@@ -16,27 +16,7 @@
 <body>
 
 <!-- Nav Bar -->
-<nav class="navbar">
-    <div class="navbar__container">
-        <a href="#home" id="navbar__logo">MBG Library</a>
-        <div class="navbar__toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="navbar__menu">
-            <li class="navbar__item">
-                <a th:href="@{/}" class="navbar__links" id="main-page">Home</a>
-            </li>
-            <li class="navbar__item">
-                <a href="#bookmarks" class="navbar__links" id="home-page">Bookmarks</a>
-            </li>
-            <li class="navbar__btn2 user__icon homepg" sec:authorize="isAuthenticated()">
-                <a th:href="@{/logout}" class="button" id="logout-page">Logout</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<nav th:replace="fragments/base.html :: intestazione"></nav>
 
 
 

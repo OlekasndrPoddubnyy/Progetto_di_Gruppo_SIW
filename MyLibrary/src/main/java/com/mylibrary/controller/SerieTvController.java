@@ -28,7 +28,7 @@ public class SerieTvController {
 
     
 
-    @GetMapping("/episodioForm")
+    @GetMapping("/serieTvForm")
     public String getSerieTvFormInserimento(Model model) {
         model.addAttribute("serieTv", new SerieTv());
         return "serieTvForm";
