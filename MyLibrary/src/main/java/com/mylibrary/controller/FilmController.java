@@ -36,16 +36,17 @@ public class FilmController {
 		if (!bindingResult.hasErrors()) {
 			this.filmService.save(film);
 			model.addAttribute("films", this.filmService.findAllFilms());
-			return "admin/home.html";
+			return "admin/home";
 		}
 		return "filmForm";
 	}
 	
-	@PostMapping("/deleteFilm/{id}")
+	@GetMapping("/deleteFilm/{id}")
 	public String deleteFilm(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		this.filmService.deleteFilm(film);
-		return "films";
+		model.addAttribute("films", this.filmService.findAllFilms());
+		return "admin/home";
 	}
 	
 	@GetMapping("/film/{id}")
@@ -66,18 +67,18 @@ public class FilmController {
 	public String modifyFilmData(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		model.addAttribute("film", film);
-		return "filmFormUpdate.html";
+		return "filmFormUpdate";
 	}
 	
-	@PostMapping("/admin/updateFilm")
+	@PostMapping("/admin/filmUpdate")
 	public String modifyFilmData(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
 			this.filmService.save(film);
 			model.addAttribute("films", this.filmService.findAllFilms());
-			return "admin/home.html";
+			return "admin/home";
 		}
-		
-		return "filmFormUpdate.html";
+		model.addAttribute("film",film);
+		return "filmFormUpdate";
 	}
 	
 }

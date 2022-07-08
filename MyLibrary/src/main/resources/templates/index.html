@@ -30,7 +30,7 @@
 
 
 <!-- Film Section-->
-<div class="services sfondo" id="film" th:fragment="film">
+<div class="services sfondo" id="film">
     <h1>Film</h1>
 
     <div class="container-card">
@@ -51,21 +51,21 @@
     </div>
 </div>
 
-
-<!-- Serie TV Section-->
+<!-- Serie Tv-->
 <div class="services sfondo" id="tv-serie">
-    <h1>Serie TV</h1>
+    <h1>Serie Tv</h1>
 
     <div class="container-card">
-        <div class="card rgb" th:each="serieTv : ${serieTv}">
+        <div class="card rgb" th:each="serie : ${series}">
+            <div class="card-image"></div>
             <div class="card-text">
-                <h2 th:text="${serieTv.nome}">Post One</h2>
-                <span class="date">5/5</span>
-                <p th:text="'Genere: ' + ${serieTv.genere} + '.       Anno: ' + ${serieTv.anno}">Film horr</p>
-                <p th:text="'Descrizione: ' " >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <h2 th:text="${serie.nome}">Post One</h2>
+                <span class="date" th:text="${serie.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${serie.genere} + '.       Anno: ' + ${serie.anno}">Film horr</p>
+                <p th:text="'Descrizione: ' + ${serie.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <a href="serieTV.html">
+                <a href="film.html">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
             </div>
@@ -73,20 +73,49 @@
     </div>
 </div>
 
+
+
 <!-- Games Section-->
 <div class="services sfondo" id="game">
+    <h1>Giochi</h1>
+
+    <div class="container-card">
+        <div class="card rgb" th:each="gioco : ${giochi}">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2 th:text="${gioco.nome}">Post One</h2>
+                <span class="date" th:text="${gioco.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${gioco.genere}">Film horr</p>
+                <p th:text="'Descrizione: ' + ${gioco.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+            </div>
+            <div class="card-stats">
+                <a href="film.html">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Books Section-->
-<div class="services" id="book">
+<div class="services sfondo" id="book">
     <h1>Libri</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Libro 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Read More</button></div>
-        </div>
 
+    <div class="container-card">
+        <div class="card rgb" th:each="libro : ${libri}">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2 th:text="${libro.nome}">Post One</h2>
+                <span class="date" th:text="${libro.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${libro.genere} + '.       Anno: ' + ${libro.anno}">Film horr</p>
+                <p th:text="'Descrizione: ' + ${libro.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+            </div>
+            <div class="card-stats">
+                <a href="film.html">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 

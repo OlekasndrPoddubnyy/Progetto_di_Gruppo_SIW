@@ -38,7 +38,7 @@
                         <a th:href="@{/#game}" class="navbar__links" id="games-page">Giochi</a>
                     </li>
                     <li class="navbar__item">
-                        <a th:href="@{/#game}" class="navbar__links" id="books-page">Libri</a>
+                        <a th:href="@{/#book}" class="navbar__links" id="books-page">Libri</a>
                     </li>
                     <li class="navbar__btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/default}" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
@@ -112,6 +112,12 @@
 
     <!-- Footer Section -->
     <div class="footer__container" th:fragment="fondo">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
         <div class="footer__links">
             <div class="footer__link--wrapper">
 
