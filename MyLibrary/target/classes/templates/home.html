@@ -21,7 +21,7 @@
 
 
 <!-- Bookmark Section-->
-<div class="services sfondo" id="bookmarks">
+<!--<div class="services sfondo" id="bookmarks">
     <h1>Bookmarks</h1>
     <div class="services__wrapper">
         <div class="services__card">
@@ -46,36 +46,59 @@
         </div>
 
     </div>
+</div>-->
+
+<div class="main-box">
+    <div class="container">
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>Card One</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
+                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>Card One</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
+                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>Card Two</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
+                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>Card Three</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
+                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 
 
 <!-- Footer Section -->
-<div class="footer__container">
-    <div class="footer__links">
-        <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-                <h2>About Us</h2>
-                <a href="/login">How it works</a> <a href="/">Testimonials</a>
-                <a href="/">Careers</a> <a href="/">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-    <section class="social__media">
-        <div class="social__media--wrap">
-            <div class="footer__logo">
-                <a href="/" id="footer__logo">MBG Library</a>
-            </div>
-            <p class="website__rights">© MBG Library 2022. All rights reserved</p>
-            <div class="social__icons">
-                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </section>
-</div>
+<div th:replace="fragments/base.html :: fondo"></div>
 
 <script type="text/javascript" th:src="@{/js/home.js}"></script>
 
