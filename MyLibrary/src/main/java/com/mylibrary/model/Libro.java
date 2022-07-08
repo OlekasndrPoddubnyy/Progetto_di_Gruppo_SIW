@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 public class Libro {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
