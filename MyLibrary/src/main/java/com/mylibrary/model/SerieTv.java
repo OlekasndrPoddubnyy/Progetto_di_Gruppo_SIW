@@ -1,5 +1,6 @@
 package com.mylibrary.model;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -28,11 +29,11 @@ public class SerieTv {
 
     private String genere;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REMOVE)
     @Fetch(FetchMode.SELECT)
     List<Episodio> episodi;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<Commento> commenti;
 
 

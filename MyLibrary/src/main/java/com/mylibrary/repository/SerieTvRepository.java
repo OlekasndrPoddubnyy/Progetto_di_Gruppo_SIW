@@ -20,13 +20,8 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     public List<SerieTv> findAllByNome(String nome);
     public SerieTv findById(long id);
 
-    @Modifying
-    @Query(value = "delete from serie_tv_commenti stc where stc.serie_tv_id= :idS", nativeQuery = true)
-    void eliminaCommentiSerieTv(@Param("idS") Long idS);
 
 
-    @Modifying
-    @Query(value = "delete from serie_tv_episodi stc where stc.serie_tv_id= :idS", nativeQuery = true)
-    void eliminaEpisodiSerieTv(@Param("idS") Long idS);
+
 
 }

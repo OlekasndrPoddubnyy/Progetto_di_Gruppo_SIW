@@ -22,7 +22,7 @@ public class Libro {
     @NotBlank
     private String genere;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     List<Commento> commenti;
 
     public List<Commento> getCommenti() {

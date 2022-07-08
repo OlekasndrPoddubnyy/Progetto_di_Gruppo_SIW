@@ -8,7 +8,4 @@ import org.springframework.data.repository.query.Param;
 
 public interface LibroRepository extends CrudRepository<Libro, Long> {
 
-    @Modifying
-    @Query(value = "delete from libro_commenti stc where stc.libro_id= :idL", nativeQuery = true)
-    void eliminaCommentiLibro(@Param("idL") Long idL);
 }

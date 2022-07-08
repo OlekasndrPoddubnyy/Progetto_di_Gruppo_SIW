@@ -55,7 +55,7 @@ public class EpisodioController {
 
     @GetMapping("episodio/delete/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
-        this.episodioService.deleteEpisodio(id);
+        this.episodioService.eliminaEpisodio(id);
         return "episodi";
     }
 
