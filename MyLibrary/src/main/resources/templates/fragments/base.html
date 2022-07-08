@@ -18,7 +18,7 @@
     <!-- Nav Bar -->
     <nav class="navbar" th:fragment="intestazione">
             <div class="navbar__container">
-                <a href="#home" id="navbar__logo">MBG Library</a>
+                <a th:href="@{/#home}" id="navbar__logo">MBG Library</a>
                 <div class="navbar__toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -26,7 +26,7 @@
                 </div>
                 <ul class="navbar__menu">
                     <li class="navbar__item">
-                        <a href="#home" class="navbar__links" id="home-page">Home</a>
+                        <a th:href="@{/#home}" class="navbar__links" id="home-page">Home</a>
                     </li>
                     <li class="navbar__item">
                         <a th:href="@{/#film}" class="navbar__links" id="films-page">Film</a>
