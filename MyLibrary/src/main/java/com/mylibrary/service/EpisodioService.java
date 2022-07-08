@@ -19,12 +19,6 @@ public class EpisodioService {
         return this.episodioRepository.findById(id).get();
     }
 
-    public void deleteEpisodioDaSerieTv(Long idE) {
-        this.episodioRepository.eliminaEpisodioDaSerieTv(idE);
-    }
 
-    public void deleteEpisodio(Long idE) {
-        this.episodioRepository.deleteById(idE);
-    }
-
+    public void eliminaEpisodio(Long id) { this.episodioRepository.deleteById(id);}
 }
