@@ -27,7 +27,7 @@ public class GiocoController {
 	private GiocoValidator giocoValidator;
 	
 	@PostMapping("/gioco")
-	public String addFilm(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
+	public String addGioco(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
 		this.giocoValidator.validate(gioco, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
@@ -53,24 +53,35 @@ public class GiocoController {
 	}
 	
 	@GetMapping("/gioco/{id}")
-	public String getFilm(@PathVariable("id") Long id, Model model) {
+	public String getGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
 		return "gioco.html";
 	}
 	
 	@GetMapping("/giochi")
-	public String getAllFilms(Model model) {
+	public String getAllGiochi(Model model) {
 		List<Gioco> giochi = this.giocoService.findAllGiochi();
 		model.addAttribute("giochi", giochi);
 		return "giochi.html";
 	}
 	
-	@GetMapping("/modifyGiocoData/{id}")
+	@GetMapping("/admin/updateGiocoForm/{id}")
 	public String modifyGiocoData(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
-		return "modifyGiocoDataForm.html";
+		return "giocoFormUpdate.html";
+	}
+	
+	@PostMapping("/admin/updateGioco")
+	public String modifyFilmData(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
+		if(!bindingResult.hasErrors()) {
+			this.giocoService.save(gioco);
+			model.addAttribute("giochi", this.giocoService.findAllGiochi());
+			return "admin/home.html";
+		}
+		
+		return "giocoFormUpdate.html";
 	}
 	
 }

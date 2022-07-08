@@ -3,6 +3,7 @@ package com.mylibrary.model;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,14 +21,14 @@ public class Film {
 	private String descrizione;
 	
 	@Column(nullable = false)
-	@NotBlank
-	private String anno;
+	@Min(0)
+	private Integer anno;
 	
 	@Column(nullable = false)
 	@NotBlank
 	private String genere;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Commento> commenti;
 
 	public Long getId() {
@@ -54,11 +55,11 @@ public class Film {
 		this.descrizione = descrizione;
 	}
 
-	public String getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
 
-	public void setAnno(String anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 

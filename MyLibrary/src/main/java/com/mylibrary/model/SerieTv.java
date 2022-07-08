@@ -1,6 +1,5 @@
 package com.mylibrary.model;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

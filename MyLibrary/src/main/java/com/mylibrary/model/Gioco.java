@@ -23,7 +23,7 @@ public class Gioco {
 	@NotBlank
 	private String genere;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Commento> commenti;
 	
 	public Long getId() {
@@ -64,6 +64,19 @@ public class Gioco {
 
 	public void setCommenti(List<Commento> commenti) {
 		this.commenti = commenti;
+	}
+	
+	public int getMediaVoti(){
+		int somma = 0, diviso = 0;
+		if(this.commenti.isEmpty())
+			return 0;
+		for (Commento commento : this.commenti){
+			if(commento.getVoto() != null){
+				somma += commento.getVoto();
+				diviso++;
+			}
+		}
+		return somma/diviso;
 	}
 	
 }

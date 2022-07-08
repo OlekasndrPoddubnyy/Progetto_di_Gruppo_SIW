@@ -43,11 +43,11 @@
             <td data-label="Nome Cognome" th:text="${film.nome}"></td>
             <td data-label="Nazionalita" th:text="${film.anno}">04/01/2016</td>
             <td data-label="Nazionalita" th:text="${film.genere}">04/01/2016</td>
-            <td data-label="Nazionalita" th:text="${film.getMediaVoti()}" <!--th:text="${film.getMediaVoti()}"-->>04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${film.getMediaVoti()}">04/01/2016</td>
             <td data-label="">
                 <div class="bottoni">
                     <div class="btn2">
-                        <a href="#"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/admin/updateFilmForm/' + ${film.id}}"><div class="btn">Modifica</div></a>
                         <a href="#" ><div class="btn">Cancella</div></a>
                     </div>
                 </div>

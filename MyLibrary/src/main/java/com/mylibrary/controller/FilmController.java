@@ -62,11 +62,22 @@ public class FilmController {
 		return "index";
 	}
 	
-	@GetMapping("/modifyFilmData/{id}")
+	@GetMapping("/admin/updateFilmForm/{id}")
 	public String modifyFilmData(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		model.addAttribute("film", film);
-		return "modifyFilmDataForm.html";
+		return "filmFormUpdate.html";
+	}
+	
+	@PostMapping("/admin/updateFilm")
+	public String modifyFilmData(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
+		if(!bindingResult.hasErrors()) {
+			this.filmService.save(film);
+			model.addAttribute("films", this.filmService.findAllFilms());
+			return "admin/home.html";
+		}
+		
+		return "filmFormUpdate.html";
 	}
 	
 }

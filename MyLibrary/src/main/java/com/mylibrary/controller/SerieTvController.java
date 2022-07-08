@@ -35,7 +35,7 @@ public class SerieTvController {
     }
 
     @PostMapping("/admin/serieTv")
-    public String saveSerieTv(@Valid @ModelAttribute("serietv") SerieTv serieTv,
+    public String saveSerieTv(@Valid @ModelAttribute("serieTv") SerieTv serieTv,
                               BindingResult bindingResult, Model model) {
 
         serieTvValidator.validate(serieTv, bindingResult);
