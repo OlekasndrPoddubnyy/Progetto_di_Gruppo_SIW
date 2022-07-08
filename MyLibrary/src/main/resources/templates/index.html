@@ -35,6 +35,7 @@
 
     <div class="container-card">
         <div class="card rgb" th:each="film : ${films}">
+            <div class="card-image"></div>
             <div class="card-text">
                 <h2 th:text="${film.nome}">Post One</h2>
                 <span class="date" th:text="${film.getMediaVoti()} + '/5'">5/5</span>
@@ -103,6 +104,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Footer Section -->
 <div th:replace="fragments/base.html :: fondo"></div>

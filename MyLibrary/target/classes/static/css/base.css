@@ -773,8 +773,8 @@ body{
 .card {
     display: grid;
     grid-template-columns: 300px;
-    grid-template-rows: 60px 350px 60px;
-    grid-template-areas: "immage""text" "stats";
+    grid-template-rows: 210px 250px 60px;
+    grid-template-areas: "image" "text" "stats";
     border-radius: 18px;
     background: #1d1d1d;
     color:white;
@@ -817,7 +817,7 @@ body{
 }
 .card-image {
     grid-area: image;
-    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%);
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%),url("/images/img1.jpg");
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
@@ -906,7 +906,7 @@ body{
 
 /*card2*/
 .card:nth-child(even) .card-image{
-    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%);
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%), url("/images/img2.jpg");
     background-size: cover;
 }
 .card:nth-child(even) .card-text .date {
@@ -1135,4 +1135,10 @@ body{
 
 .main-box .container .box .content a:hover{
     background: rgba(255, 255, 255, 0.4);
+}
+
+.immage{
+    height: 100vh;
+    background-image: url("/images/img1.jpg");
+    width: 100%;
 }
