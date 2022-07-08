@@ -1137,8 +1137,3 @@ body{
     background: rgba(255, 255, 255, 0.4);
 }
 
-.immage{
-    height: 100vh;
-    background-image: url("/images/img1.jpg");
-    width: 100%;
-}
