@@ -33,24 +33,21 @@
 <div class="services sfondo" id="film" th:fragment="film">
     <h1>Film</h1>
 
-
     <div class="container-card">
         <div class="card rgb" th:each="film : ${films}">
             <div class="card-text">
                 <h2 th:text="${film.nome}">Post One</h2>
-                <span class="date">5/5</span>
+                <span class="date" th:text="${film.getMediaVoti()} + '/5'">5/5</span>
                 <p th:text="'Genere: ' + ${film.genere} + '.       Anno: ' + ${film.anno}">Film horr</p>
                 <p th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Read More</button></div>
             </div>
         </div>
         </a>
     </div>
 </div>
-
-
 
 
 <!-- Serie TV Section-->
@@ -67,11 +64,15 @@
                 <p th:text="'Descrizione: ' " >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Read More</button></div>
             </div>
         </div>
         </a>
     </div>
+</div>
+
+<!-- Games Section-->
+<div class="services sfondo" id="game">
 </div>
 
 <!-- Books Section-->
@@ -81,50 +82,7 @@
         <div class="services__card">
             <h2>Libro 1</h2>
             <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Games Section-->
-<div class="services sfondo" id="game">
-    <h1>Giochi</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Gioco 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Read More</button></div>
         </div>
 
     </div>

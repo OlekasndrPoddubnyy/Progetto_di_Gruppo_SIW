@@ -5,48 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" th:href="@{/css/login.css}" />
-    <title>Film Form</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+
+    <title>Film Form Update</title>
 </head>
 <body>
 
-<div class="forms">
-    <div class="form login">
-        <span class="title">Form Film </span>
-        <a th:href="@{/default}">
-            <div class="close-btn">
-                <i class="uil uil-times close-bar"></i>
-            </div>
-        </a>
+<!-- Nav Bar -->
+<nav th:replace="fragments/base.html :: intestazione-admin"></nav>
 
 
-        <form th:action="@{/admin/film}" method="POST" th:object="${film}" >
-            <div class="input-field">
-                <input type="text" placeholder="Enter film's name" required
-                       th:field="*{nome}" >
-                <div class="errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
-            </div>
-            <div class="input-field">
-                <input type="text" placeholder="Enter film's year" required
-                       th:field="*{anno}" >
-                <div class="errori" th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></div>
-            </div>
-            <div class="input-field">
-                <input type="text" placeholder="Enter film's genre" required
-                       th:field="*{genere}" >
-                <div class="errori" th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
-            </div>
-            <div class="input-field">
-                <input type="text" placeholder="Enter film's description" required
-                       th:field="*{descrizione}" >
-                <div class="errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
-            </div>
 
-            <div class="button__container">
-                <button class="login__btn button" type="submit">Aggiungi</button>
-            </div>
-        </form>
+<div class="main boxform">
+    <p class="title">Form Film Update</p>
 
-<script type="text/javascript" th:src="@{/js/login.js}"></script>
+    <form th:action="@{/admin/film}" method="POST" th:object="${film}" >
+        <div class="errori" th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+        </div>
+        <div class="inputBox" >
+            <input type="text" name="name" required th:field="*{nome}">
+            <span>Name</span>
+            <div class="errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+        </div>
+        <div class="inputBox" >
+            <input type="text" name="name" required th:field="*{genere}">
+            <span>Genere</span>
+            <div class="errori" th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
+        </div>
+        <div class="inputBox" >
+            <input type="number" min="1900" name="name" required th:field="*{anno}">
+            <span>Anno</span>
+            <div class="errori" th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></div>
+        </div>
+        <div class="inputBox" >
+            <textarea type="text" name="description" th:field="*{descrizione}"></textarea>
+            <span>Description</span>
+            <div class="errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+        </div>
+        <button class="submit-btn">Aggiungi</button>
+    </form>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/admin.js}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

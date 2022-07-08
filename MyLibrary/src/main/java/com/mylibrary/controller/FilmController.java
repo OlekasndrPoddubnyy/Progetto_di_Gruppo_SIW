@@ -36,7 +36,7 @@ public class FilmController {
 		if (!bindingResult.hasErrors()) {
 			this.filmService.save(film);
 			model.addAttribute("films", this.filmService.findAllFilms());
-			return "index";
+			return "admin/home.html";
 		}
 		return "filmForm";
 	}
