@@ -24,7 +24,7 @@ public class LibroController {
     private LibroValidator libroValidator;
 
 
-    @GetMapping("/libroForm")
+    @GetMapping("/admin/libro")
     public String getLibroFormInserimento(Model model) {
         model.addAttribute("libro", new Libro());
         return "libroForm";
@@ -43,16 +43,42 @@ public class LibroController {
         return "libroForm";
     }
 
-    @GetMapping("libro/{id}")
+    @GetMapping("/deleteLibro/{id}")
+    public String deleteById(@PathVariable("id") long id, Model model) {
+        this.libroService.eliminaLibro(id);
+        return "libri";
+    }
+
+    @GetMapping("/libro/{id}")
     public String getLibro(@PathVariable("id") long id, Model model) {
 
         model.addAttribute("libro", this.libroService.findById(id));
         return "libro";
     }
 
-    @GetMapping("libro/delete/{id}")
-    public String deleteById(@PathVariable("id") long id, Model model) {
-        this.libroService.eliminaLibro(id);
-        return "libri";
+    @GetMapping("/libri")
+    public String getLibri( Model model) {
+        model.addAttribute("libri", this.libroService.libri());
+        return "index";
+    }
+
+
+
+    @GetMapping("/admin/updateLibroForm/{id}")
+    public String modifyLibroData(@PathVariable("id") Long id, Model model) {
+        Libro Libro = this.libroService.findById(id);
+        model.addAttribute("Libro", Libro);
+        return "libroFormUpdate.html";
+    }
+
+    @PostMapping("/admin/updateLibro")
+    public String modifyLibroData(@Valid @ModelAttribute("libro") Libro libro, BindingResult bindingResult, Model model) {
+        if(!bindingResult.hasErrors()) {
+            this.libroService.salva(libro);
+            model.addAttribute("Libri", this.libroService.libri());
+            return "admin/home.html";
+        }
+
+        return "libroFormUpdate.html";
     }
 }

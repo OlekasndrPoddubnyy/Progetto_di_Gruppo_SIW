@@ -15,10 +15,11 @@ public class SerieTv {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @Column(nullable = false)
     @NotBlank
     private String nome;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descrizione;
 
     @NotNull
@@ -26,13 +27,15 @@ public class SerieTv {
     private Integer numeroStagioni;
 
 
+    @Column(nullable = false)
+    @NotBlank
     private String genere;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @Fetch(FetchMode.SELECT)
     List<Episodio> episodi;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Commento> commenti;
 
 
@@ -90,5 +93,18 @@ public class SerieTv {
 
     public void setEpisodi(List<Episodio> episodi) {
         this.episodi = episodi;
+    }
+
+    public int getMediaVoti(){
+        int somma = 0, diviso = 0;
+        if(this.commenti.isEmpty())
+            return 0;
+        for (Commento commento : this.commenti){
+            if(commento.getVoto() != null){
+                somma += commento.getVoto();
+                diviso++;
+            }
+        }
+        return somma/diviso;
     }
 }

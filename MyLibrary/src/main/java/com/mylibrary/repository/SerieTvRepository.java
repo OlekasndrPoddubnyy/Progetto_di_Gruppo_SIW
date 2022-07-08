@@ -15,6 +15,8 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     public List<SerieTv> findAllByNome(String nome);
     public SerieTv findById(long id);
 
+    public List<SerieTv> findAll();
+
 
 
 
