@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mylibrary.model.Film;
 import com.mylibrary.model.Gioco;
+import com.mylibrary.model.Libro;
 import com.mylibrary.model.SerieTv;
 import com.mylibrary.model.User;
 import com.mylibrary.repository.UserRepository;
@@ -76,6 +77,11 @@ public class UserService {
     }
     
     @Transactional
+    public void addLibroToPreferiti(User user, Libro libro) {
+    	user.addLibroToPreferiti(libro);
+    }
+    
+    @Transactional
     public void deleteGiocoFromPreferiti(User user, Gioco gioco) {
     	user.getGiochiPreferiti().remove(gioco);
     }
@@ -88,6 +94,11 @@ public class UserService {
     @Transactional
     public void deleteSerieTvFromPreferiti(User user, SerieTv serieTv) {
     	user.getSerieTvPreferite().remove(serieTv);
+    }
+    
+    @Transactional
+    public void deleteLibroFromPreferiti(User user, Libro libro) {
+    	user.getLibriPreferiti().remove(libro);
     }
     
 }
