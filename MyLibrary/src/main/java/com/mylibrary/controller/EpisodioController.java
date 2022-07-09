@@ -4,6 +4,7 @@ import com.mylibrary.controller.validator.EpisodioValidator;
 import com.mylibrary.model.Episodio;
 import com.mylibrary.model.SerieTv;
 import com.mylibrary.service.EpisodioService;
+import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,23 +25,30 @@ public class EpisodioController {
     @Autowired
     private EpisodioValidator episodioValidator;
 
+    @Autowired
+    private SerieTvService serieTvService;
 
 
-    @GetMapping("/episodioForm")
-    public String getEpisodioFormInserimento(Model model) {
+    @GetMapping("/episodioForm/{id}")
+    public String getEpisodioFormInserimento( @PathVariable("id") Long idSTV, Model model) {
         model.addAttribute("episodio", new Episodio());
+        model.addAttribute("serieTv", this.serieTvService.findById(idSTV));
         return "episodioForm";
     }
 
-    @PostMapping("/admin/episodio")
+    @PostMapping("/admin/episodio/{id}")
     public String saveEpisodio(@Valid @ModelAttribute("episodio") Episodio episodio,
+                              @PathVariable("id") Long id,
                               BindingResult bindingResult, Model model) {
 
         episodioValidator.validate(episodio, bindingResult);
         if(!bindingResult.hasErrors()) {
             this.episodioService.salva(episodio);
-            model.addAttribute("episodio", episodio);
-            return "index";
+            SerieTv serieTv = this.serieTvService.findById(id);
+            serieTv.addEpisodio(episodio);
+            this.serieTvService.saveSerieTv(serieTv);
+            model.addAttribute("serieTv", serieTv);
+            return "modEpisodi";
         }
         return "episodioForm";
     }
@@ -52,10 +60,32 @@ public class EpisodioController {
         return "episodio";
     }
 
-    @GetMapping("episodio/delete/{id}")
+    @GetMapping("/episodio/delete/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
+        this.serieTvService.deleteEpisodioId(id);
         this.episodioService.eliminaEpisodio(id);
         return "episodi";
+    }
+
+    @GetMapping("episodio/update/{id}/{idStv}")
+    public String episodioUpdate(@PathVariable("id") long id,@PathVariable("idStv") long idStv, Model model) {
+        model.addAttribute("serieTv", this.serieTvService.findById(idStv));
+        model.addAttribute("episodio", this.episodioService.findById(id));
+        return "episodioFormUpdate";
+    }
+
+    @PostMapping("/episodioFormUpdate/{id}")
+    public String updateEpisodio(@Valid @ModelAttribute("episodio") Episodio episodio,
+                               @PathVariable("id") Long id,
+                               BindingResult bindingResult, Model model) {
+
+        episodioValidator.validate(episodio, bindingResult);
+        if(!bindingResult.hasErrors()) {
+            this.episodioService.salva(episodio);
+            model.addAttribute("serieTv", this.serieTvService.findById(id));
+            return "modEpisodi";
+        }
+        return "episodioFormUpdate";
     }
 
 }

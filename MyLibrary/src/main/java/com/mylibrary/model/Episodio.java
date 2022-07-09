@@ -16,13 +16,11 @@ public class Episodio {
     private String descrizione;
 
     @Column(nullable = false)
-    @NotBlank
-    private int stagione;
+    private Integer stagione;
 
 
     @Column(nullable = false)
-    @NotBlank
-    private int durata;
+    private Integer durata;
 
 
     public Long getId() {
@@ -49,19 +47,19 @@ public class Episodio {
         this.descrizione = descrizione;
     }
 
-    public int getDurata() {
+    public Integer getDurata() {
         return durata;
     }
 
-    public void setDurata(int durata) {
+    public void setDurata(Integer durata) {
         this.durata = durata;
     }
 
-    public int getStagione() {
+    public Integer getStagione() {
         return stagione;
     }
 
-    public void setStagione(int stagione) {
+    public void setStagione(Integer stagione) {
         this.stagione = stagione;
     }
 

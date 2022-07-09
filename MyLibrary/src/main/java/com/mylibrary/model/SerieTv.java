@@ -2,11 +2,14 @@ package com.mylibrary.model;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,10 +34,10 @@ public class SerieTv {
     @NotBlank
     private String genere;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Episodio> episodi;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    List<Episodio> episodi;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Commento> commenti;
 
 

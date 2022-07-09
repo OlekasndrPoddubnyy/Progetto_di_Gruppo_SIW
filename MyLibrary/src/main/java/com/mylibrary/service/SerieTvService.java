@@ -36,5 +36,7 @@ public class SerieTvService {
 
     public List<SerieTv> serieTvs() { return this.serieTvRepository.findAll(); }
 
+    public  void deleteEpisodioId(long id) { this.serieTvRepository.deleteEpisodioId(id);}
+
 
 }

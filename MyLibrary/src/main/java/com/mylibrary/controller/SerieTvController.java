@@ -111,7 +111,13 @@ public class SerieTvController {
             return "admin/home";
         }
         model.addAttribute("serieTv", serieTv);
-        return "serieTvFormUpdate.html";
+        return "serieTvFormUpdate";
+    }
+
+    @GetMapping("/admin/episodi/{id}")
+    public String listEpisodi(@PathVariable("id") Long id, Model model){
+        model.addAttribute("serieTv", this.serieTvService.findById(id));
+        return "modEpisodi";
     }
 
 
