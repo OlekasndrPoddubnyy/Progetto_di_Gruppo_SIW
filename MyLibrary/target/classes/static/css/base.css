@@ -549,6 +549,7 @@ body{
 }
 
 .footer__links {
+    width: 100vw;
     display: flex;
     justify-content: center;
 }
@@ -839,10 +840,6 @@ body{
 .card:nth-child(even) .card-stats .border {
     border-left: 1px solid rgb(185, 67, 20);
     border-right: 1px solid rgb(185, 67, 20);
-}
-
-.vote-btn{
-    margin: 8px 10px;
 }
 
 

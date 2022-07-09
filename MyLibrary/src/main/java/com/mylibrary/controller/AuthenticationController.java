@@ -40,9 +40,6 @@ public class AuthenticationController {
 	private LibroService libroService;
 
 	@Autowired
-	private  UserService userService;
-
-	@Autowired
 	private GiocoService giocoService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -76,13 +73,12 @@ public class AuthenticationController {
 			return "admin/home";
 		}
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			String currentUserName = authentication.getName();
-			Credentials credentials1 = this.credentialsService.getCredentials(currentUserName);
-			model.addAttribute("user", this.userService.getUser(credentials1.getUser().getId()));
-		}
-		return "/home";
+		User user = credentials.getUser();
+		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
+		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
+		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
+		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		return "home";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)

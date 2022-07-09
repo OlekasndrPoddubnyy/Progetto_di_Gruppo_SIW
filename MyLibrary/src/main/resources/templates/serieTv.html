@@ -44,7 +44,7 @@
                             What is Web Development?
                         </div>
                         <div class="accordion-item-body">
-                            <p th:text="${episodio.durata}"></p>
+                            <p th:text="'Durata: ' + ${episodio.durata} + 'min'"></p>
                             <div class="accordion-item-body-content" th:text="${episodio.descrizione}">
                             </div>
                         </div>

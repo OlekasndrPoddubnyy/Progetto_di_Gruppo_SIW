@@ -29,15 +29,15 @@
         <h1>Film</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!user.getFilmPreferiti().isEmpty()}"
-            th:each="film : ${user.getFilmPreferiti()}">
+        <div class="box" th:if="${!filmPreferiti.isEmpty()}"
+            th:each="film : ${filmPreferiti}">
             <span></span>
             <div class="content">
                 <h2 th:text="${film.nome}">Card One</h2>
                 <p th:text="${film.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <div class="bottoni">
                     <a th:href="'/film/' + ${film.id}">Read More</a>
-                    <a th:href="@{'/user/deleteFilmPreferito/' + ${film.id}}">Unbookmark</a>
+                    <a href="#">Unbookmark</a>
                 </div>
             </div>
         </div>
@@ -46,15 +46,15 @@
         <h1>Serie TV</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!user.getSerieTvPreferite().isEmpty()}"
-             th:each="serie : ${user.getSerieTvPreferite()}">
+        <div class="box" th:if="${!serieTvPreferite.isEmpty()}"
+             th:each="serie : ${serieTvPreferite}">
             <span></span>
             <div class="content">
                 <h2 th:text="${serie.nome}">Card One</h2>
                 <p th:text="${serie.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <div class="bottoni">
                     <a th:href="'/serieTv/' + ${serie.id}">Read More</a>
-                    <a th:href="@{'/user/deleteSerieTvPreferita/' + ${serie.id}}">Unbookmark</a>
+                    <a href="#">Unbookmark</a>
                 </div>
             </div>
         </div>
@@ -63,15 +63,15 @@
         <h1>Giochi</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!user.getGiochiPreferiti().isEmpty()}"
-             th:each="gioco : ${user.getGiochiPreferiti()}">
+        <div class="box" th:if="${!giochiPreferiti.isEmpty()}"
+             th:each="gioco : ${giochiPreferiti}">
             <span></span>
             <div class="content">
                 <h2 th:text="${gioco.nome}">Card One</h2>
                 <p th:text="${gioco.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <div class="bottoni">
                     <a th:href="'/gioco/' + ${gioco.id}">Read More</a>
-                    <a th:href="@{'/user/deleteGiocoPreferito/' + ${gioco.id}}">Unbookmark</a>
+                    <a href="#">Unbookmark</a>
                 </div>
             </div>
         </div>
@@ -80,15 +80,15 @@
         <h1>Libri</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!user.getLibriPreferiti().isEmpty()}"
-             th:each="libro : ${user.getLibriPreferiti()}">
+        <div class="box" th:if="${!libriPreferiti.isEmpty()}"
+             th:each="libro : ${libriPreferiti}">
             <span></span>
             <div class="content">
                 <h2 th:text="${libro.nome}">Card One</h2>
                 <p th:text="${libro.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <div class="bottoni">
                     <a th:href="'/libro/' + ${libro.id}">Read More</a>
-                    <a th:href="@{'/user/deleteLibroPreferito/' + ${libro.id}}">Unbookmark</a>
+                    <a href="#">Unbookmark</a>
                 </div>
             </div>
         </div>

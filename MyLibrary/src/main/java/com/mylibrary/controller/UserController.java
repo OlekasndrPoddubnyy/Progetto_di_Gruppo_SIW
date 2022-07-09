@@ -62,7 +62,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	/* AGGIUNTA PREFERITI */
@@ -73,7 +73,7 @@ public class UserController {
 		
 		this.userService.addGiocoToPreferiti(user, this.giocoService.findGiocoById(giocoId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addFilmPreferito/{filmId}")
@@ -82,7 +82,7 @@ public class UserController {
 		
 		this.userService.addFilmToPreferiti(user, this.filmService.findFilmById(filmId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addSerieTvPreferita/{serieTvId}")
@@ -91,7 +91,7 @@ public class UserController {
 
 		this.userService.addSerieTvToPreferiti(user, this.serieTvService.findById(serieTvId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addLibroPreferito/{libroId}")
@@ -100,7 +100,7 @@ public class UserController {
 		
 		this.userService.addLibroToPreferiti(user, this.libroService.findById(libroId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	/* CANCELLAZIONE PREFERITI */
@@ -111,7 +111,7 @@ public class UserController {
 		
 		this.userService.deleteGiocoFromPreferiti(user, this.giocoService.findGiocoById(giocoId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteFilmPreferito/{filmId}")
@@ -120,7 +120,7 @@ public class UserController {
 		
 		this.userService.deleteFilmFromPreferiti(user, this.filmService.findFilmById(filmId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteSerieTvPreferita/{serieTvId}")
@@ -129,7 +129,7 @@ public class UserController {
 
 		this.userService.deleteSerieTvFromPreferiti(user, this.serieTvService.findById(serieTvId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteLibroPreferito/{libroId}")
@@ -138,7 +138,7 @@ public class UserController {
 		
 		this.userService.deleteLibroFromPreferiti(user, this.libroService.findById(libroId));
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 }
