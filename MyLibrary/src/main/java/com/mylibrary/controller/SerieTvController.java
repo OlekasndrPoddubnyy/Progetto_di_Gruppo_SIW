@@ -61,10 +61,10 @@ public class SerieTvController {
         return "serieTvForm";
     }
 
-    @GetMapping("serieTv/{id}")
+    @GetMapping("/serieTv/{id}")
     public String getSerieTv(@PathVariable("id") long id, Model model) {
 
-        model.addAttribute("serieTv", this.serieTvService.findById(id));
+        model.addAttribute("serie", this.serieTvService.findById(id));
         return "serieTv";
     }
 

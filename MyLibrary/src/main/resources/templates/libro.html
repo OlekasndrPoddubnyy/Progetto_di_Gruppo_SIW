@@ -12,7 +12,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="This site permits you vote and comment movies, books and games">
-    <title th:text="${film.nome}">MBG Library Home</title> <!-- Or MBG(Movie Books Games) library -->
+    <title th:text="${libro.nome}" >MBG Library Home</title> <!-- Or MBG(Movie Books Games) library -->
 </head>
 <body>
 
@@ -22,21 +22,21 @@
 <!--Main-->
 
 <div class="center">
-    <h1 th:text="${film.nome}"></h1>
+    <h1 th:text="${libro.nome}"></h1>
     <div class="info">
-        <div class="anno" th:text="'Anno: ' + ${film.anno}"></div>
-        <div class="genere" th:text="'Genere: ' + ${film.genere}"></div>
-        <div class="media-voto" th:text="'Voto: ' + ${film.getMediaVoti()} + '/5'"></div>
+        <div class="anno" th:text="'Autore: ' + ${libro.autore}"></div>
+        <div class="genere" th:text="'Genere: ' + ${libro.genere}"></div>
+        <div class="media-voto" th:text="'Voto: ' + ${libro.getMediaVoti()} + '/5'"></div>
     </div>
     <h3>Description:</h3>
-    <span th:text="${film.descrizione}"></span>
+    <span th:text="${libro.descrizione}"></span>
 </div>
 
 <!--Feedback-->
 <div class="feed-container">
     <a sec:authorize="isAuthenticated()" href="#"><div class="comment-btn">Valuta</div></a>
-    <div class="feed-card" th:if="${!film.getCommenti().isEmpty()}"
-         th:each="commento : ${film.commenti}">
+    <div class="feed-card" th:if="${!libro.getCommenti().isEmpty()}"
+         th:each="commento : ${libro.commenti}">
         <div class="cont-text">
             <span th:text="${commento.username}" >Username</span>
             <p th:text="'Voto: ' + ${commento.voto} + '/5'" >Voto</p>

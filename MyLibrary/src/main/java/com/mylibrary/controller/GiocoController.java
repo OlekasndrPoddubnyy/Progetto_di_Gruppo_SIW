@@ -75,7 +75,7 @@ public class GiocoController {
 	public String getGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
-		return "gioco.html";
+		return "gioco";
 	}
 	
 	@GetMapping("/giochi")
