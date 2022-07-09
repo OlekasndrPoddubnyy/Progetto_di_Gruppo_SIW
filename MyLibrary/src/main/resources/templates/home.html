@@ -25,45 +25,71 @@
     <div class="title">
         <h1>Bookmarks</h1>
     </div>
+    <div class="title2">
+        <h1>Film</h1>
+    </div>
     <div class="container">
-        <div class="box">
+        <div class="box" th:if="${!filmPreferiti.isEmpty()}"
+            th:each="film : ${filmPreferiti}">
             <span></span>
             <div class="content">
-                <h2>Card One</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
-                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
-                <a href="#">Read More</a>
+                <h2 th:text="${film.nome}">Card One</h2>
+                <p th:text="${film.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/film/' + ${film.id}">Read More</a>
+                    <a href="#">Unbookmark</a>
+                </div>
             </div>
         </div>
-        <div class="box">
+    </div>
+    <div class="title2">
+        <h1>Serie TV</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!serieTvPreferite.isEmpty()}"
+             th:each="serie : ${serieTvPreferite}">
             <span></span>
             <div class="content">
-                <h2>Card One</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
-                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
-                <a href="#">Read More</a>
+                <h2 th:text="${serie.nome}">Card One</h2>
+                <p th:text="${serie.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/serieTv/' + ${serie.id}">Read More</a>
+                    <a href="#">Unbookmark</a>
+                </div>
             </div>
         </div>
-        <div class="box">
+    </div>
+    <div class="title2">
+        <h1>Giochi</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!giochiPreferiti.isEmpty()}"
+             th:each="gioco : ${giochiPreferiti}">
             <span></span>
             <div class="content">
-                <h2>Card Two</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
-                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
-                <a href="#">Read More</a>
+                <h2 th:text="${gioco.nome}">Card One</h2>
+                <p th:text="${gioco.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/gioco/' + ${gioco.id}">Read More</a>
+                    <a href="#">Unbookmark</a>
+                </div>
             </div>
         </div>
-        <div class="box">
+    </div>
+    <div class="title2">
+        <h1>Libri</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!libriPreferiti.isEmpty()}"
+             th:each="libro : ${libriPreferiti}">
             <span></span>
             <div class="content">
-                <h2>Card Three</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Amet at cumque cupiditate, delectus esse illum obcaecati pariatur quaerat sequi tempora!
-                    Architecto autem commodi excepturi facilis labore omnis quae unde vero?</p>
-                <a href="#">Read More</a>
+                <h2 th:text="${libro.nome}">Card One</h2>
+                <p th:text="${libro.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/libro/' + ${libro.id}">Read More</a>
+                    <a href="#">Unbookmark</a>
+                </div>
             </div>
         </div>
     </div>

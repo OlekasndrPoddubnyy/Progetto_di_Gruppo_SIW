@@ -59,10 +59,16 @@
 /*----------------------Episode List----------------------------*/
 .episode-section {
     font-family: 'Montserrat', sans-serif;
+    width: 80%;
 }
 
 .episode-section ul{
     list-style: none;
+}
+
+.episode-section p{
+    margin-left: 30px;
+    margin-bottom: 5px;
 }
 
 h1 {
