@@ -26,7 +26,7 @@ public class SerieTv {
     private String descrizione;
 
     @NotNull
-    @Min(1)
+    @Min(0)
     private Integer numeroStagioni;
 
 
