@@ -97,6 +97,14 @@ public class SerieTv {
         this.episodi = episodi;
     }
 
+    public void addEpisodio(Episodio episodio){
+        if(getEpisodi().isEmpty())
+            this.episodi = new ArrayList<>();
+        if(getEpisodi().contains(episodio))
+            return;
+        getEpisodi().add(episodio);
+    }
+
     public int getMediaVoti(){
         int somma = 0, diviso = 0;
         if(this.commenti.isEmpty())

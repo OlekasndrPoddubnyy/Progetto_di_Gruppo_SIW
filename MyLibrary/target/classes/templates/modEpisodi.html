@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title>Episode Page</title>
+</head>
+<body>
+
+<!-- Nav Bar -->
+<nav th:replace="fragments/base.html :: intestazione-admin"></nav>
+
+<!--Main-->
+<div class="main">
+
+    <!--Episodi-->
+    <table>
+        <caption>
+            <p class="impostazioni-title" id="film">Impostazioni Episodi</p>
+            <div class="lista-impostazioni">
+                <a class="btn-creat" th:href="@{'/episodioForm/' + ${serieTv.id}}"><div class="creazione">Aggiungi Episodio</div></a>
+            </div>
+        </caption>
+        <thead th:if="${!serieTv.getEpisodi().isEmpty()}">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Stagione</th>
+            <th scope="col">Durata</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="episodio: ${serieTv.getEpisodi()}">
+            <td data-label="Nome Cognome" th:text="${episodio.nome}"></td>
+            <td data-label="Nazionalita" th:text="${episodio.stagione}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${episodio.durata}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${episodio.descrizione}">04/01/2016</td>
+            <td data-label="">
+                <div class="bottoni">
+                    <div class="btn2">
+                        <a th:href="@{'/episodio/update/' + ${episodio.id} + '/' + ${serieTv.id}}" ><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/episodio/delete/' + ${episodio.id}}" ><div class="btn">Cancella</div></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<script type="text/javascript" th:src="@{/js/admin.js}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
