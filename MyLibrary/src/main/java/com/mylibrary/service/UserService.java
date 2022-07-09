@@ -86,6 +86,11 @@ public class UserService {
     }
     
     @Transactional
+    public void addLibroToPreferiti(User user, Libro libro) {
+    	user.addLibroToPreferiti(libro);
+    }
+    
+    @Transactional
     public void deleteGiocoFromPreferiti(User user, Gioco gioco) {
     	user.getGiochiPreferiti().remove(gioco);
     	this.userRepository.save(user);
@@ -107,6 +112,11 @@ public class UserService {
     public void deleteLibroFromPreferiti(User user, Libro libro) {
     	user.getLibriPreferiti().remove(libro);
     	this.userRepository.save(user);
+    }
+    
+    @Transactional
+    public void deleteLibroFromPreferiti(User user, Libro libro) {
+    	user.getLibriPreferiti().remove(libro);
     }
     
 }

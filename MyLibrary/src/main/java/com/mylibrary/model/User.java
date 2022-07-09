@@ -1,15 +1,13 @@
 package com.mylibrary.model;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,20 +20,20 @@ public class User {
 	
 	private String nome;
 	
-	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany
+	@JoinColumn(name = "film_id")
 	private List<Film> filmPreferiti;
 	
-	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany
+	@JoinColumn(name = "gioco_id")
 	private List<Gioco> giochiPreferiti;
 	
-	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany
+	@JoinColumn(name = "serie_tv_id")
 	private List<SerieTv> serieTvPreferite;
 	
-	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany
+	@JoinColumn(name = "libro_id")
 	private List<Libro> libriPreferiti;
 	
 	public Long getId() {
