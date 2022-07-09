@@ -29,9 +29,13 @@ public class User {
 	private List<Gioco> giochiPreferiti;
 	
 	@OneToMany
-	@JoinColumn(name = "serieTv_id")
+	@JoinColumn(name = "serie_tv_id")
 	private List<SerieTv> serieTvPreferite;
-
+	
+	@OneToMany
+	@JoinColumn(name = "libro_id")
+	private List<Libro> libriPreferiti;
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +76,14 @@ public class User {
 		this.serieTvPreferite = serieTvPreferite;
 	}
 	
+	public List<Libro> getLibriPreferiti() {
+		return libriPreferiti;
+	}
+
+	public void setLibriPreferiti(List<Libro> libriPreferiti) {
+		this.libriPreferiti = libriPreferiti;
+	}
+	
 	public void addGiocoToPreferiti(Gioco gioco) {
 		this.giochiPreferiti.add(gioco);
 	}
@@ -82,6 +94,10 @@ public class User {
 
 	public void addSerieTvToPreferiti(SerieTv serieTv) {
 		this.serieTvPreferite.add(serieTv);
+	}
+	
+	public void addLibroToPreferiti(Libro libro) {
+		this.libriPreferiti.add(libro);
 	}
 	
 }
