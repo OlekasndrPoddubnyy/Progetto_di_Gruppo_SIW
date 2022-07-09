@@ -1,12 +1,13 @@
 package com.mylibrary.service;
 
-import com.mylibrary.model.Film;
 import com.mylibrary.model.Libro;
 import com.mylibrary.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 @Service
 public class LibroService {
@@ -30,7 +31,9 @@ public class LibroService {
         return this.libroRepository.findAll();
     }
 
-
-
-
+    @Transactional
+	public void updateLibro(Libro libro) {
+		this.libroRepository.updateLibro(libro.getNome(), libro.getGenere(), libro.getAutore(), libro.getDescrizione(), libro.getId());
+	}
+    
 }

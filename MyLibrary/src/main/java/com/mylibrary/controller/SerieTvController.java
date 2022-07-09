@@ -102,7 +102,7 @@ public class SerieTvController {
     @PostMapping("/admin/updateSerieTV")
     public String modifySerieTVData(@Valid @ModelAttribute("serieTv") SerieTv serieTv, BindingResult bindingResult, Model model) {
         if(!bindingResult.hasErrors()) {
-        	this.serieTvService.updateSerieTv(serieTv, this.serieTvService.findById(serieTv.getId()));
+        	this.serieTvService.updateSerieTv(serieTv);
             model.addAttribute("films", filmService.findAllFilms());
             model.addAttribute("series", serieTvService.serieTvs());
             model.addAttribute("giochi", giocoService.findAllGiochi());

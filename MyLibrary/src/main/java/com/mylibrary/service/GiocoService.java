@@ -45,4 +45,9 @@ public class GiocoService {
 		return this.giocoRepository.existsByNomeAndGenere(gioco.getNome(), gioco.getGenere());
 	}
 	
+	@Transactional
+	public void updateGioco(Gioco gioco) {
+		this.giocoRepository.updateGioco(gioco.getNome(), gioco.getGenere(), gioco.getDescrizione(), gioco.getId());
+	}
+	
 }

@@ -1,7 +1,5 @@
 package com.mylibrary.service;
 
-
-import com.mylibrary.model.Film;
 import com.mylibrary.model.SerieTv;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,13 +38,8 @@ public class SerieTvService {
     public  void deleteEpisodioId(long id) { this.serieTvRepository.deleteEpisodioId(id);}
     
     @Transactional
-    public void updateSerieTv(SerieTv editedSerieTv, SerieTv serieTv) {
-    	serieTv.setNome(editedSerieTv.getNome());
-    	serieTv.setGenere(editedSerieTv.getGenere());
-    	serieTv.setNumeroStagioni(editedSerieTv.getNumeroStagioni());
-    	serieTv.setDescrizione(editedSerieTv.getDescrizione());
-    	
-    	this.serieTvRepository.save(serieTv);
+    public void updateSerieTv(SerieTv editedSerieTv) {
+    	this.serieTvRepository.updateSerieTv(editedSerieTv.getNome(), editedSerieTv.getGenere(), editedSerieTv.getNumeroStagioni(), editedSerieTv.getDescrizione(), editedSerieTv.getId());
     }
     
 }

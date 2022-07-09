@@ -93,7 +93,7 @@ public class LibroController {
     @PostMapping("/admin/updateLibro")
     public String modifyLibroData(@Valid @ModelAttribute("libro") Libro libro, BindingResult bindingResult, Model model) {
         if(!bindingResult.hasErrors()) {
-            this.libroService.salva(libro);
+            this.libroService.updateLibro(libro);
             model.addAttribute("films", filmService.findAllFilms());
             model.addAttribute("series", serieTvService.serieTvs());
             model.addAttribute("giochi", giocoService.findAllGiochi());

@@ -93,9 +93,9 @@ public class GiocoController {
 	}
 	
 	@PostMapping("/admin/updateGioco")
-	public String modifyFilmData(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
+	public String modifyGiocoData(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
-			this.giocoService.save(gioco);
+			this.giocoService.updateGioco(gioco);
 			model.addAttribute("films", filmService.findAllFilms());
 			model.addAttribute("series", serieTvService.serieTvs());
 			model.addAttribute("giochi", giocoService.findAllGiochi());

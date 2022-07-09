@@ -89,7 +89,7 @@ public class FilmController {
 	@PostMapping("/admin/filmUpdate")
 	public String modifyFilmData(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
-			this.filmService.save(film);
+			this.filmService.updateFilm(film);
 			model.addAttribute("films", filmService.findAllFilms());
 			model.addAttribute("series", serieTvService.serieTvs());
 			model.addAttribute("giochi", giocoService.findAllGiochi());

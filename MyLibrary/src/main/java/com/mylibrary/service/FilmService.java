@@ -45,4 +45,9 @@ public class FilmService {
 		return this.filmRepository.existsByNomeAndAnnoAndGenere(film.getNome(), film.getAnno(), film.getGenere());
 	}
 	
+	@Transactional
+	public void updateFilm(Film film) {
+		this.filmRepository.updateFilm(film.getNome(), film.getGenere(), film.getAnno(), film.getDescrizione(), film.getId());
+	}
+	
 }
