@@ -41,5 +41,11 @@ public class SerieTvService {
     public void updateSerieTv(SerieTv editedSerieTv) {
     	this.serieTvRepository.updateSerieTv(editedSerieTv.getNome(), editedSerieTv.getGenere(), editedSerieTv.getNumeroStagioni(), editedSerieTv.getDescrizione(), editedSerieTv.getId());
     }
+
+    @Transactional
+    public void updateNumStagioni(int numStagioni, Long id) {
+        this.serieTvRepository.updateNumStagioni(numStagioni, id);
+    }
+
     
 }
