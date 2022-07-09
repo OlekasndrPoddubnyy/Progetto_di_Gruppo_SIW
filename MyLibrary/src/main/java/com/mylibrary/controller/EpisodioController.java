@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.LinkedList;
+import java.util.List;
+
+import static java.sql.Types.NULL;
 
 @Controller
 public class EpisodioController {
@@ -46,6 +50,8 @@ public class EpisodioController {
             this.episodioService.salva(episodio);
             SerieTv serieTv = this.serieTvService.findById(id);
             serieTv.addEpisodio(episodio);
+            if(episodio.getStagione() > serieTv.getNumeroStagioni())
+                serieTv.setNumeroStagioni(episodio.getStagione());
             this.serieTvService.saveSerieTv(serieTv);
             model.addAttribute("serieTv", serieTv);
             return "modEpisodi";
@@ -65,7 +71,19 @@ public class EpisodioController {
                              @PathVariable("idS") long ids, Model model) {
         this.serieTvService.deleteEpisodioId(id);
         this.episodioService.eliminaEpisodio(id);
-        model.addAttribute("serieTv", this.serieTvService.findById(ids));
+        SerieTv serieTv = this.serieTvService.findById(ids);
+        List<Long> listaId = new LinkedList<>();
+        for(Episodio episodio : serieTv.getEpisodi())
+            listaId.add(episodio.getId());
+        int maxStagione= this.episodioService.maxStagione(listaId);
+
+        if( serieTv.getNumeroStagioni() != maxStagione ) {
+            this.serieTvService.updateNumStagioni(maxStagione, ids);
+            serieTv.setNumeroStagioni(maxStagione);
+        }
+
+        model.addAttribute("serieTv", serieTv );
+
         return "modEpisodi";
     }
 

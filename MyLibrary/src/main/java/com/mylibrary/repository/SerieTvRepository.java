@@ -18,6 +18,8 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     public List<SerieTv> findAllByNome(String nome);
     public SerieTv findById(long id);
 
+
+
     public List<SerieTv> findAll();
 
     @Modifying
@@ -28,5 +30,9 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     @Query("update SerieTv s set s.nome=:nome, s.genere=:genere, s.numeroStagioni=:stagioni, s.descrizione=:descrizione where s.id=:id")
     public void updateSerieTv(@Param("nome") String nome, @Param("genere") String genere, @Param("stagioni") Integer numeroStagioni, 
     						  @Param("descrizione") String descrizione, @Param("id") Long id);
-    
+
+
+    @Modifying
+    @Query(" update SerieTv s set s.numeroStagioni=:numStagioni where s.id=:id")
+    public void updateNumStagioni(@Param("numStagioni") int numStagione, @Param("id") Long id);
 }
