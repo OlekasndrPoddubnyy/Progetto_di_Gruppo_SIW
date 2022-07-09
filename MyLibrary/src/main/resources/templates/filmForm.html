@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/form.css}" />
     <link rel="stylesheet" th:href="@{/css/admin.css}" />
 
-    <title>Film Form Update</title>
+    <title>Film Form</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
 
 <div class="main boxform">
-    <p class="title">Form Film Update</p>
+    <p class="title">Form Film</p>
 
     <form th:action="@{/admin/film}" method="POST" th:object="${film}" >
         <div class="errori" th:if="${#fields.hasGlobalErrors()}">

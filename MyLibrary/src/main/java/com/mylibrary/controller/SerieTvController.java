@@ -96,7 +96,7 @@ public class SerieTvController {
     public String modifySerieTVData(@PathVariable("id") Long id, Model model) {
         SerieTv serieTv = this.serieTvService.findById(id);
         model.addAttribute("serieTv", serieTv);
-        return "serieTvFormUpdate.html";
+        return "serieTvFormUpdate";
     }
 
 

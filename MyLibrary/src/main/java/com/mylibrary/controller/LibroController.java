@@ -85,9 +85,9 @@ public class LibroController {
 
     @GetMapping("/admin/updateLibroForm/{id}")
     public String modifyLibroData(@PathVariable("id") Long id, Model model) {
-        Libro Libro = this.libroService.findById(id);
-        model.addAttribute("Libro", Libro);
-        return "libroFormUpdate.html";
+        Libro libro = this.libroService.findById(id);
+        model.addAttribute("libro", libro);
+        return "libroFormUpdate";
     }
 
     @PostMapping("/admin/updateLibro")

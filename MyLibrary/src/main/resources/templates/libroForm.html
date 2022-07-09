@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/form.css}" />
     <link rel="stylesheet" th:href="@{/css/admin.css}" />
 
-    <title>Film Form</title>
+    <title>Libro Form</title>
 </head>
 <body>
 
@@ -18,9 +18,9 @@
 
 
 <div class="main boxform">
-    <p class="title">Form Film</p>
+    <p class="title">Libro Form</p>
 
-    <form th:action="@{/admin/film}" method="POST" th:object="${film}" >
+    <form th:action="@{/admin/libro}" method="POST" th:object="${libro}" >
         <div class="errori" th:if="${#fields.hasGlobalErrors()}">
             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
         </div>
@@ -35,9 +35,9 @@
             <div class="errori" th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
         </div>
         <div class="inputBox" >
-            <input type="number" min="1900" name="name" required th:field="*{anno}">
-            <span>Anno</span>
-            <div class="errori" th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></div>
+            <input type="text" name="name" required th:field="*{autore}">
+            <span>Autore</span>
+            <div class="errori" th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></div>
         </div>
         <div class="inputBox" >
             <textarea type="text" name="description" th:field="*{descrizione}"></textarea>
