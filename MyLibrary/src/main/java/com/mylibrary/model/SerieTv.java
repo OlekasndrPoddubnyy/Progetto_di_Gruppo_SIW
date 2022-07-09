@@ -31,8 +31,7 @@ public class SerieTv {
     @NotBlank
     private String genere;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
-    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     List<Episodio> episodi;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})

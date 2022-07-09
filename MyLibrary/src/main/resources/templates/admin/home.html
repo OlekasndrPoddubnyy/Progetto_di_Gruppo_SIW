@@ -61,7 +61,7 @@
         <caption>
             <p class="impostazioni-title" id="serie-tv">Impostazioni Serie TV</p>
             <div class="lista-impostazioni">
-                <a class="btn-creat" th:href="@{/serieTvForm}"><div class="creazione">Aggiungi Film</div></a>
+                <a class="btn-creat" th:href="@{/serieTvForm}"><div class="creazione">Aggiungi Serie Tv</div></a>
             </div>
         </caption>
         <thead th:if="${!series.isEmpty()}">
@@ -76,10 +76,10 @@
         <tbody>
         <tr th:each="serie : ${series}">
             <td data-label="Nome Cognome" th:text="${serie.nome}"></td>
-            <td data-label="Nazionalita" th:text="${serie.anno}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${serie.numeroStagioni}">04/01/2016</td>
             <td data-label="Nazionalita" th:text="${serie.genere}">04/01/2016</td>
             <td data-label="Buffet" th:if="${!serie.getEpisodi().isEmpty()}">
-                <div th:each="episode : ${serie.episodi}">
+                <div th:each="episode : ${serie.getEpisodi()}">
                     <p th:text="${episode.nome}">Episodio</p>
                 </div>
             </td>
@@ -155,8 +155,8 @@
             <td data-label="">
                 <div class="bottoni">
                     <div class="btn2">
-                        <a th:href="@{'/admin/updateFilmForm/' + ${libro.id}}"><div class="btn">Modifica</div></a>
-                        <a th:href="@{'/deleteFilm/' + ${libro.id}}" ><div class="btn">Cancella</div></a>
+                        <a th:href="@{'/admin/updateLibroForm/' + ${libro.id}}"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/deleteLibro/' + ${libro.id}}" ><div class="btn">Cancella</div></a>
                     </div>
                 </div>
             </td>

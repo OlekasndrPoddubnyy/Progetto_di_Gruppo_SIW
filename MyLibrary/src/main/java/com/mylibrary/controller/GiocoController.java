@@ -54,7 +54,7 @@ public class GiocoController {
 		return "giocoForm.html";
 	}
 	
-	@PostMapping("/deleteGioco/{id}")
+	@GetMapping("/deleteGioco/{id}")
 	public String deleteGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		this.giocoService.deleteGioco(gioco);
