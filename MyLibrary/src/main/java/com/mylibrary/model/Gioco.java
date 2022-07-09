@@ -15,7 +15,7 @@ public class Gioco {
 	@NotBlank
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	@NotBlank
 	private String descrizione;
 	
