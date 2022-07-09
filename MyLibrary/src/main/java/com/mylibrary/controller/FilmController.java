@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.mylibrary.service.GiocoService;
-import com.mylibrary.service.LibroService;
-import com.mylibrary.service.SerieTvService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.mylibrary.controller.validator.FilmValidator;
 import com.mylibrary.model.Film;
-import com.mylibrary.service.FilmService;
 
 @Controller
 public class FilmController {
@@ -34,6 +31,7 @@ public class FilmController {
 	
 	@Autowired
 	private FilmValidator filmValidator;
+
 
 	@RequestMapping(value="/admin/film", method = RequestMethod.GET)
 	public String addFilm(Model model) {

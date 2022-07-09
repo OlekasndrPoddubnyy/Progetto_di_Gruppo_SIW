@@ -43,7 +43,7 @@
                 <p class="descrizione" th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <a href="film.html">
+                <a th:href="'/film/' + ${film.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
             </div>
@@ -65,7 +65,7 @@
                 <p class="descrizione" th:text="'Descrizione: ' + ${serie.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <a href="film.html">
+                <a th:href="'/serieTv/' + ${serie.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
             </div>
@@ -89,7 +89,7 @@
                 <p class="descrizione" th:text="'Descrizione: ' + ${gioco.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <a href="film.html">
+                <a th:href="'/gioco/' + ${gioco.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
             </div>
@@ -111,7 +111,7 @@
                 <p class="descrizione" th:text="'Descrizione: ' + ${libro.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <a href="film.html">
+                <a th:href="'/libro/' + ${libro.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
             </div>
