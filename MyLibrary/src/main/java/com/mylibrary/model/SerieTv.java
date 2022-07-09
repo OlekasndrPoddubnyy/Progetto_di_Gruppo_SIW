@@ -35,7 +35,8 @@ public class SerieTv {
     private String genere;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    List<Episodio> episodi;
+    @JoinColumn(name = "serie_tv_id")
+    private List<Episodio> episodi;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @LazyCollection(LazyCollectionOption.FALSE)
