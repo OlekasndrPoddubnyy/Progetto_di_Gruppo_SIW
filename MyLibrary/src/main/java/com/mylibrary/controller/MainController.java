@@ -24,7 +24,7 @@ public class MainController {
 	@Autowired
 	private LibroService libroService;
 	
-	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("films", filmService.findAllFilms());
 		model.addAttribute("series", serieTvService.serieTvs());

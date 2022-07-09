@@ -31,10 +31,10 @@ public class SerieTv {
     @NotBlank
     private String genere;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    List<Episodio> episodi;
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private List<Episodio> episodi;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Commento> commenti;
 
 

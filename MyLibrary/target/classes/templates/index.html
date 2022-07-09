@@ -40,7 +40,7 @@
                 <h2 th:text="${film.nome}">Post One</h2>
                 <span class="date" th:text="${film.getMediaVoti()} + '/5'">5/5</span>
                 <p th:text="'Genere: ' + ${film.genere} + '.       Anno: ' + ${film.anno}">Film horr</p>
-                <p th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
                 <a href="film.html">
@@ -61,8 +61,8 @@
             <div class="card-text">
                 <h2 th:text="${serie.nome}">Post One</h2>
                 <span class="date" th:text="${serie.getMediaVoti()} + '/5'">5/5</span>
-                <p th:text="'Genere: ' + ${serie.genere} + '.       Anno: ' + ${serie.anno}">Film horr</p>
-                <p th:text="'Descrizione: ' + ${serie.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <p th:text="'Genere: ' + ${serie.genere} + '.       Stagioni: ' + ${serie.numeroStagioni}">Film horr</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${serie.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
                 <a href="film.html">
@@ -86,7 +86,7 @@
                 <h2 th:text="${gioco.nome}">Post One</h2>
                 <span class="date" th:text="${gioco.getMediaVoti()} + '/5'">5/5</span>
                 <p th:text="'Genere: ' + ${gioco.genere}">Film horr</p>
-                <p th:text="'Descrizione: ' + ${gioco.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${gioco.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
                 <a href="film.html">
@@ -108,7 +108,7 @@
                 <h2 th:text="${libro.nome}">Post One</h2>
                 <span class="date" th:text="${libro.getMediaVoti()} + '/5'">5/5</span>
                 <p th:text="'Genere: ' + ${libro.genere} + '.       Autore: ' + ${libro.autore}">Film horr</p>
-                <p th:text="'Descrizione: ' + ${libro.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${libro.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
                 <a href="film.html">

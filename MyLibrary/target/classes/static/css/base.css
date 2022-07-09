@@ -756,6 +756,13 @@ body{
     font-size:14px;
     font-weight: 300;
 }
+.card-text .descrizione {
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .card-text h2 {
     margin-top:0px;
     justify-content: left;
