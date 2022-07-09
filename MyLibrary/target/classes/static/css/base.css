@@ -842,6 +842,10 @@ body{
     border-right: 1px solid rgb(185, 67, 20);
 }
 
+.vote-btn{
+    margin: 8px 10px;
+}
+
 
 /*-----------------------Bookmarks cards----------------------------------------------*/
 .main-box{
