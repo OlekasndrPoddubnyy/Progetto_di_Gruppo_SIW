@@ -38,6 +38,7 @@ public class SerieTv {
     List<Episodio> episodi;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Commento> commenti;
 
 

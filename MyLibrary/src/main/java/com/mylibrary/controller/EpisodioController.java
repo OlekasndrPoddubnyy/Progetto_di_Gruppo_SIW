@@ -60,11 +60,13 @@ public class EpisodioController {
         return "episodio";
     }
 
-    @GetMapping("/episodio/delete/{id}")
-    public String deleteById(@PathVariable("id") long id, Model model) {
+    @GetMapping("/episodio/delete/{id}/{idS}")
+    public String deleteById(@PathVariable("id") long id,
+                             @PathVariable("idS") long ids, Model model) {
         this.serieTvService.deleteEpisodioId(id);
         this.episodioService.eliminaEpisodio(id);
-        return "episodi";
+        model.addAttribute("serieTv", this.serieTvService.findById(ids));
+        return "modEpisodi";
     }
 
     @GetMapping("episodio/update/{id}/{idStv}")
