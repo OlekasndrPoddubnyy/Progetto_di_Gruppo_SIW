@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-
-
-
-.center {
+.center{
     display: flex;
     width: 100%;
-    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
     align-items: center;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 4rem;
-    overflow-x: hidden;
+    margin-top: 0px;
+    min-height: 100vh;
+    max-width: 1300px;
 }
 
 .center h1{
@@ -39,14 +36,15 @@
 }
 
 .center h3{
+    max-width: 1300px;
     text-align: left;
-    position: relative;
     width: 100%;
     margin-left: 150px;
     margin-right: 10px;
     font-size: 2rem;
     font-weight: 400;
     color: #fff;
+    overflow: hidden;
 }
 
 .center span{
@@ -61,16 +59,10 @@
 /*----------------------Episode List----------------------------*/
 .episode-section {
     font-family: 'Montserrat', sans-serif;
-    width: 80%;
 }
 
 .episode-section ul{
     list-style: none;
-}
-
-.episode-section p{
-    margin-left: 30px;
-    margin-bottom: 5px;
 }
 
 h1 {
@@ -126,7 +118,7 @@ h1 {
 }
 
 @media(max-width:767px) {
-    body {
+    html {
         font-size: 14px;
     }
 }
@@ -140,10 +132,10 @@ h1 {
 
 
 
+
 /*----------------------------------------------------*/
 .feed-container{
-    width: 100%;
-    margin: 20px 60px;
+    margin: 20px;
     padding: 0;
     display: flex;
     flex-direction: column;
