@@ -38,6 +38,15 @@ public class SerieTvService {
 
     @Transactional
     public  void deleteEpisodioId(long id) { this.serieTvRepository.deleteEpisodioId(id);}
-
-
+    
+    @Transactional
+    public void updateSerieTv(SerieTv editedSerieTv, SerieTv serieTv) {
+    	serieTv.setNome(editedSerieTv.getNome());
+    	serieTv.setGenere(editedSerieTv.getGenere());
+    	serieTv.setNumeroStagioni(editedSerieTv.getNumeroStagioni());
+    	serieTv.setDescrizione(editedSerieTv.getDescrizione());
+    	
+    	this.serieTvRepository.save(serieTv);
+    }
+    
 }

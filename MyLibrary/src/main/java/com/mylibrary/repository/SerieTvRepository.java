@@ -23,9 +23,5 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     @Modifying
     @Query(value = "delete from serie_tv_episodi where episodi_id=:idE", nativeQuery = true)
     public void deleteEpisodioId(@Param("idE")Long idE);
-
-
-
-
-
+    
 }

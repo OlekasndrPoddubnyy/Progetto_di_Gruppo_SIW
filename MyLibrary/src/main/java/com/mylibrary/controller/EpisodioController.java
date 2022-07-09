@@ -70,7 +70,7 @@ public class EpisodioController {
     }
 
     @GetMapping("episodio/update/{id}/{idStv}")
-    public String episodioUpdate(@PathVariable("id") long id,@PathVariable("idStv") long idStv, Model model) {
+    public String episodioUpdate(@PathVariable("id") Long id, @PathVariable("idStv") Long idStv, Model model) {
         model.addAttribute("serieTv", this.serieTvService.findById(idStv));
         model.addAttribute("episodio", this.episodioService.findById(id));
         return "episodioFormUpdate";
@@ -89,5 +89,5 @@ public class EpisodioController {
         }
         return "episodioFormUpdate";
     }
-
+    
 }
