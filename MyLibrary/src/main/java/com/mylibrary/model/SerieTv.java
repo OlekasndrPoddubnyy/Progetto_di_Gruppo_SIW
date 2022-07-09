@@ -97,6 +97,14 @@ public class SerieTv {
         this.episodi = episodi;
     }
 
+    public List<Integer> getStagioni(){
+        List<Integer> stagioni = new ArrayList<>();
+        for ( int i=1; i<=this.numeroStagioni; i++){
+            stagioni.add(i);
+        }
+        return stagioni;
+    }
+
     public void addEpisodio(Episodio episodio){
         if(getEpisodi().isEmpty())
             this.episodi = new ArrayList<>();
