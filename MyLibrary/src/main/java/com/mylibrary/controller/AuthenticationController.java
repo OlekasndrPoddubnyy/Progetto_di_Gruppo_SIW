@@ -1,6 +1,6 @@
 package com.mylibrary.controller;
 
-import com.mylibrary.service.FilmService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,6 @@ import com.mylibrary.controller.validator.CredentialsValidator;
 import com.mylibrary.controller.validator.UserValidator;
 import com.mylibrary.model.Credentials;
 import com.mylibrary.model.User;
-import com.mylibrary.service.CredentialsService;
 
 @Controller
 public class AuthenticationController {
@@ -31,6 +30,15 @@ public class AuthenticationController {
 
 	@Autowired
 	private FilmService filmService;
+
+	@Autowired
+	private SerieTvService serieTvService;
+
+	@Autowired
+	private LibroService libroService;
+
+	@Autowired
+	private GiocoService giocoService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterForm (Model model) {
@@ -55,7 +63,10 @@ public class AuthenticationController {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			model.addAttribute("films", this.filmService.findAllFilms());
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
 			return "admin/home";
 		}
 		return "home";

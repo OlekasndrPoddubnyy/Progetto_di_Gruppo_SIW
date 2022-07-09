@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.service.FilmService;
+import com.mylibrary.service.LibroService;
+import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +22,16 @@ import com.mylibrary.service.GiocoService;
 
 @Controller
 public class GiocoController {
-	
+
+	@Autowired
+	private FilmService filmService;
+
+	@Autowired
+	private SerieTvService serieTvService;
+
+	@Autowired
+	private LibroService libroService;
+
 	@Autowired
 	private GiocoService giocoService;
 	
@@ -32,8 +44,11 @@ public class GiocoController {
 		
 		if(!bindingResult.hasErrors()) {
 			this.giocoService.save(gioco);
-			model.addAttribute("gioco", gioco);
-			return "gioco.html";
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
+			return "admin/home";
 		}
 		
 		return "giocoForm.html";
@@ -43,7 +58,11 @@ public class GiocoController {
 	public String deleteGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		this.giocoService.deleteGioco(gioco);
-		return "giochi.html";
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "admin/home";
 	}
 	
 	@GetMapping("/giocoForm")
@@ -77,10 +96,13 @@ public class GiocoController {
 	public String modifyFilmData(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
 			this.giocoService.save(gioco);
-			model.addAttribute("giochi", this.giocoService.findAllGiochi());
-			return "admin/home.html";
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
+			return "admin/home";
 		}
-		
+		model.addAttribute("gioco", gioco);
 		return "giocoFormUpdate.html";
 	}
 	

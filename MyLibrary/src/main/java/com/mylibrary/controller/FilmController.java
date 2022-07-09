@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.service.GiocoService;
+import com.mylibrary.service.LibroService;
+import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +19,18 @@ import com.mylibrary.service.FilmService;
 
 @Controller
 public class FilmController {
-	
+
 	@Autowired
 	private FilmService filmService;
+
+	@Autowired
+	private SerieTvService serieTvService;
+
+	@Autowired
+	private LibroService libroService;
+
+	@Autowired
+	private GiocoService giocoService;
 	
 	@Autowired
 	private FilmValidator filmValidator;
@@ -35,7 +47,10 @@ public class FilmController {
 		this.filmValidator.validate(film, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.filmService.save(film);
-			model.addAttribute("films", this.filmService.findAllFilms());
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
 			return "admin/home";
 		}
 		return "filmForm";
@@ -45,7 +60,10 @@ public class FilmController {
 	public String deleteFilm(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		this.filmService.deleteFilm(film);
-		model.addAttribute("films", this.filmService.findAllFilms());
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
 		return "admin/home";
 	}
 	
@@ -74,7 +92,10 @@ public class FilmController {
 	public String modifyFilmData(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model) {
 		if(!bindingResult.hasErrors()) {
 			this.filmService.save(film);
-			model.addAttribute("films", this.filmService.findAllFilms());
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
 			return "admin/home";
 		}
 		model.addAttribute("film",film);

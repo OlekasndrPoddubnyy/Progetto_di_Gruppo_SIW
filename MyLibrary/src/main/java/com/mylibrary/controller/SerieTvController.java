@@ -1,11 +1,13 @@
 package com.mylibrary.controller;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
 import com.mylibrary.controller.validator.SerieTvValidator;
 import com.mylibrary.model.SerieTv;
+import com.mylibrary.service.FilmService;
+import com.mylibrary.service.GiocoService;
+import com.mylibrary.service.LibroService;
 import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SerieTvController {
 
     @Autowired
+    private FilmService filmService;
+
+    @Autowired
     private SerieTvService serieTvService;
+
+    @Autowired
+    private LibroService libroService;
+
+    @Autowired
+    private GiocoService giocoService;
 
     @Autowired
     private SerieTvValidator serieTvValidator;
@@ -41,8 +52,11 @@ public class SerieTvController {
         serieTvValidator.validate(serieTv, bindingResult);
         if(!bindingResult.hasErrors()) {
             this.serieTvService.saveSerieTv(serieTv);
-            model.addAttribute("serieTv", serieTv);
-            return "index";
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
         }
         return "serieTvForm";
     }
@@ -57,7 +71,11 @@ public class SerieTvController {
     @GetMapping("serieTv/delete/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
         this.serieTvService.deleteById(id);
-        return "serieTvs";
+        model.addAttribute("films", filmService.findAllFilms());
+        model.addAttribute("series", serieTvService.serieTvs());
+        model.addAttribute("giochi", giocoService.findAllGiochi());
+        model.addAttribute("libri", libroService.libri());
+        return "admin/home";
     }
 
     @GetMapping("/serieTvs")
@@ -86,10 +104,13 @@ public class SerieTvController {
     public String modifySerieTVData(@Valid @ModelAttribute("serieTv") SerieTv serieTv, BindingResult bindingResult, Model model) {
         if(!bindingResult.hasErrors()) {
             this.serieTvService.saveSerieTv(serieTv);
-            model.addAttribute("serieTVs", this.serieTvService.serieTvs());
-            return "admin/home.html";
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
         }
-
+        model.addAttribute("serieTv", serieTv);
         return "serieTvFormUpdate.html";
     }
 

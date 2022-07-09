@@ -2,7 +2,10 @@ package com.mylibrary.controller;
 
 import com.mylibrary.controller.validator.LibroValidator;
 import com.mylibrary.model.Libro;
+import com.mylibrary.service.FilmService;
+import com.mylibrary.service.GiocoService;
 import com.mylibrary.service.LibroService;
+import com.mylibrary.service.SerieTvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +21,16 @@ import javax.validation.Valid;
 public class LibroController {
 
     @Autowired
+    private FilmService filmService;
+
+    @Autowired
+    private SerieTvService serieTvService;
+
+    @Autowired
     private LibroService libroService;
+
+    @Autowired
+    private GiocoService giocoService;
 
     @Autowired
     private LibroValidator libroValidator;
@@ -37,8 +49,11 @@ public class LibroController {
         libroValidator.validate(libro, bindingResult);
         if(!bindingResult.hasErrors()) {
             this.libroService.salva(libro);
-            model.addAttribute("libro", libro);
-            return "index";
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
         }
         return "libroForm";
     }
@@ -46,7 +61,11 @@ public class LibroController {
     @GetMapping("/deleteLibro/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
         this.libroService.eliminaLibro(id);
-        return "libri";
+        model.addAttribute("films", filmService.findAllFilms());
+        model.addAttribute("series", serieTvService.serieTvs());
+        model.addAttribute("giochi", giocoService.findAllGiochi());
+        model.addAttribute("libri", libroService.libri());
+        return "admin/home";
     }
 
     @GetMapping("/libro/{id}")
@@ -75,10 +94,13 @@ public class LibroController {
     public String modifyLibroData(@Valid @ModelAttribute("libro") Libro libro, BindingResult bindingResult, Model model) {
         if(!bindingResult.hasErrors()) {
             this.libroService.salva(libro);
-            model.addAttribute("Libri", this.libroService.libri());
-            return "admin/home.html";
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
         }
-
+        model.addAttribute("libro", libro);
         return "libroFormUpdate.html";
     }
 }
