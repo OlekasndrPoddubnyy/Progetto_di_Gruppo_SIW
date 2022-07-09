@@ -62,7 +62,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	/* AGGIUNTA PREFERITI */
@@ -77,7 +77,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addFilmPreferito/{filmId}")
@@ -90,7 +90,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addSerieTvPreferita/{serieTvId}")
@@ -103,7 +103,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/addLibroPreferito/{libroId}")
@@ -116,7 +116,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	/* CANCELLAZIONE PREFERITI */
@@ -131,7 +131,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteFilmPreferito/{filmId}")
@@ -144,7 +144,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteSerieTvPreferita/{serieTvId}")
@@ -157,7 +157,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 	@PostMapping("/user/deleteLibroPreferito/{libroId}")
@@ -170,7 +170,7 @@ public class UserController {
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		
-		return "user/preferiti.html";
+		return "/home";
 	}
 	
 }

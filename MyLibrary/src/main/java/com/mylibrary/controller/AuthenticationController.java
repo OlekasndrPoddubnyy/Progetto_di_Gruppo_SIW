@@ -2,6 +2,8 @@ package com.mylibrary.controller;
 
 import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -69,6 +71,12 @@ public class AuthenticationController {
 			model.addAttribute("libri", libroService.libri());
 			return "admin/home";
 		}
+
+		User user = credentials.getUser();
+		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
+		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
+		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
+		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
 		return "home";
 	}
 
