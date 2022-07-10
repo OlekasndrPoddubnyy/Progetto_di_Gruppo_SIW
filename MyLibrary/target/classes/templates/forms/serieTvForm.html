@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+
+    <title>Serie Tv Form</title>
+</head>
+<body>
+
+<!-- Nav Bar -->
+<nav th:replace="fragments/base.html :: intestazione-admin"></nav>
+
+
+
+<div class="main boxform">
+    <p class="title">Serie Tv Form</p>
+
+    <form th:action="@{/admin/serieTv}" method="POST" th:object="${serieTv}" >
+        <div class="errori" th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+        </div>
+        <div class="inputBox" >
+            <input type="text" name="name" required th:field="*{nome}">
+            <span>Name</span>
+            <div class="errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+        </div>
+        <div class="inputBox" >
+            <input type="text" name="name" required th:field="*{genere}">
+            <span>Genere</span>
+            <div class="errori" th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
+        </div>
+        <div class="inputBox" >
+            <input type="number" min="0" name="name" required th:field="*{numeroStagioni}">
+            <span>N Stagioni</span>
+            <div class="errori" th:if="${#fields.hasErrors('numeroStagioni')}" th:errors="*{numeroStagioni}"></div>
+        </div>
+        <div class="inputBox" >
+            <textarea type="text" name="description" th:field="*{descrizione}"></textarea>
+            <span>Description</span>
+            <div class="errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+        </div>
+        <button class="submit-btn">Aggiungi</button>
+    </form>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/admin.js}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
