@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,19 +22,19 @@ public class User {
 	
 	private String nome;
 	
-	@OneToMany
+	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Film> filmPreferiti;
 	
-	@OneToMany
+	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Gioco> giochiPreferiti;
 	
-	@OneToMany
+	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SerieTv> serieTvPreferite;
 	
-	@OneToMany
+	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Libro> libriPreferiti;
 	
