@@ -16,7 +16,7 @@ public class Commento {
 	@Column(nullable = false)
 	private String username;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	@NotBlank
 	private String descrizione;
 	

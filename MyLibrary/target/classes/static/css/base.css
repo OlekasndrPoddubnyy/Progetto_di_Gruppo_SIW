@@ -1064,6 +1064,8 @@ body{
     font-size: 1.1em;
     margin-bottom: 10px;
     line-height: 1.4em;
+    max-height: 200px;
+    overflow-y: hidden;
 }
 
 .main-box .container .box .content a{
