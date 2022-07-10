@@ -18,7 +18,8 @@ public class LibroService {
     public void salva(Libro libro) {
         this.libroRepository.save(libro);
     }
-
+    
+    @Transactional
     public void eliminaLibro(Long idL) {
     	this.libroRepository.deleteLibroPreferito(idL);
         this.libroRepository.deleteById(idL);
