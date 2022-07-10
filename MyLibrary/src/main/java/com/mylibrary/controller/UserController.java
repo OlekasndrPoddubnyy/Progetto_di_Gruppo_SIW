@@ -72,10 +72,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.addGiocoToPreferiti(user, this.giocoService.findGiocoById(giocoId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -85,10 +82,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.addFilmToPreferiti(user, this.filmService.findFilmById(filmId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -98,10 +92,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 
 		this.userService.addSerieTvToPreferiti(user, this.serieTvService.findById(serieTvId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -111,10 +102,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.addLibroToPreferiti(user, this.libroService.findById(libroId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -126,10 +114,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.deleteGiocoFromPreferiti(user, this.giocoService.findGiocoById(giocoId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -139,10 +124,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.deleteFilmFromPreferiti(user, this.filmService.findFilmById(filmId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -152,10 +134,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 
 		this.userService.deleteSerieTvFromPreferiti(user, this.serieTvService.findById(serieTvId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
@@ -165,10 +144,7 @@ public class UserController {
 		User user = this.getCurrentUser();
 		
 		this.userService.deleteLibroFromPreferiti(user, this.libroService.findById(libroId));
-		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
-		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
-		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
-		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
+		model.addAttribute("user", user);
 		
 		return "/home";
 	}
