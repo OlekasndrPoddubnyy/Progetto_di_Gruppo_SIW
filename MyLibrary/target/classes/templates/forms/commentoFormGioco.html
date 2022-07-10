@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title>Commento Gioco</title>
+</head>
+<body>
+
+<!-- Nav Bar -->
+<nav th:replace="fragments/base.html :: intestazione"></nav>
+
+
+
+<div class="main boxform">
+    <p class="title">Commento Gioco</p>
+
+    <form th:action="@{'/giocoCommento/' + ${id} + '/' + ${username}}" method="post" th:object="${commento}">
+        <div class="errori" th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+        </div>
+        <div class="inputBox" >
+            <input type="number" min="0" max="5" name="name" required th:field="*{voto}">
+            <span>Voto 1-5</span>
+            <div class="errori" th:if="${#fields.hasErrors('voto')}" th:errors="*{voto}"></div>
+        </div>
+        <div class="inputBox" >
+            <textarea type="text" name="description" th:field="*{descrizione}"></textarea>
+            <span>Description</span>
+            <div class="errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+        </div>
+        <button class="submit-btn">Commenta</button>
+    </form>
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/admin.js}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
