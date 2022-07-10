@@ -22,14 +22,16 @@
 <!--Main-->
 
 <div class="center">
-    <h1 th:text="${film.nome}"></h1>
-    <div class="info">
-        <div class="anno" th:text="'Anno: ' + ${film.anno}"></div>
-        <div class="genere" th:text="'Genere: ' + ${film.genere}"></div>
-        <div class="media-voto" th:text="'Voto: ' + ${film.getMediaVoti()} + '/5'"></div>
+    <div class="center-box">
+        <h1 th:text="${film.nome}"></h1>
+        <div class="info">
+            <div class="anno" th:text="'Anno: ' + ${film.anno}"></div>
+            <div class="genere" th:text="'Genere: ' + ${film.genere}"></div>
+            <div class="media-voto" th:text="'Voto: ' + ${film.getMediaVoti()} + '/5'"></div>
+        </div>
+        <h3>Description:</h3>
+        <span th:text="${film.descrizione}"></span>
     </div>
-    <h3>Description:</h3>
-    <span th:text="${film.descrizione}"></span>
 </div>
 
 <!--Feedback-->
