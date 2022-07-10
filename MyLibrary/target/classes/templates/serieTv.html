@@ -57,7 +57,7 @@
 
 <!--Feedback-->
 <div class="feed-container">
-    <a sec:authorize="isAuthenticated()" href="#"><div class="comment-btn">Valuta</div></a>
+    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoFormSerieTv/' + ${serie.id}}"><div class="comment-btn">Valuta</div></a>
     <div class="feed-card" th:if="${!serie.getCommenti().isEmpty()}"
          th:each="commento : ${serie.commenti}">
         <div class="cont-text">
