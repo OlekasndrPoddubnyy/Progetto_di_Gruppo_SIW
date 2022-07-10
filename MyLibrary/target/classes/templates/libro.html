@@ -20,7 +20,7 @@
 <nav th:replace="fragments/base.html :: intestazione"></nav>
 
 <!--Main-->
-
+<div class="corpo">
 <div class="center">
     <h1 th:text="${libro.nome}"></h1>
     <div class="info">
@@ -30,6 +30,7 @@
     </div>
     <h3>Description:</h3>
     <span th:text="${libro.descrizione}"></span>
+</div>
 </div>
 
 <!--Feedback-->

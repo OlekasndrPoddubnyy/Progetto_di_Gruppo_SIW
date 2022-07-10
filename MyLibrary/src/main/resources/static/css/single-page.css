@@ -4,6 +4,13 @@ body{
     overflow-x: hidden;
 }
 
+.corpo {
+	display: flex;
+	flex-direction: column;
+	position: center;
+	justify-content: center;
+	align-items: center;
+}
 
 .center{
     display: flex;

@@ -20,6 +20,7 @@
 <nav th:replace="fragments/base.html :: intestazione"></nav>
 
 <!--Main-->
+<div class="corpo">
  <div class="center">
     <div class="center-box">
         <h1 th:text="${film.nome}"></h1>
@@ -34,7 +35,7 @@
         </div>
     </div>
  </div>
-
+</div>
 
 <!--Feedback-->
 <div class="feed-container">
@@ -53,7 +54,6 @@
         </div>
     </div>
 </div>
-
 
  <!--Footer Section-->
 <div th:replace="fragments/base.html :: fondo"></div>
