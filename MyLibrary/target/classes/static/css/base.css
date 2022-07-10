@@ -549,7 +549,6 @@ body{
 }
 
 .footer__links {
-    width: 100vw;
     display: flex;
     justify-content: center;
 }
