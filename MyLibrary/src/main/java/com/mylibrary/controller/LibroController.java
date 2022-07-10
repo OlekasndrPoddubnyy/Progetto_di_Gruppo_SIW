@@ -104,9 +104,9 @@ public class LibroController {
     }
 
 
-    @PostMapping("/libroCommento/{idL}")
-    public String inserisciCommento(Model model, @PathVariable("idL") Long idL, @ModelAttribute("commento") Commento commento) {
-
+    @PostMapping("/libroCommento/{idL}/{username}")
+    public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idL") Long idL, @ModelAttribute("commento") Commento commento) {
+        commento.setUsername(username);
         this.commentoService.save(commento);
         this.libroService.aggiungiCommentoALibro(idL, commento.getId());
         model.addAttribute("libro", this.libroService.findById(idL));

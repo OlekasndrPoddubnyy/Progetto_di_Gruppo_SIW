@@ -105,9 +105,9 @@ public class GiocoController {
 		return "forms/giocoFormUpdate.html";
 	}
 
-	@PostMapping("/giocoCommento/{idG}")
-	public String inserisciCommento(Model model, @PathVariable("idG") Long idG, @ModelAttribute("commento") Commento commento) {
-
+	@PostMapping("/giocoCommento/{idG}/{username}")
+	public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idG") Long idG, @ModelAttribute("commento") Commento commento) {
+		commento.setUsername(username);
 		this.commentoService.save(commento);
 		this.giocoService.aggiungiCommentoAGioco(idG, commento.getId());
 		model.addAttribute("gioco", this.giocoService.findGiocoById(idG));

@@ -117,12 +117,12 @@ public class SerieTvController {
     }
 
 
-    @PostMapping("/serieTvCommento/{idS}")
-    public String inserisciCommento(Model model, @PathVariable("idS") Long idS, @ModelAttribute("commento") Commento commento) {
-
+    @PostMapping("/serieTvCommento/{idS}/{username}")
+    public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idS") Long idS, @ModelAttribute("commento") Commento commento) {
+        commento.setUsername(username);
         this.commentoService.save(commento);
         this.serieTvService.aggiungiCommentoASerieTv(idS, commento.getId());
-        model.addAttribute("serieTv", this.serieTvService.findById(idS));
+        model.addAttribute("serie", this.serieTvService.findById(idS));
         return "serieTv";
     }
 
