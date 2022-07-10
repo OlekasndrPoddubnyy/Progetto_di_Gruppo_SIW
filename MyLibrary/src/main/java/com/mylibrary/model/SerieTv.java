@@ -36,7 +36,7 @@ public class SerieTv {
     @JoinColumn(name = "serie_tv_id")
     private List<Episodio> episodi;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Commento> commenti;
 

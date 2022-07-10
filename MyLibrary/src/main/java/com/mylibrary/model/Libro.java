@@ -24,7 +24,7 @@ public class Libro {
     @NotBlank
     private String genere;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     List<Commento> commenti;
 
     public List<Commento> getCommenti() {
