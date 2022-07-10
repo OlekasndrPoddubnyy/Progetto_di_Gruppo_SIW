@@ -35,5 +35,10 @@ public class LibroService {
 	public void updateLibro(Libro libro) {
 		this.libroRepository.updateLibro(libro.getNome(), libro.getGenere(), libro.getAutore(), libro.getDescrizione(), libro.getId());
 	}
+
+    @Transactional
+    public void aggiungiCommentoALibro(Long idLibro, Long idCommento) {
+        this.libroRepository.collegaLibroACommento(idLibro, idCommento);
+    }
     
 }

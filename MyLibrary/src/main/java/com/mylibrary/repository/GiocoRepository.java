@@ -17,5 +17,10 @@ public interface GiocoRepository extends CrudRepository<Gioco,Long> {
     @Query("update Gioco g set g.nome=:nome, g.genere=:genere, g.descrizione=:descrizione where g.id=:id")
     public void updateGioco(@Param("nome") String nome, @Param("genere") String genere, @Param("descrizione") String descrizione, 
     					    @Param("id") Long id);
+
+
+	@Modifying
+	@Query(value = "insert into gioco_commenti (gioco_id, commenti_id) Values (:idG, :idC)", nativeQuery = true)
+	void collegaGiocoACommento(@Param("idG") Long idGioco, @Param("idC") Long idCommento);
 	
 }

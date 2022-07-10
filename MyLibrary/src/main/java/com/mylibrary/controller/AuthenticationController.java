@@ -67,6 +67,7 @@ public class AuthenticationController {
 			model.addAttribute("series", serieTvService.serieTvs());
 			model.addAttribute("giochi", giocoService.findAllGiochi());
 			model.addAttribute("libri", libroService.libri());
+
 			return "admin/home";
 		}
 		return "home";

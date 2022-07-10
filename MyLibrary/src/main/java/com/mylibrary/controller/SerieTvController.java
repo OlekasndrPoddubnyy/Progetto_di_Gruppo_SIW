@@ -4,12 +4,11 @@ package com.mylibrary.controller;
 import javax.validation.Valid;
 
 import com.mylibrary.controller.validator.SerieTvValidator;
+import com.mylibrary.model.Commento;
 import com.mylibrary.model.SerieTv;
-import com.mylibrary.service.FilmService;
-import com.mylibrary.service.GiocoService;
-import com.mylibrary.service.LibroService;
-import com.mylibrary.service.SerieTvService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,9 +34,8 @@ public class SerieTvController {
 
     @Autowired
     private SerieTvValidator serieTvValidator;
+    private CommentoService commentoService;
 
-
-    
 
     @GetMapping("/serieTvForm")
     public String getSerieTvFormInserimento(Model model) {
@@ -102,7 +100,7 @@ public class SerieTvController {
     @PostMapping("/admin/updateSerieTV")
     public String modifySerieTVData(@Valid @ModelAttribute("serieTv") SerieTv serieTv, BindingResult bindingResult, Model model) {
         if(!bindingResult.hasErrors()) {
-        	this.serieTvService.updateSerieTv(serieTv);
+            this.serieTvService.updateSerieTv(serieTv);
             model.addAttribute("films", filmService.findAllFilms());
             model.addAttribute("series", serieTvService.serieTvs());
             model.addAttribute("giochi", giocoService.findAllGiochi());
@@ -117,6 +115,16 @@ public class SerieTvController {
     public String listEpisodi(@PathVariable("id") Long id, Model model){
         model.addAttribute("serieTv", this.serieTvService.findById(id));
         return "modEpisodi";
+    }
+
+
+    @PostMapping("/serieTvCommento/{idS}")
+    public String inserisciCommento(Model model, @PathVariable("idS") Long idS, @ModelAttribute("commento") Commento commento) {
+
+        this.commentoService.save(commento);
+        this.serieTvService.aggiungiCommentoASerieTv(idS, commento.getId());
+        model.addAttribute("serieTv", this.serieTvService.findById(idS));
+        return "serieTv";
     }
 
 

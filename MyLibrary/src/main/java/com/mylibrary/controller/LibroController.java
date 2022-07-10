@@ -1,11 +1,9 @@
 package com.mylibrary.controller;
 
 import com.mylibrary.controller.validator.LibroValidator;
+import com.mylibrary.model.Commento;
 import com.mylibrary.model.Libro;
-import com.mylibrary.service.FilmService;
-import com.mylibrary.service.GiocoService;
-import com.mylibrary.service.LibroService;
-import com.mylibrary.service.SerieTvService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +32,7 @@ public class LibroController {
 
     @Autowired
     private LibroValidator libroValidator;
+    private CommentoService commentoService;
 
 
     @GetMapping("/admin/libro")
@@ -102,5 +101,15 @@ public class LibroController {
         }
         model.addAttribute("libro", libro);
         return "libroFormUpdate.html";
+    }
+
+
+    @PostMapping("/libroCommento/{idL}")
+    public String inserisciCommento(Model model, @PathVariable("idL") Long idL, @ModelAttribute("commento") Commento commento) {
+
+        this.commentoService.save(commento);
+        this.libroService.aggiungiCommentoALibro(idL, commento.getId());
+        model.addAttribute("libro", this.libroService.findById(idL));
+        return "libro";
     }
 }

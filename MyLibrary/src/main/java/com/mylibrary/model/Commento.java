@@ -14,7 +14,6 @@ public class Commento {
 	private Long id;
 
 	@Column(nullable = false)
-	@NotBlank
 	private String username;
 	
 	@Column(nullable = false)
@@ -22,7 +21,6 @@ public class Commento {
 	private String descrizione;
 	
 	@Column(nullable = false)
-	@NotBlank
 	private Integer voto;
 
 	public String getUsername() {

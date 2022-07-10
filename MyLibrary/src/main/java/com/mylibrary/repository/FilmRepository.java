@@ -17,5 +17,9 @@ public interface FilmRepository extends CrudRepository<Film,Long> {
     @Query("update Film f set f.nome=:nome, f.genere=:genere, f.anno=:anno, f.descrizione=:descrizione where f.id=:id")
     public void updateFilm(@Param("nome") String nome, @Param("genere") String genere, @Param("anno") Integer anno, 
     					   @Param("descrizione") String descrizione, @Param("id") Long id);
+
+	@Modifying
+	@Query(value = "insert into film_commenti (film_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
+	void collegaFilmACommento(@Param("idF") Long idFilm, @Param("idC") Long idCommento);
 	
 }
