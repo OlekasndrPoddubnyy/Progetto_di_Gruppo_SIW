@@ -37,7 +37,7 @@
                 <p th:text="${film.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <div class="bottoni">
                     <a th:href="'/film/' + ${film.id}">Read More</a>
-                    <a href="#">Unbookmark</a>
+                    <a th:href="@{'/user/deleteFilmPreferito/' + ${film.id}}">Unbookmark</a>
                 </div>
             </div>
         </div>

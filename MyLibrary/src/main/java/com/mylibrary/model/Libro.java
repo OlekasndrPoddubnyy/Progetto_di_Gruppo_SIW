@@ -87,5 +87,16 @@ public class Libro {
         }
         return somma/diviso;
     }
-
+    
+    @Override
+	public int hashCode() {
+		return this.getId().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Film film = (Film)obj;
+		return this.getId() == film.getId();
+	}
+    
 }

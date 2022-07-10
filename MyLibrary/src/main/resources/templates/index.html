@@ -46,8 +46,12 @@
                 <a th:href="'/film/' + ${film.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
+<<<<<<< HEAD
+                <a th:href="@{'/user/addFilmPreferito/' + ${film.id}}">
+=======
                 <a sec:authorize="isAuthenticated()" th:if="${!user.getFilmPreferiti().contains(film)}"
                    th:href="'/user/addFilmPreferitoHome/' + ${film.id}">
+>>>>>>> branch 'main' of https://github.com/Oleksandr-Poddu/Progetto_SIW.git
                     <div class="vote-btn"><button>Bookmark</button></div>
                 </a>
                 <a sec:authorize="isAuthenticated()" th:if="${!user.getFilmPreferiti().contains(film)}"
