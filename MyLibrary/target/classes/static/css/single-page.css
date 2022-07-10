@@ -127,6 +127,7 @@ h1 {
 
 @media(max-width:767px) {
     body {
+        max-width: 767px;
         font-size: 14px;
     }
 }
