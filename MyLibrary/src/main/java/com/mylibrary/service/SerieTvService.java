@@ -20,7 +20,6 @@ public class SerieTvService {
         this.serieTvRepository.save(serieTv);
     }
 
-    @Transactional
     public void deleteById(Long id) {
     	this.serieTvRepository.deleteSerieTvPreferita(id);
         this.serieTvRepository.deleteById(id);
