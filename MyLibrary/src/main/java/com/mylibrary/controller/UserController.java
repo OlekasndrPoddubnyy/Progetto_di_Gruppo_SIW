@@ -21,124 +21,242 @@ import com.mylibrary.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private FilmService filmService;
-	
+
 	@Autowired
 	private GiocoService giocoService;
-	
+
 	@Autowired
 	private SerieTvService serieTvService;
-	
+
 	@Autowired
 	private LibroService libroService;
-	
+
 	@Autowired
 	private CredentialsService credentialsService;
-	
+
 	private User getCurrentUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = null;
-		
+
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			String currentUserName = authentication.getName();
 			Credentials credentials = this.credentialsService.getCredentials(currentUserName);
 			user = credentials.getUser();
 		}
-		
+
 		return user;
 	}
-	
+
 	@GetMapping("/user/preferiti")
 	public String getPreferiti(Model model) {
 		User user = this.getCurrentUser();
-		
+
 		model.addAttribute("filmPreferiti", user.getFilmPreferiti());
 		model.addAttribute("giochiPreferiti", user.getGiochiPreferiti());
 		model.addAttribute("serieTvPreferite", user.getSerieTvPreferite());
 		model.addAttribute("libriPreferiti", user.getLibriPreferiti());
-		
+
 		return "/home";
 	}
-	
+
 	/* AGGIUNTA PREFERITI */
-	
+
 	@GetMapping("/user/addGiocoPreferito/{giocoId}")
 	public String addGiocoToPreferiti(@PathVariable("giocoId") Long giocoId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.addGiocoToPreferiti(user, this.giocoService.findGiocoById(giocoId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/addFilmPreferito/{filmId}")
 	public String addFilmToPreferiti(@PathVariable("filmId") Long filmId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.addFilmToPreferiti(user, this.filmService.findFilmById(filmId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/addSerieTvPreferita/{serieTvId}")
 	public String addSerieTvToPreferiti(@PathVariable("serieTvId") Long serieTvId, Model model) {
 		User user = this.getCurrentUser();
 
 		this.userService.addSerieTvToPreferiti(user, this.serieTvService.findById(serieTvId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/addLibroPreferito/{libroId}")
 	public String addibroToPreferiti(@PathVariable("libroId") Long libroId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.addLibroToPreferiti(user, this.libroService.findById(libroId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
+
+
+	@GetMapping("/user/addGiocoPreferitoHome/{giocoId}")
+	public String addGiocoToPreferitiHome(@PathVariable("giocoId") Long giocoId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.addGiocoToPreferiti(user, this.giocoService.findGiocoById(giocoId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/addFilmPreferitoHome/{filmId}")
+	public String addFilmToPreferitiHome(@PathVariable("filmId") Long filmId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.addFilmToPreferiti(user, this.filmService.findFilmById(filmId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/addSerieTvPreferitaHome/{serieTvId}")
+	public String addSerieTvToPreferitiHome(@PathVariable("serieTvId") Long serieTvId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.addSerieTvToPreferiti(user, this.serieTvService.findById(serieTvId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/addLibroPreferitoHome/{libroId}")
+	public String addibroToPreferitiHome(@PathVariable("libroId") Long libroId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.addLibroToPreferiti(user, this.libroService.findById(libroId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+
+
 	/* CANCELLAZIONE PREFERITI */
-	
+
+	@GetMapping("/user/deleteGiocoPreferitoHome/{giocoId}")
+	public String deleteGiocoFromPreferitiHome(@PathVariable("giocoId") Long giocoId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.deleteGiocoFromPreferiti(user, this.giocoService.findGiocoById(giocoId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/deleteFilmPreferitoHome/{filmId}")
+	public String deleteFilmFromPreferitiHome(@PathVariable("filmId") Long filmId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.deleteFilmFromPreferiti(user, this.filmService.findFilmById(filmId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/deleteSerieTvPreferitaHome/{serieTvId}")
+	public String deleteSerieTvFromPreferitiHome(@PathVariable("serieTvId") Long serieTvId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.deleteSerieTvFromPreferiti(user, this.serieTvService.findById(serieTvId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+	@GetMapping("/user/deleteLibroPreferitoHome/{libroId}")
+	public String deleteLibroFromPreferitiHome(@PathVariable("libroId") Long libroId, Model model) {
+		User user = this.getCurrentUser();
+
+		this.userService.deleteLibroFromPreferiti(user, this.libroService.findById(libroId));
+		model.addAttribute("user", user);
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "index";
+	}
+
+
+
 	@GetMapping("/user/deleteGiocoPreferito/{giocoId}")
 	public String deleteGiocoFromPreferiti(@PathVariable("giocoId") Long giocoId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.deleteGiocoFromPreferiti(user, this.giocoService.findGiocoById(giocoId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/deleteFilmPreferito/{filmId}")
 	public String deleteFilmFromPreferiti(@PathVariable("filmId") Long filmId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.deleteFilmFromPreferiti(user, this.filmService.findFilmById(filmId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/deleteSerieTvPreferita/{serieTvId}")
 	public String deleteSerieTvFromPreferiti(@PathVariable("serieTvId") Long serieTvId, Model model) {
 		User user = this.getCurrentUser();
 
 		this.userService.deleteSerieTvFromPreferiti(user, this.serieTvService.findById(serieTvId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 	@GetMapping("/user/deleteLibroPreferito/{libroId}")
 	public String deleteLibroFromPreferiti(@PathVariable("libroId") Long libroId, Model model) {
 		User user = this.getCurrentUser();
-		
+
 		this.userService.deleteLibroFromPreferiti(user, this.libroService.findById(libroId));
-		
+		model.addAttribute("user", user);
+
 		return "/home";
 	}
-	
+
 }
