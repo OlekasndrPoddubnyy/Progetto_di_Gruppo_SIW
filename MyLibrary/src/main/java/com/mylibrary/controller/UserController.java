@@ -67,7 +67,7 @@ public class UserController {
 	
 	/* AGGIUNTA PREFERITI */
 	
-	@PostMapping("/user/addGiocoPreferito/{giocoId}")
+	@GetMapping("/user/addGiocoPreferito/{giocoId}")
 	public String addGiocoToPreferiti(@PathVariable("giocoId") Long giocoId, Model model) {
 		User user = this.getCurrentUser();
 		
@@ -80,7 +80,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/addFilmPreferito/{filmId}")
+	@GetMapping("/user/addFilmPreferito/{filmId}")
 	public String addFilmToPreferiti(@PathVariable("filmId") Long filmId, Model model) {
 		User user = this.getCurrentUser();
 		
@@ -93,7 +93,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/addSerieTvPreferita/{serieTvId}")
+	@GetMapping("/user/addSerieTvPreferita/{serieTvId}")
 	public String addSerieTvToPreferiti(@PathVariable("serieTvId") Long serieTvId, Model model) {
 		User user = this.getCurrentUser();
 
@@ -106,7 +106,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/addLibroPreferito/{libroId}")
+	@GetMapping("/user/addLibroPreferito/{libroId}")
 	public String addibroToPreferiti(@PathVariable("libroId") Long libroId, Model model) {
 		User user = this.getCurrentUser();
 		
@@ -121,7 +121,7 @@ public class UserController {
 	
 	/* CANCELLAZIONE PREFERITI */
 	
-	@PostMapping("/user/deleteGiocoPreferito/{giocoId}")
+	@GetMapping("/user/deleteGiocoPreferito/{giocoId}")
 	public String deleteGiocoFromPreferiti(@PathVariable("giocoId") Long giocoId, Model model) {
 		User user = this.getCurrentUser();
 		
@@ -134,7 +134,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/deleteFilmPreferito/{filmId}")
+	@GetMapping("/user/deleteFilmPreferito/{filmId}")
 	public String deleteFilmFromPreferiti(@PathVariable("filmId") Long filmId, Model model) {
 		User user = this.getCurrentUser();
 		
@@ -147,7 +147,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/deleteSerieTvPreferita/{serieTvId}")
+	@GetMapping("/user/deleteSerieTvPreferita/{serieTvId}")
 	public String deleteSerieTvFromPreferiti(@PathVariable("serieTvId") Long serieTvId, Model model) {
 		User user = this.getCurrentUser();
 
@@ -160,7 +160,7 @@ public class UserController {
 		return "/home";
 	}
 	
-	@PostMapping("/user/deleteLibroPreferito/{libroId}")
+	@GetMapping("/user/deleteLibroPreferito/{libroId}")
 	public String deleteLibroFromPreferiti(@PathVariable("libroId") Long libroId, Model model) {
 		User user = this.getCurrentUser();
 		

@@ -46,7 +46,7 @@
                 <a th:href="'/film/' + ${film.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
-                <a th:href="'/film/' + ${film.id}">
+                <a th:href="@{'/user/addFilmPreferito/' + ${film.id}}">
                     <div class="vote-btn"><button>Bookmark</button></div>
                 </a>
             </div>

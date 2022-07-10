@@ -15,7 +15,7 @@ public class SerieTv {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(nullable = false)
     @NotBlank
     private String nome;
@@ -49,11 +49,11 @@ public class SerieTv {
         this.commenti = commenti;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -125,4 +125,16 @@ public class SerieTv {
         }
         return somma/diviso;
     }
+    
+    @Override
+	public int hashCode() {
+		return this.getId().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Film film = (Film)obj;
+		return this.getId() == film.getId();
+	}
+	
 }
