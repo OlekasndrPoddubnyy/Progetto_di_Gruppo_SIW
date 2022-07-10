@@ -38,7 +38,7 @@ public class LibroController {
     @GetMapping("/admin/libro")
     public String getLibroFormInserimento(Model model) {
         model.addAttribute("libro", new Libro());
-        return "libroForm";
+        return "forms/libroForm";
     }
 
     @PostMapping("/admin/libro")
@@ -54,7 +54,7 @@ public class LibroController {
             model.addAttribute("libri", libroService.libri());
             return "admin/home";
         }
-        return "libroForm";
+        return "forms/libroForm";
     }
 
     @GetMapping("/deleteLibro/{id}")
@@ -86,7 +86,7 @@ public class LibroController {
     public String modifyLibroData(@PathVariable("id") Long id, Model model) {
         Libro libro = this.libroService.findById(id);
         model.addAttribute("libro", libro);
-        return "libroFormUpdate";
+        return "forms/libroFormUpdate";
     }
 
     @PostMapping("/admin/updateLibro")
@@ -100,7 +100,7 @@ public class LibroController {
             return "admin/home";
         }
         model.addAttribute("libro", libro);
-        return "libroFormUpdate.html";
+        return "forms/libroFormUpdate.html";
     }
 
 
