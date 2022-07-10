@@ -47,11 +47,11 @@
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
                 <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getFilmPreferiti().contains(film)}"
-                   th:href="@{'/user/addFilmPreferito/' + ${film.id}}">
+                   th:href="@{'/user/addFilmPreferitoHome/' + ${film.id}}">
                     <div class="vote-btn"><button>Bookmark</button></div>
                 </a>
                 <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getFilmPreferiti().contains(film)}"
-                   th:href="@{'/user/deleteFilmPreferito/' + ${film.id}}">
+                   th:href="@{'/user/deleteFilmPreferitoHome/' + ${film.id}}">
                     <div class="vote-btn2"><button>Unbookmark</button></div>
                 </a>
             </div>
@@ -75,6 +75,14 @@
             <div class="card-stats">
                 <a th:href="'/serieTv/' + ${serie.id}">
                     <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/addSerieTvPreferitaHome/' + ${serie.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/deleteSerieTvPreferitaHome/' + ${serie.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
                 </a>
             </div>
         </div>
@@ -100,6 +108,14 @@
                 <a th:href="'/gioco/' + ${gioco.id}">
                     <div class="vote-btn"><button>Read More</button></div>
                 </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/addGiocoPreferitoHome/' + ${gioco.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/deleteGiocoPreferitoHome/' + ${gioco.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
+                </a>
             </div>
         </div>
     </div>
@@ -121,6 +137,14 @@
             <div class="card-stats">
                 <a th:href="'/libro/' + ${libro.id}">
                     <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/addLibroPreferitoHome/' + ${libro.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/deleteLibroPreferitoHome/' + ${libro.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
                 </a>
             </div>
         </div>
