@@ -40,7 +40,7 @@ public class FilmController {
 	@RequestMapping(value="/admin/film", method = RequestMethod.GET)
 	public String addFilm(Model model) {
 		model.addAttribute("film", new Film());
-		return "filmForm";
+		return "forms/filmForm";
 	}
 	
 	@RequestMapping(value = "/admin/film", method = RequestMethod.POST)
@@ -55,7 +55,7 @@ public class FilmController {
 			model.addAttribute("libri", libroService.libri());
 			return "admin/home";
 		}
-		return "filmForm";
+		return "forms/filmForm";
 	}
 	
 	@GetMapping("/deleteFilm/{id}")
@@ -87,7 +87,7 @@ public class FilmController {
 	public String modifyFilmData(@PathVariable("id") Long id, Model model) {
 		Film film = this.filmService.findFilmById(id);
 		model.addAttribute("film", film);
-		return "filmFormUpdate";
+		return "forms/filmFormUpdate";
 	}
 	
 	@PostMapping("/admin/filmUpdate")
@@ -101,7 +101,7 @@ public class FilmController {
 			return "admin/home";
 		}
 		model.addAttribute("film",film);
-		return "filmFormUpdate";
+		return "forms/filmFormUpdate";
 	}
 
 	@PostMapping("/filmCommento/{idF}/{username}")

@@ -29,8 +29,8 @@
         <h1>Film</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!filmPreferiti.isEmpty()}"
-            th:each="film : ${filmPreferiti}">
+        <div class="box" th:if="${!user.getFilmPreferiti().isEmpty()}"
+            th:each="film : ${user.getFilmPreferiti()}">
             <span></span>
             <div class="content">
                 <h2 th:text="${film.nome}">Card One</h2>
@@ -46,8 +46,8 @@
         <h1>Serie TV</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!serieTvPreferite.isEmpty()}"
-             th:each="serie : ${serieTvPreferite}">
+        <div class="box" th:if="${!user.getSerieTvPreferite().isEmpty()}"
+             th:each="serie : ${user.getSerieTvPreferite()}">
             <span></span>
             <div class="content">
                 <h2 th:text="${serie.nome}">Card One</h2>
@@ -63,8 +63,8 @@
         <h1>Giochi</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!giochiPreferiti.isEmpty()}"
-             th:each="gioco : ${giochiPreferiti}">
+        <div class="box" th:if="${!user.getGiochiPreferiti().isEmpty()}"
+             th:each="gioco : ${user.getGiochiPreferiti()}">
             <span></span>
             <div class="content">
                 <h2 th:text="${gioco.nome}">Card One</h2>
@@ -80,8 +80,8 @@
         <h1>Libri</h1>
     </div>
     <div class="container">
-        <div class="box" th:if="${!libriPreferiti.isEmpty()}"
-             th:each="libro : ${libriPreferiti}">
+        <div class="box" th:if="${!user.getLibriPreferiti().isEmpty()}"
+             th:each="libro : ${user.getLibriPreferiti()}">
             <span></span>
             <div class="content">
                 <h2 th:text="${libro.nome}">Card One</h2>

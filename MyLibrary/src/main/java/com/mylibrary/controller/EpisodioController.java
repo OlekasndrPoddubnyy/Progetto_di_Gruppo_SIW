@@ -37,7 +37,7 @@ public class EpisodioController {
     public String getEpisodioFormInserimento( @PathVariable("id") Long idSTV, Model model) {
         model.addAttribute("episodio", new Episodio());
         model.addAttribute("serieTv", this.serieTvService.findById(idSTV));
-        return "episodioForm";
+        return "forms/episodioForm";
     }
 
     @PostMapping("/admin/episodio/{id}")
@@ -56,7 +56,7 @@ public class EpisodioController {
             model.addAttribute("serieTv", serieTv);
             return "modEpisodi";
         }
-        return "episodioForm";
+        return "forms/episodioForm";
     }
 
     @GetMapping("episodio/{id}")
@@ -91,7 +91,7 @@ public class EpisodioController {
     public String episodioUpdate(@PathVariable("id") Long id, @PathVariable("idStv") Long idStv, Model model) {
         model.addAttribute("serieTv", this.serieTvService.findById(idStv));
         model.addAttribute("episodio", this.episodioService.findById(id));
-        return "episodioFormUpdate";
+        return "forms/episodioFormUpdate";
     }
 
     @PostMapping("/episodioFormUpdate/{id}")
@@ -105,7 +105,7 @@ public class EpisodioController {
             model.addAttribute("serieTv", this.serieTvService.findById(id));
             return "modEpisodi";
         }
-        return "episodioFormUpdate";
+        return "forms/episodioFormUpdate";
     }
     
 }

@@ -50,7 +50,7 @@ public class GiocoController {
 			return "admin/home";
 		}
 		
-		return "giocoForm.html";
+		return "forms/giocoForm.html";
 	}
 	
 	@GetMapping("/deleteGioco/{id}")
@@ -67,7 +67,7 @@ public class GiocoController {
 	@GetMapping("/giocoForm")
 	public String getNewGioco(Model model) {
 		model.addAttribute("gioco", new Gioco());
-		return "giocoForm.html";
+		return "forms/giocoForm.html";
 	}
 	
 	@GetMapping("/gioco/{id}")
@@ -88,7 +88,7 @@ public class GiocoController {
 	public String modifyGiocoData(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
-		return "giocoFormUpdate.html";
+		return "forms/giocoFormUpdate.html";
 	}
 	
 	@PostMapping("/admin/updateGioco")
@@ -102,7 +102,7 @@ public class GiocoController {
 			return "admin/home";
 		}
 		model.addAttribute("gioco", gioco);
-		return "giocoFormUpdate.html";
+		return "forms/giocoFormUpdate.html";
 	}
 
 	@PostMapping("/giocoCommento/{idG}")

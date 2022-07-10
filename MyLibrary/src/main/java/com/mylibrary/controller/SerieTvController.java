@@ -8,7 +8,6 @@ import com.mylibrary.model.Commento;
 import com.mylibrary.model.SerieTv;
 import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,7 +39,7 @@ public class SerieTvController {
     @GetMapping("/serieTvForm")
     public String getSerieTvFormInserimento(Model model) {
         model.addAttribute("serieTv", new SerieTv());
-        return "serieTvForm";
+        return "forms/serieTvForm";
     }
 
     @PostMapping("/admin/serieTv")
@@ -56,7 +55,7 @@ public class SerieTvController {
             model.addAttribute("libri", libroService.libri());
             return "admin/home";
         }
-        return "serieTvForm";
+        return "forms/serieTvForm";
     }
 
     @GetMapping("/serieTv/{id}")
@@ -94,7 +93,7 @@ public class SerieTvController {
     public String modifySerieTVData(@PathVariable("id") Long id, Model model) {
         SerieTv serieTv = this.serieTvService.findById(id);
         model.addAttribute("serieTv", serieTv);
-        return "serieTvFormUpdate";
+        return "forms/serieTvFormUpdate";
     }
 
     @PostMapping("/admin/updateSerieTV")
@@ -108,7 +107,7 @@ public class SerieTvController {
             return "admin/home";
         }
         model.addAttribute("serieTv", serieTv);
-        return "serieTvFormUpdate";
+        return "forms/serieTvFormUpdate";
     }
 
     @GetMapping("/admin/episodi/{id}")
