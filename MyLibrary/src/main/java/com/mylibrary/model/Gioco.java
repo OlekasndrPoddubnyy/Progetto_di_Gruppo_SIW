@@ -86,8 +86,8 @@ public class Gioco {
 	
 	@Override
 	public boolean equals(Object obj) {
-		Film film = (Film)obj;
-		return this.getId() == film.getId();
+		Gioco gioco = (Gioco)obj;
+		return this.getId() == gioco.getId();
 	}
 	
 }

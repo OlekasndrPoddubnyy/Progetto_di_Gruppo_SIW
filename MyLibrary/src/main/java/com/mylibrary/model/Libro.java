@@ -95,8 +95,8 @@ public class Libro {
 	
 	@Override
 	public boolean equals(Object obj) {
-		Film film = (Film)obj;
-		return this.getId() == film.getId();
+		Libro libro = (Libro)obj;
+		return this.getId() == libro.getId();
 	}
     
 }
