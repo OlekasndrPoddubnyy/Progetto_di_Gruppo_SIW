@@ -35,7 +35,7 @@ public class CommentoController {
 			return "commento.html";
 		}
 		
-		return "commentoFormFilm.html";
+		return "commentoForm.html";
 	}
 	
 	@GetMapping("/commenti")
@@ -45,7 +45,7 @@ public class CommentoController {
 		return "commenti.html";
 	}
 	
-	@GetMapping("/commentoFormFilm/{id}")
+	@GetMapping("/commentoForm/{id}")
 	public String getNewCommento(Model model, @PathVariable("id") Long id) {
 
 		Credentials credentials =(Credentials) SecurityContextHolder.getContext().getAuthentication().getCredentials();
@@ -54,43 +54,7 @@ public class CommentoController {
 		model.addAttribute("id", id);
 		model.addAttribute("commento", new Commento());
 		model.addAttribute("username", userName);
-		return "forms/commentoFormFilm";
-	}
-
-	@GetMapping("/commentoFormGioco/{id}")
-	public String getNewCommentoGioco(Model model, @PathVariable("id") Long id) {
-
-		Credentials credentials =(Credentials) SecurityContextHolder.getContext().getAuthentication().getCredentials();
-
-		String userName = this.credentialsService.getCredentials(SecurityContextHolder.getContext().getAuthentication().getName()).getUser().getNome();
-		model.addAttribute("id", id);
-		model.addAttribute("commento", new Commento());
-		model.addAttribute("username", userName);
-		return "forms/commentoFormGioco";
-	}
-
-	@GetMapping("/commentoFormSerieTv/{id}")
-	public String getNewCommentoSerie(Model model, @PathVariable("id") Long id) {
-
-		Credentials credentials =(Credentials) SecurityContextHolder.getContext().getAuthentication().getCredentials();
-
-		String userName = this.credentialsService.getCredentials(SecurityContextHolder.getContext().getAuthentication().getName()).getUser().getNome();
-		model.addAttribute("id", id);
-		model.addAttribute("commento", new Commento());
-		model.addAttribute("username", userName);
-		return "forms/commentoFormSerieTv";
-	}
-
-	@GetMapping("/commentoFormLibro/{id}")
-	public String getNewCommentoLibro(Model model, @PathVariable("id") Long id) {
-
-		Credentials credentials =(Credentials) SecurityContextHolder.getContext().getAuthentication().getCredentials();
-
-		String userName = this.credentialsService.getCredentials(SecurityContextHolder.getContext().getAuthentication().getName()).getUser().getNome();
-		model.addAttribute("id", id);
-		model.addAttribute("commento", new Commento());
-		model.addAttribute("username", userName);
-		return "forms/commentoFormLibro";
+		return "forms/commentoForm";
 	}
 	
 	@GetMapping("/commento/{id}")
