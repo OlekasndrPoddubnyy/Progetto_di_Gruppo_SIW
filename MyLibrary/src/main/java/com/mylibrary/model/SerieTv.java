@@ -133,8 +133,8 @@ public class SerieTv {
 	
 	@Override
 	public boolean equals(Object obj) {
-		Film film = (Film)obj;
-		return this.getId() == film.getId();
+		SerieTv serieTv = (SerieTv)obj;
+		return this.getId() == serieTv.getId();
 	}
 	
 }
