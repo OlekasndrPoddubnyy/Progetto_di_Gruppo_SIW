@@ -40,4 +40,10 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     @Modifying
     @Query(value = "insert into serie_tv_commenti (serie_tv_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
     void collegaSerieTvACommento(@Param("idF") Long idSerie, @Param("idC") Long idCommento);
+    
+    
+    @Modifying
+	@Query(value = "delete from users_serie_tv_preferite where serie_tv_preferite_id=:idStv", nativeQuery = true)
+	public void deleteSerieTvPreferita(@Param("idStv") Long idSerieTv);
+    
 }

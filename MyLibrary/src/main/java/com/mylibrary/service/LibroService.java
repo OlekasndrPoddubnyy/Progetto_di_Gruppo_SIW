@@ -20,9 +20,10 @@ public class LibroService {
     }
 
     public void eliminaLibro(Long idL) {
+    	this.libroRepository.deleteLibroPreferito(idL);
         this.libroRepository.deleteById(idL);
     }
-
+    
     public Libro findById(Long id) {
         return this.libroRepository.findById(id).get();
     }

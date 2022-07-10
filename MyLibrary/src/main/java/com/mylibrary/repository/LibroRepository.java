@@ -23,4 +23,8 @@ public interface LibroRepository extends CrudRepository<Libro, Long> {
     @Query(value = "insert into libro_commenti (libro_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
     void collegaLibroACommento(@Param("idF") Long idLibro, @Param("idC") Long idCommento);
     
+    @Modifying
+	@Query(value = "delete from users_libri_preferiti where libri_preferiti_id=:idL", nativeQuery = true)
+	public void deleteLibroPreferito(@Param("idL") Long idLibro);
+    
 }

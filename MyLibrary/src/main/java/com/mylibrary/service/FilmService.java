@@ -38,6 +38,7 @@ public class FilmService {
 	
 	@Transactional
 	public void deleteFilm(Film film) {
+		this.filmRepository.deleteFilmPreferito(film.getId());
 		this.filmRepository.delete(film);
 	}
 	
