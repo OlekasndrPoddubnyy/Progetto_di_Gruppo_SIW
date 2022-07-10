@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,22 +23,18 @@ public class User {
 	private String nome;
 	
 	@OneToMany
-	@JoinColumn(name = "film_id")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Film> filmPreferiti;
 	
 	@OneToMany
-	@JoinColumn(name = "gioco_id")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Gioco> giochiPreferiti;
 	
 	@OneToMany
-	@JoinColumn(name = "serie_tv_id")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SerieTv> serieTvPreferite;
 	
 	@OneToMany
-	@JoinColumn(name = "libro_id")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Libro> libriPreferiti;
 	

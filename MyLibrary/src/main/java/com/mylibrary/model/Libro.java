@@ -24,7 +24,7 @@ public class Libro {
     @NotBlank
     private String genere;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     List<Commento> commenti;
 
     public List<Commento> getCommenti() {
@@ -95,8 +95,8 @@ public class Libro {
 	
 	@Override
 	public boolean equals(Object obj) {
-		Libro libro = (Libro)obj;
-		return this.getId() == libro.getId();
+		Film film = (Film)obj;
+		return this.getId() == film.getId();
 	}
     
 }

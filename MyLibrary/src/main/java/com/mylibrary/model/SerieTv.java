@@ -36,7 +36,7 @@ public class SerieTv {
     @JoinColumn(name = "serie_tv_id")
     private List<Episodio> episodi;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Commento> commenti;
 
@@ -133,8 +133,8 @@ public class SerieTv {
 	
 	@Override
 	public boolean equals(Object obj) {
-		SerieTv serieTv = (SerieTv)obj;
-		return this.getId() == serieTv.getId();
+		Film film = (Film)obj;
+		return this.getId() == film.getId();
 	}
 	
 }

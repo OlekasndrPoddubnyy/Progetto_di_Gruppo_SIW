@@ -23,7 +23,7 @@ public class Gioco {
 	@NotBlank
 	private String genere;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Commento> commenti;
 	
 	public Long getId() {
@@ -86,8 +86,8 @@ public class Gioco {
 	
 	@Override
 	public boolean equals(Object obj) {
-		Gioco gioco = (Gioco)obj;
-		return this.getId() == gioco.getId();
+		Film film = (Film)obj;
+		return this.getId() == film.getId();
 	}
 	
 }
