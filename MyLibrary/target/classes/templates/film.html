@@ -34,7 +34,7 @@
 
 <!--Feedback-->
 <div class="feed-container">
-    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoForm/' + ${film.id}}"><div class="comment-btn">Valuta</div></a>
+    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoFormFilm/' + ${film.id}}"><div class="comment-btn">Valuta</div></a>
     <div class="feed-card" th:if="${!film.getCommenti().isEmpty()}"
          th:each="commento : ${film.commenti}">
         <div class="cont-text">

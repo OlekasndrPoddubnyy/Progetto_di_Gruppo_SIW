@@ -34,7 +34,7 @@
 
 <!--Feedback-->
 <div class="feed-container">
-    <a sec:authorize="isAuthenticated()" href="#"><div class="comment-btn">Valuta</div></a>
+    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoFormLibro/' + ${libro.id}}"><div class="comment-btn">Valuta</div></a>
     <div class="feed-card" th:if="${!libro.getCommenti().isEmpty()}"
          th:each="commento : ${libro.commenti}">
         <div class="cont-text">
