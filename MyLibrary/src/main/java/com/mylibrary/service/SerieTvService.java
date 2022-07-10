@@ -19,7 +19,7 @@ public class SerieTvService {
     public void saveSerieTv(SerieTv serieTv) {
         this.serieTvRepository.save(serieTv);
     }
-    
+
     @Transactional
     public void deleteById(Long id) {
     	this.serieTvRepository.deleteSerieTvPreferita(id);
