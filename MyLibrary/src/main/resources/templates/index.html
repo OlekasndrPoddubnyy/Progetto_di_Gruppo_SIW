@@ -80,7 +80,7 @@
                    th:href="@{'/user/addSerieTvPreferitaHome/' + ${serie.id}}">
                     <div class="vote-btn"><button>Bookmark</button></div>
                 </a>
-                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getSerieTvPreferiti().contains(serie)}"
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getSerieTvPreferite().contains(serie)}"
                    th:href="@{'/user/deleteSerieTvPreferitaHome/' + ${serie.id}}">
                     <div class="vote-btn2"><button>Unbookmark</button></div>
                 </a>
