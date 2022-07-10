@@ -17,5 +17,10 @@ public interface LibroRepository extends CrudRepository<Libro, Long> {
     @Query("update Libro l set l.nome=:nome, l.genere=:genere, l.autore=:autore, l.descrizione=:descrizione where l.id=:id")
     public void updateLibro(@Param("nome") String nome, @Param("genere") String genere, @Param("autore") String autore, 
     					    @Param("descrizione") String descrizione, @Param("id") Long id);
+
+
+    @Modifying
+    @Query(value = "insert into libro_commenti (libro_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
+    void collegaLibroACommento(@Param("idF") Long idLibro, @Param("idC") Long idCommento);
     
 }

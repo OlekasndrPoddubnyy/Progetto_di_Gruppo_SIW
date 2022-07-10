@@ -4,9 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.mylibrary.service.FilmService;
-import com.mylibrary.service.LibroService;
-import com.mylibrary.service.SerieTvService;
+import com.mylibrary.model.Commento;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mylibrary.controller.validator.GiocoValidator;
 import com.mylibrary.model.Gioco;
-import com.mylibrary.service.GiocoService;
 
 @Controller
 public class GiocoController {
@@ -37,7 +35,8 @@ public class GiocoController {
 	
 	@Autowired
 	private GiocoValidator giocoValidator;
-	
+	private CommentoService commentoService;
+
 	@PostMapping("/gioco")
 	public String addGioco(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
 		this.giocoValidator.validate(gioco, bindingResult);
@@ -104,6 +103,15 @@ public class GiocoController {
 		}
 		model.addAttribute("gioco", gioco);
 		return "giocoFormUpdate.html";
+	}
+
+	@PostMapping("/giocoCommento/{idG}")
+	public String inserisciCommento(Model model, @PathVariable("idG") Long idG, @ModelAttribute("commento") Commento commento) {
+
+		this.commentoService.save(commento);
+		this.giocoService.aggiungiCommentoAGioco(idG, commento.getId());
+		model.addAttribute("gioco", this.giocoService.findGiocoById(idG));
+		return "gioco";
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.model.Commento;
 import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class FilmController {
 	
 	@Autowired
 	private FilmValidator filmValidator;
+
+	@Autowired
+	private CommentoService commentoService;
 
 
 	@RequestMapping(value="/admin/film", method = RequestMethod.GET)
@@ -98,6 +102,17 @@ public class FilmController {
 		}
 		model.addAttribute("film",film);
 		return "filmFormUpdate";
+	}
+
+	@PostMapping("/filmCommento/{idF}/{username}")
+	public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idF") Long idF, @ModelAttribute("commento")Commento commento) {
+
+
+		commento.setUsername(username);
+		this.commentoService.save(commento);
+		this.filmService.aggiungiCommentoAFilm(idF, commento.getId());
+		model.addAttribute("film", this.filmService.findFilmById(idF));
+		return "film";
 	}
 	
 }

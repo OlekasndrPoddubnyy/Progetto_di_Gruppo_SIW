@@ -47,5 +47,10 @@ public class SerieTvService {
         this.serieTvRepository.updateNumStagioni(numStagioni, id);
     }
 
+    @Transactional
+    public void aggiungiCommentoASerieTv(Long idSerieTv, Long idCommento) {
+        this.serieTvRepository.collegaSerieTvACommento(idSerieTv, idCommento);
+    }
+
     
 }

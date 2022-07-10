@@ -4,7 +4,14 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.model.Credentials;
+import com.mylibrary.model.User;
+import com.mylibrary.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +28,8 @@ public class CommentoController {
 	
 	@Autowired
 	private CommentoService commentoService;
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@PostMapping("/commento")
 	public String addCommento(@Valid @ModelAttribute Commento commento, BindingResult bindingResult, Model model) {
@@ -40,9 +49,15 @@ public class CommentoController {
 		return "commenti.html";
 	}
 	
-	@GetMapping("/commentoForm")
-	public String getNewCommento(Model model) {
+	@GetMapping("/commentoForm/{id}")
+	public String getNewCommento(Model model, @PathVariable("id") Long id) {
+
+		Credentials credentials =(Credentials) SecurityContextHolder.getContext().getAuthentication().getCredentials();
+
+		String userName = this.credentialsService.getCredentials(SecurityContextHolder.getContext().getAuthentication().getName()).getUser().getNome();
+		model.addAttribute("id", id);
 		model.addAttribute("commento", new Commento());
+		model.addAttribute("username", userName);
 		return "commentoForm.html";
 	}
 	

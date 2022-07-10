@@ -49,5 +49,10 @@ public class FilmService {
 	public void updateFilm(Film film) {
 		this.filmRepository.updateFilm(film.getNome(), film.getGenere(), film.getAnno(), film.getDescrizione(), film.getId());
 	}
+
+	@Transactional
+	public void aggiungiCommentoAFilm(Long idFilm, Long idCommento) {
+		this.filmRepository.collegaFilmACommento(idFilm, idCommento);
+	}
 	
 }

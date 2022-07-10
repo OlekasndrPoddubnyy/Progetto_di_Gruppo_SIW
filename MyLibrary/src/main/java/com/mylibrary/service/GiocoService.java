@@ -49,5 +49,9 @@ public class GiocoService {
 	public void updateGioco(Gioco gioco) {
 		this.giocoRepository.updateGioco(gioco.getNome(), gioco.getGenere(), gioco.getDescrizione(), gioco.getId());
 	}
-	
+
+	@Transactional
+	public void aggiungiCommentoAGioco(Long idGioco, Long idCommento) {
+		this.giocoRepository.collegaGiocoACommento(idGioco, idCommento);
+	}
 }

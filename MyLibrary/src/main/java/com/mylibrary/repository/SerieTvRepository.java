@@ -35,4 +35,9 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     @Modifying
     @Query(" update SerieTv s set s.numeroStagioni=:numStagioni where s.id=:id")
     public void updateNumStagioni(@Param("numStagioni") int numStagione, @Param("id") Long id);
+
+
+    @Modifying
+    @Query(value = "insert into serie_tv_commenti (serie_tv_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
+    void collegaSerieTvACommento(@Param("idF") Long idSerie, @Param("idC") Long idCommento);
 }

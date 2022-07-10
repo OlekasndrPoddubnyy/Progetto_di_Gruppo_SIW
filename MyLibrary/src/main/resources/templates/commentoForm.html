@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{'/filmCommento/' + ${id} + '/' + ${username}}" method="post" th:object="${commento}">
+    <div>
+    <span th:text="${username}"></span>
+    </div>
+        <div>
+        <span> commento: </span>
+        <input type="text" th:field="*{descrizione}">
+    </div>
+
+    <div>
+        <span> voto: </span>
+        <input type="text" th:field="*{voto}">
+    </div>
+    <button type="submit"> conferma </button>
+</form>
+
+</body>
+</html>
