@@ -10,8 +10,6 @@ import com.mylibrary.model.SerieTv;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.mylibrary.model.SerieTv;
-
 @Repository
 public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
 
@@ -20,13 +18,32 @@ public interface SerieTvRepository extends CrudRepository<SerieTv, Long> {
     public List<SerieTv> findAllByNome(String nome);
     public SerieTv findById(long id);
 
+
+
+    public List<SerieTv> findAll();
+
     @Modifying
-    @Query(value = "delete from serie_tv_commenti stc where stc.serie_tv_id= :idS", nativeQuery = true)
-    void eliminaCommentiSerieTv(@Param("idS") Long idS);
+    @Query(value = "delete from serie_tv_episodi where episodi_id=:idE", nativeQuery = true)
+    public void deleteEpisodioId(@Param("idE")Long idE);
+    
+    @Modifying
+    @Query("update SerieTv s set s.nome=:nome, s.genere=:genere, s.numeroStagioni=:stagioni, s.descrizione=:descrizione where s.id=:id")
+    public void updateSerieTv(@Param("nome") String nome, @Param("genere") String genere, @Param("stagioni") Integer numeroStagioni, 
+    						  @Param("descrizione") String descrizione, @Param("id") Long id);
 
 
     @Modifying
-    @Query(value = "delete from serie_tv_episodi stc where stc.serie_tv_id= :idS", nativeQuery = true)
-    void eliminaEpisodiSerieTv(@Param("idS") Long idS);
+    @Query(" update SerieTv s set s.numeroStagioni=:numStagioni where s.id=:id")
+    public void updateNumStagioni(@Param("numStagioni") int numStagione, @Param("id") Long id);
 
+
+    @Modifying
+    @Query(value = "insert into serie_tv_commenti (serie_tv_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
+    void collegaSerieTvACommento(@Param("idF") Long idSerie, @Param("idC") Long idCommento);
+    
+    
+    @Modifying
+	@Query(value = "delete from users_serie_tv_preferite where serie_tv_preferite_id=:idStv", nativeQuery = true)
+	public void deleteSerieTvPreferita(@Param("idStv") Long idSerieTv);
+    
 }

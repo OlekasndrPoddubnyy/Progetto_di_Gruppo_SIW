@@ -1,14 +1,16 @@
 package com.mylibrary.repository;
 
 import com.mylibrary.model.Episodio;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface EpisodioRepository extends CrudRepository<Episodio, Long> {
 
-    @Modifying
-    @Query(value = "delete from serie_tv_episodi stc where stc.episodi_id= :idC", nativeQuery = true)
-    void eliminaEpisodioDaSerieTv(@Param("idS") Long idE);
+    @Query(value = "select max(e.stagione) from episodio e where e.id IN :listaId", nativeQuery = true)
+    public int maxStagione(@Param("listaId")List<Long> listaId);
+
+
 }

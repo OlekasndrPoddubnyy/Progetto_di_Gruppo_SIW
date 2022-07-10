@@ -30,103 +30,124 @@
 
 
 <!-- Film Section-->
-<div class="services sfondo" id="film" th:fragment="film">
+<div class="services sfondo" id="film">
     <h1>Film</h1>
-
 
     <div class="container-card">
         <div class="card rgb" th:each="film : ${films}">
+            <div class="card-image"></div>
             <div class="card-text">
                 <h2 th:text="${film.nome}">Post One</h2>
-                <span class="date">5/5</span>
+                <span class="date" th:text="${film.getMediaVoti()} + '/5'">5/5</span>
                 <p th:text="'Genere: ' + ${film.genere} + '.       Anno: ' + ${film.anno}">Film horr</p>
-                <p th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${film.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                <a th:href="'/film/' + ${film.id}">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/addFilmPreferitoHome/' + ${film.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getFilmPreferiti().contains(film)}"
+                   th:href="@{'/user/deleteFilmPreferitoHome/' + ${film.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
+                </a>
             </div>
         </div>
-        </a>
     </div>
 </div>
 
-
-
-
-<!-- Serie TV Section-->
+<!-- Serie Tv-->
 <div class="services sfondo" id="tv-serie">
-    <h1>Serie TV</h1>
+    <h1>Serie Tv</h1>
 
     <div class="container-card">
-        <a href="serieTV.html" th:each="serieTv : ${serieTv}" <!--th:href="@{'/serieTV' + '/' + ${serieTv.id}}"-->>
-        <div class="card rgb">
+        <div class="card rgb" th:each="serie : ${series}">
+            <div class="card-image"></div>
             <div class="card-text">
-                <h2 th:text="${serieTv.nome}">Post One</h2>
-                <span class="date">5/5</span>
-                <p th:text="'Genere: ' + ${serieTv.genere} + '.       Anno: ' + ${serieTv.anno}">Film horr</p>
-                <p th:text="'Descrizione: ' " >Lorem ipsum dolor sit demoise amet consectetur</p>
+                <h2 th:text="${serie.nome}">Post One</h2>
+                <span class="date" th:text="${serie.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${serie.genere} + '.       Stagioni: ' + ${serie.numeroStagioni}">Film horr</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${serie.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
             </div>
             <div class="card-stats">
-                <div class="vote-btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
+                <a th:href="'/serieTv/' + ${serie.id}">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getSerieTvPreferite().contains(serie)}"
+                   th:href="@{'/user/addSerieTvPreferitaHome/' + ${serie.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getSerieTvPreferite().contains(serie)}"
+                   th:href="@{'/user/deleteSerieTvPreferitaHome/' + ${serie.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
+                </a>
             </div>
         </div>
-        </a>
     </div>
 </div>
 
-<!-- Books Section-->
-<div class="services" id="book">
-    <h1>Libri</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Libro 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Libro 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
 
-    </div>
-</div>
 
 <!-- Games Section-->
 <div class="services sfondo" id="game">
     <h1>Giochi</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Gioco 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 2</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 3</h2>
-            <p>100 Combination</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
-        <div class="services__card">
-            <h2>Gioco 4</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn" sec:authorize="isAuthenticated()"><button>Vota</button></div>
-        </div>
 
+    <div class="container-card">
+        <div class="card rgb" th:each="gioco : ${giochi}">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2 th:text="${gioco.nome}">Post One</h2>
+                <span class="date" th:text="${gioco.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${gioco.genere}">Film horr</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${gioco.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+            </div>
+            <div class="card-stats">
+                <a th:href="'/gioco/' + ${gioco.id}">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getGiochiPreferiti().contains(gioco)}"
+                   th:href="@{'/user/addGiocoPreferitoHome/' + ${gioco.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getGiochiPreferiti().contains(gioco)}"
+                   th:href="@{'/user/deleteGiocoPreferitoHome/' + ${gioco.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Books Section-->
+<div class="services sfondo" id="book">
+    <h1>Libri</h1>
+
+    <div class="container-card">
+        <div class="card rgb" th:each="libro : ${libri}">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2 th:text="${libro.nome}">Post One</h2>
+                <span class="date" th:text="${libro.getMediaVoti()} + '/5'">5/5</span>
+                <p th:text="'Genere: ' + ${libro.genere} + '.       Autore: ' + ${libro.autore}">Film horr</p>
+                <p class="descrizione" th:text="'Descrizione: ' + ${libro.descrizione}" >Lorem ipsum dolor sit demoise amet consectetur</p>
+            </div>
+            <div class="card-stats">
+                <a th:href="'/libro/' + ${libro.id}">
+                    <div class="vote-btn"><button>Read More</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${!user.getLibriPreferiti().contains(libro)}"
+                   th:href="@{'/user/addLibroPreferitoHome/' + ${libro.id}}">
+                    <div class="vote-btn"><button>Bookmark</button></div>
+                </a>
+                <a sec:authorize="isAuthenticated() && hasAuthority('DEFAULT')" th:if="${user.getLibriPreferiti().contains(libro)}"
+                   th:href="@{'/user/deleteLibroPreferitoHome/' + ${libro.id}}">
+                    <div class="vote-btn2"><button>Unbookmark</button></div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -144,6 +165,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Footer Section -->
 <div th:replace="fragments/base.html :: fondo"></div>

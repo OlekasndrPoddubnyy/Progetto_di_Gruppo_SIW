@@ -1,16 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/single-page.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title th:text="${film.nome}">MBG Library Home</title> <!-- Or MBG(Movie Books Games) library -->
 </head>
 <body>
-<div>
-    <div th:if="${film}" th:object="${film}">
-        <h5 th:text="*{nome}">nome</h5>
-        <span th:text="*{descrizione}">descrizione </span>
+
+ <!--Nav Bar-->
+<nav th:replace="fragments/base.html :: intestazione"></nav>
+
+<!--Main-->
+<div class="corpo">
+ <div class="center">
+    <div class="center-box">
+        <h1 th:text="${film.nome}"></h1>
+        <div class="info">
+            <div class="anno" th:text="'Anno: ' + ${film.anno}"></div>
+            <div class="genere" th:text="'Genere: ' + ${film.genere}"></div>
+            <div class="media-voto" th:text="'Voto: ' + ${film.getMediaVoti()} + '/5'"></div>
+        </div>
+        <div class="descrip">
+            <h3>Description:</h3>
+            <span th:text="${film.descrizione}"></span>
+        </div>
     </div>
-    <div th:unless="${film}">Questo prodotto non esiste</div>
+ </div>
 </div>
+
+<!--Feedback-->
+<div class="feed-container">
+    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoFormFilm/' + ${film.id}}"><div class="comment-btn">Valuta</div></a>
+    <div class="feed-card" th:if="${!film.getCommenti().isEmpty()}"
+         th:each="commento : ${film.commenti}">
+        <div class="cont-text">
+            <span th:text="${commento.username}" >Username</span>
+            <p th:text="'Voto: ' + ${commento.voto} + '/5'" >Voto</p>
+        </div>
+        <div class="description" th:text="${commento.descrizione}"><p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Ad aperiam beatae eveniet expedita itaque laboriosam officiis perspiciatis quaerat quas voluptate.
+            Aliquid architecto, dignissimos enim illo libero optio sunt unde voluptas.
+        </p>
+        </div>
+    </div>
+</div>
+
+ <!--Footer Section-->
+<div th:replace="fragments/base.html :: fondo"></div>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ public class Gioco {
 	@NotBlank
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	@NotBlank
 	private String descrizione;
 	
@@ -23,7 +23,7 @@ public class Gioco {
 	@NotBlank
 	private String genere;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
 	private List<Commento> commenti;
 	
 	public Long getId() {
@@ -64,6 +64,30 @@ public class Gioco {
 
 	public void setCommenti(List<Commento> commenti) {
 		this.commenti = commenti;
+	}
+	
+	public int getMediaVoti(){
+		int somma = 0, diviso = 0;
+		if(this.commenti.isEmpty())
+			return 0;
+		for (Commento commento : this.commenti){
+			if(commento.getVoto() != null){
+				somma += commento.getVoto();
+				diviso++;
+			}
+		}
+		return somma/diviso;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.getId().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Gioco gioco = (Gioco)obj;
+		return this.getId() == gioco.getId();
 	}
 	
 }

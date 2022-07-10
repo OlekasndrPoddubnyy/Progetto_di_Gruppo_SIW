@@ -1,13 +1,15 @@
 package com.mylibrary.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,18 +22,22 @@ public class User {
 	
 	private String nome;
 	
-	@OneToMany
-	@JoinColumn(name = "film_id")
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Film> filmPreferiti;
 	
-	@OneToMany
-	@JoinColumn(name = "gioco_id")
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Gioco> giochiPreferiti;
 	
-	@OneToMany
-	@JoinColumn(name = "serieTv_id")
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SerieTv> serieTvPreferite;
-
+	
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Libro> libriPreferiti;
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +78,14 @@ public class User {
 		this.serieTvPreferite = serieTvPreferite;
 	}
 	
+	public List<Libro> getLibriPreferiti() {
+		return libriPreferiti;
+	}
+
+	public void setLibriPreferiti(List<Libro> libriPreferiti) {
+		this.libriPreferiti = libriPreferiti;
+	}
+	
 	public void addGiocoToPreferiti(Gioco gioco) {
 		this.giochiPreferiti.add(gioco);
 	}
@@ -82,6 +96,10 @@ public class User {
 
 	public void addSerieTvToPreferiti(SerieTv serieTv) {
 		this.serieTvPreferite.add(serieTv);
+	}
+	
+	public void addLibroToPreferiti(Libro libro) {
+		this.libriPreferiti.add(libro);
 	}
 	
 }

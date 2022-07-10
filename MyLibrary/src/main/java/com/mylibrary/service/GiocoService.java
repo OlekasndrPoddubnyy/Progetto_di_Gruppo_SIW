@@ -38,6 +38,7 @@ public class GiocoService {
 
 	@Transactional
 	public void deleteGioco(Gioco gioco) {
+		this.giocoRepository.deleteGiocoPreferito(gioco.getId());
 		this.giocoRepository.delete(gioco);
 	}
 	
@@ -45,4 +46,13 @@ public class GiocoService {
 		return this.giocoRepository.existsByNomeAndGenere(gioco.getNome(), gioco.getGenere());
 	}
 	
+	@Transactional
+	public void updateGioco(Gioco gioco) {
+		this.giocoRepository.updateGioco(gioco.getNome(), gioco.getGenere(), gioco.getDescrizione(), gioco.getId());
+	}
+
+	@Transactional
+	public void aggiungiCommentoAGioco(Long idGioco, Long idCommento) {
+		this.giocoRepository.collegaGiocoACommento(idGioco, idCommento);
+	}
 }

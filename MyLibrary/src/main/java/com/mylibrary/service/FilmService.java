@@ -38,11 +38,22 @@ public class FilmService {
 	
 	@Transactional
 	public void deleteFilm(Film film) {
+		this.filmRepository.deleteFilmPreferito(film.getId());
 		this.filmRepository.delete(film);
 	}
 	
 	public boolean alreadyExists(Film film) {
 		return this.filmRepository.existsByNomeAndAnnoAndGenere(film.getNome(), film.getAnno(), film.getGenere());
+	}
+	
+	@Transactional
+	public void updateFilm(Film film) {
+		this.filmRepository.updateFilm(film.getNome(), film.getGenere(), film.getAnno(), film.getDescrizione(), film.getId());
+	}
+
+	@Transactional
+	public void aggiungiCommentoAFilm(Long idFilm, Long idCommento) {
+		this.filmRepository.collegaFilmACommento(idFilm, idCommento);
 	}
 	
 }

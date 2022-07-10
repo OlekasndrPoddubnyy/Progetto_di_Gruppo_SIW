@@ -5,6 +5,10 @@ import com.mylibrary.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 @Service
 public class LibroService {
 
@@ -15,14 +19,28 @@ public class LibroService {
         this.libroRepository.save(libro);
     }
 
+    @Transactional
     public void eliminaLibro(Long idL) {
+    	this.libroRepository.deleteLibroPreferito(idL);
         this.libroRepository.deleteById(idL);
     }
-
+    
     public Libro findById(Long id) {
         return this.libroRepository.findById(id).get();
     }
 
+    public List<Libro> libri() {
+        return this.libroRepository.findAll();
+    }
 
+    @Transactional
+	public void updateLibro(Libro libro) {
+		this.libroRepository.updateLibro(libro.getNome(), libro.getGenere(), libro.getAutore(), libro.getDescrizione(), libro.getId());
+	}
 
+    @Transactional
+    public void aggiungiCommentoALibro(Long idLibro, Long idCommento) {
+        this.libroRepository.collegaLibroACommento(idLibro, idCommento);
+    }
+    
 }

@@ -1,8 +1,9 @@
 package com.mylibrary.controller;
 
 import com.mylibrary.controller.validator.LibroValidator;
+import com.mylibrary.model.Commento;
 import com.mylibrary.model.Libro;
-import com.mylibrary.service.LibroService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,16 +19,27 @@ import javax.validation.Valid;
 public class LibroController {
 
     @Autowired
+    private FilmService filmService;
+
+    @Autowired
+    private SerieTvService serieTvService;
+
+    @Autowired
     private LibroService libroService;
 
     @Autowired
+    private GiocoService giocoService;
+
+    @Autowired
     private LibroValidator libroValidator;
+    @Autowired
+    private CommentoService commentoService;
 
 
-    @GetMapping("/libroForm")
+    @GetMapping("/admin/libro")
     public String getLibroFormInserimento(Model model) {
         model.addAttribute("libro", new Libro());
-        return "libroForm";
+        return "forms/libroForm";
     }
 
     @PostMapping("/admin/libro")
@@ -37,22 +49,68 @@ public class LibroController {
         libroValidator.validate(libro, bindingResult);
         if(!bindingResult.hasErrors()) {
             this.libroService.salva(libro);
-            model.addAttribute("libro", libro);
-            return "index";
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
         }
-        return "libroForm";
+        return "forms/libroForm";
     }
 
-    @GetMapping("libro/{id}")
+    @GetMapping("/deleteLibro/{id}")
+    public String deleteById(@PathVariable("id") long id, Model model) {
+        this.libroService.eliminaLibro(id);
+        model.addAttribute("films", filmService.findAllFilms());
+        model.addAttribute("series", serieTvService.serieTvs());
+        model.addAttribute("giochi", giocoService.findAllGiochi());
+        model.addAttribute("libri", libroService.libri());
+        return "admin/home";
+    }
+
+    @GetMapping("/libro/{id}")
     public String getLibro(@PathVariable("id") long id, Model model) {
 
         model.addAttribute("libro", this.libroService.findById(id));
         return "libro";
     }
 
-    @GetMapping("libro/delete/{id}")
-    public String deleteById(@PathVariable("id") long id, Model model) {
-        this.libroService.eliminaLibro(id);
-        return "libri";
+    @GetMapping("/libri")
+    public String getLibri( Model model) {
+        model.addAttribute("libri", this.libroService.libri());
+        return "index";
+    }
+
+
+
+    @GetMapping("/admin/updateLibroForm/{id}")
+    public String modifyLibroData(@PathVariable("id") Long id, Model model) {
+        Libro libro = this.libroService.findById(id);
+        model.addAttribute("libro", libro);
+        return "forms/libroFormUpdate";
+    }
+
+    @PostMapping("/admin/updateLibro")
+    public String modifyLibroData(@Valid @ModelAttribute("libro") Libro libro, BindingResult bindingResult, Model model) {
+        if(!bindingResult.hasErrors()) {
+            this.libroService.updateLibro(libro);
+            model.addAttribute("films", filmService.findAllFilms());
+            model.addAttribute("series", serieTvService.serieTvs());
+            model.addAttribute("giochi", giocoService.findAllGiochi());
+            model.addAttribute("libri", libroService.libri());
+            return "admin/home";
+        }
+        model.addAttribute("libro", libro);
+        return "forms/libroFormUpdate.html";
+    }
+
+
+    @PostMapping("/libroCommento/{idL}/{username}")
+    public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idL") Long idL, @ModelAttribute("commento") Commento commento) {
+        commento.setUsername(username);
+        this.commentoService.save(commento);
+        this.libroService.aggiungiCommentoALibro(idL, commento.getId());
+        model.addAttribute("libro", this.libroService.findById(idL));
+        return "libro";
     }
 }

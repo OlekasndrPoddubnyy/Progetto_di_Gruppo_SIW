@@ -1,9 +1,6 @@
 package com.mylibrary.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -12,14 +9,18 @@ public class Episodio {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column(nullable = false)
     @NotBlank
     private String nome;
-
-    @NotBlank
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descrizione;
 
-    private int durata;
+    @Column(nullable = false)
+    private Integer stagione;
+
+
+    @Column(nullable = false)
+    private Integer durata;
 
 
     public Long getId() {
@@ -46,11 +47,20 @@ public class Episodio {
         this.descrizione = descrizione;
     }
 
-    public int getDurata() {
+    public Integer getDurata() {
         return durata;
     }
 
-    public void setDurata(int durata) {
+    public void setDurata(Integer durata) {
         this.durata = durata;
     }
+
+    public Integer getStagione() {
+        return stagione;
+    }
+
+    public void setStagione(Integer stagione) {
+        this.stagione = stagione;
+    }
+
 }

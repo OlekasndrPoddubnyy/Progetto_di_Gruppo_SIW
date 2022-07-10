@@ -66,6 +66,9 @@ public class Credentials {
 	public User getUser() {
 		return user;
 	}
+	public String nomeUtente() {
+		return this.getUser().getNome();
+	}
 
 	public void setUser(User user) {
 		this.user = user;

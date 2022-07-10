@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mylibrary.model.Film;
 import com.mylibrary.model.Gioco;
+import com.mylibrary.model.Libro;
 import com.mylibrary.model.SerieTv;
 import com.mylibrary.model.User;
 import com.mylibrary.repository.UserRepository;
@@ -63,31 +64,49 @@ public class UserService {
     @Transactional
     public void addGiocoToPreferiti(User user, Gioco gioco) {
     	user.addGiocoToPreferiti(gioco);
+    	this.userRepository.save(user);
     }
     
     @Transactional
     public void addFilmToPreferiti(User user, Film film) {
     	user.addFilmToPreferiti(film);
+    	this.userRepository.save(user);
     }
     
     @Transactional
     public void addSerieTvToPreferiti(User user, SerieTv serieTv) {
     	user.addSerieTvToPreferiti(serieTv);
+    	this.userRepository.save(user);
+    }
+    
+    @Transactional
+    public void addLibroToPreferiti(User user, Libro libro) {
+    	user.addLibroToPreferiti(libro);
+    	this.userRepository.save(user);
     }
     
     @Transactional
     public void deleteGiocoFromPreferiti(User user, Gioco gioco) {
     	user.getGiochiPreferiti().remove(gioco);
+    	this.userRepository.save(user);
     }
     
     @Transactional
     public void deleteFilmFromPreferiti(User user, Film film) {
     	user.getFilmPreferiti().remove(film);
+    	this.userRepository.save(user);
     }
     
     @Transactional
     public void deleteSerieTvFromPreferiti(User user, SerieTv serieTv) {
     	user.getSerieTvPreferite().remove(serieTv);
+    	this.userRepository.save(user);
+    }
+    
+    @Transactional
+    public void deleteLibroFromPreferiti(User user, Libro libro) {
+    	user.getLibriPreferiti().remove(libro);
+    	this.userRepository.save(user);
     }
     
 }

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+    overflow-x: hidden;
+}
+
+.corpo {
+	display: flex;
+	flex-direction: column;
+	position: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.center{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding: 40px;
+    min-height: 70vh;
+    max-width: 1300px;
+}
+
+.center h1{
+    background-color: #ff8177;
+    background-image: linear-gradient(to right, #ff0844 0%, #f7673c 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    /*noinspection CssInvalidPropertyValue*/
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.center .info{
+    column-gap: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5rem;
+}
+
+.center h3{
+    max-width: 1300px;
+    text-align: left;
+    width: 100%;
+    margin-left: 150px;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #fff;
+    overflow: hidden;
+}
+
+.center span{
+    margin-top: 3rem;
+    margin-left: 50px;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/*----------------------Episode List----------------------------*/
+.episode-section {
+    font-family: 'Montserrat', sans-serif;
+    width: 80%;
+}
+
+.episode-section ul{
+    list-style: none;
+}
+
+.episode-section p{
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+}
+
+.accordion {
+    width: 90%;
+    max-width: 1000px;
+    margin: 2rem auto;
+}
+.accordion-item {
+    background-color: #10101060;
+    color: #dddddd70;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+}
+
+.accordion-item-header {
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    min-height: 3.5rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    height: complex;
+}
+.accordion-item-header::after {
+    content: "\002B";
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+}
+.accordion-item-header.active::after {
+    content: "\2212";
+}
+
+.accordion-item-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.accordion-item-body-content {
+    padding: 1rem;
+    line-height: 1.5rem;
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+}
+
+@media(max-width:767px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------*/
+.feed-container{
+    margin: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.feed-container a{
+    text-decoration: none;
+}
+
+.feed-card{
+    pointer-events: none;
+    margin: 20px;
+    border: 2px solid #080808;
+    background: #101010;
+    color: #ffffff70;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    padding: 70px;
+}
+
+.feed-card .cont-text{
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.feed-card .cont-text span{
+    margin-left: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    background-color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    /*noinspection CssInvalidPropertyValue*/
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.feed-card .cont-text p{
+    font-weight: 500;
+    color: rgba(255, 115, 0, 0.8);
+}
+
+.comment-btn{
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
+    background: linear-gradient(to right, #fcb045, #fd1d1d,#833ab4);
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.comment-btn:hover{
+    background: #c31432;
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);
+    background: linear-gradient(to right, #240b36, #c31432);
+}

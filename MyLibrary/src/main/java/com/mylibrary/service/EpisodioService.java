@@ -2,14 +2,23 @@ package com.mylibrary.service;
 
 import com.mylibrary.model.Episodio;
 import com.mylibrary.repository.EpisodioRepository;
+import com.mylibrary.repository.SerieTvRepository;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static java.sql.Types.NULL;
 
 @Service
 public class EpisodioService {
 
     @Autowired
     private EpisodioRepository episodioRepository;
+
+    @Autowired
+    private SerieTvRepository serieTvRepository;
 
     public void salva(Episodio episodio){
         this.episodioRepository.save(episodio);
@@ -19,12 +28,19 @@ public class EpisodioService {
         return this.episodioRepository.findById(id).get();
     }
 
-    public void deleteEpisodioDaSerieTv(Long idE) {
-        this.episodioRepository.eliminaEpisodioDaSerieTv(idE);
+    public void eliminaEpisodio(Long id) {
+        this.episodioRepository.deleteById(id);
     }
 
-    public void deleteEpisodio(Long idE) {
-        this.episodioRepository.deleteById(idE);
+    public int maxStagione(List<Long> listaId) {
+        Integer maxStagione = 0;
+        try {
+           maxStagione = this.episodioRepository.maxStagione(listaId);
+
+        } catch(AopInvocationException e) {
+            maxStagione = 0;
+        }
+        return maxStagione;
     }
 
 }

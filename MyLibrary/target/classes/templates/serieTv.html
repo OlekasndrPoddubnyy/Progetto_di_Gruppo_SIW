@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/single-page.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+          crossorigin="anonymous"
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="This site permits you vote and comment movies, books and games">
+    <title th:text="${serie.nome}">MBG Library Home</title> <!-- Or MBG(Movie Books Games) library -->
+</head>
+<body>
+
+<!-- Nav Bar -->
+<nav th:replace="fragments/base.html :: intestazione"></nav>
+
+<!--Main-->
+<div class="corpo">
+<div class="center">
+    <h1 th:text="${serie.nome}"></h1>
+    <div class="info">
+        <div class="genere" th:text="'Genere: ' + ${serie.genere}"></div>
+        <div class="media-voto" th:text="'Voto: ' + ${serie.getMediaVoti()} + '/5'"></div>
+    </div>
+    <h3>Description:</h3>
+    <span th:text="${serie.descrizione}"></span>
+
+    <div class="episode-section">
+        <h1>Seasons:</h1>
+
+        <ul th:if="${serie.numeroStagioni!=0}">
+            <li th:each="season : ${serie.getStagioni()}">
+                <h3 th:text="'Season: ' + ${season}">Season 1</h3>
+                <div class="accordion" th:if="${!serie.getEpisodi().isEmpty()}">
+                    <div class="accordion-item" th:each="episodio : ${serie.getEpisodi()}"
+                         th:if="${episodio.stagione == season}" >
+                        <div class="accordion-item-header" th:text="${episodio.nome}">
+                            What is Web Development?
+                        </div>
+                        <div class="accordion-item-body">
+                            <p th:text="'Durata: ' + ${episodio.durata} + 'min'"></p>
+                            <div class="accordion-item-body-content" th:text="${episodio.descrizione}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!--Feedback-->
+<div class="feed-container">
+    <a sec:authorize="isAuthenticated()" th:href="@{'/commentoFormSerieTv/' + ${serie.id}}"><div class="comment-btn">Valuta</div></a>
+    <div class="feed-card" th:if="${!serie.getCommenti().isEmpty()}"
+         th:each="commento : ${serie.commenti}">
+        <div class="cont-text">
+            <span th:text="${commento.username}" >Username</span>
+            <p th:text="'Voto: ' + ${commento.voto} + '/5'" >Voto</p>
+        </div>
+        <div class="description" th:text="${commento.descrizione}">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Ad aperiam beatae eveniet expedita itaque laboriosam officiis perspiciatis quaerat quas voluptate.
+            Aliquid architecto, dignissimos enim illo libero optio sunt unde voluptas.
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Section -->
+<div th:replace="fragments/base.html :: fondo"></div>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript" th:src="@{/js/episodio.js}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>

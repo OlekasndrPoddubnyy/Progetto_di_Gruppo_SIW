@@ -1,12 +1,13 @@
 package com.mylibrary.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,11 +15,13 @@ public class SerieTv {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+    private Long id;
+    @Column(nullable = false)
     @NotBlank
     private String nome;
 
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descrizione;
 
     @NotNull
@@ -26,13 +29,15 @@ public class SerieTv {
     private Integer numeroStagioni;
 
 
+    @Column(nullable = false)
+    @NotBlank
     private String genere;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
-    List<Episodio> episodi;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Episodio> episodi;
 
-    @OneToMany()
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Commento> commenti;
 
 
@@ -44,11 +49,11 @@ public class SerieTv {
         this.commenti = commenti;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -91,4 +96,45 @@ public class SerieTv {
     public void setEpisodi(List<Episodio> episodi) {
         this.episodi = episodi;
     }
+
+    public List<Integer> getStagioni(){
+        List<Integer> stagioni = new ArrayList<>();
+        for ( int i=1; i<=this.numeroStagioni; i++){
+            stagioni.add(i);
+        }
+        return stagioni;
+    }
+
+    public void addEpisodio(Episodio episodio){
+        if(getEpisodi().isEmpty())
+            this.episodi = new ArrayList<>();
+        if(getEpisodi().contains(episodio))
+            return;
+        getEpisodi().add(episodio);
+    }
+
+    public int getMediaVoti(){
+        int somma = 0, diviso = 0;
+        if(this.commenti.isEmpty())
+            return 0;
+        for (Commento commento : this.commenti){
+            if(commento.getVoto() != null){
+                somma += commento.getVoto();
+                diviso++;
+            }
+        }
+        return somma/diviso;
+    }
+    
+    @Override
+	public int hashCode() {
+		return this.getId().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		SerieTv serieTv = (SerieTv)obj;
+		return this.getId() == serieTv.getId();
+	}
+	
 }

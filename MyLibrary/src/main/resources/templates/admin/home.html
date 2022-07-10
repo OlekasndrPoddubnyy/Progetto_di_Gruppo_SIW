@@ -43,12 +43,123 @@
             <td data-label="Nome Cognome" th:text="${film.nome}"></td>
             <td data-label="Nazionalita" th:text="${film.anno}">04/01/2016</td>
             <td data-label="Nazionalita" th:text="${film.genere}">04/01/2016</td>
-            <td data-label="Nazionalita" th:text="${film.getMediaVoti()}" <!--th:text="${film.getMediaVoti()}"-->>04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${film.getMediaVoti()}">04/01/2016</td>
             <td data-label="">
                 <div class="bottoni">
                     <div class="btn2">
-                        <a href="#"><div class="btn">Modifica</div></a>
-                        <a href="#" ><div class="btn">Cancella</div></a>
+                        <a th:href="@{'/admin/updateFilmForm/' + ${film.id}}"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/deleteFilm/' + ${film.id}}" ><div class="btn">Cancella</div></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--Serie Tv-->
+    <table>
+        <caption>
+            <p class="impostazioni-title" id="serie-tv">Impostazioni Serie TV</p>
+            <div class="lista-impostazioni">
+                <a class="btn-creat" th:href="@{/serieTvForm}"><div class="creazione">Aggiungi Serie Tv</div></a>
+            </div>
+        </caption>
+        <thead th:if="${!series.isEmpty()}">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">N Stagioni</th>
+            <th scope="col">Genere</th>
+            <th scope="col">Episodi</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="serie : ${series}">
+            <td data-label="Nome Cognome" th:text="${serie.nome}"></td>
+            <td data-label="Nazionalita" th:text="${serie.numeroStagioni}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${serie.genere}">04/01/2016</td>
+            <td data-label="Buffet" th:if="${!serie.getEpisodi().isEmpty()}">
+                <div th:each="episode : ${serie.getEpisodi()}">
+                    <p th:text="${episode.nome}">Episodio</p>
+                </div>
+            </td>
+            <td th:unless="${!serie.getEpisodi().isEmpty()}" th:text="'Nessuno'"></td>
+            <td data-label="">
+                <div class="bottoni">
+                    <div class="btn2">
+                        <a th:href="@{'/admin/episodi/' + ${serie.id}}"><div class="btn">Modifica Episodi</div></a>
+                    </div>
+                    <div class="btn2">
+                        <a th:href="@{'/admin/updateSerieTVForm/' + ${serie.id}}"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/serieTv/delete/' + ${serie.id}}" ><div class="btn">Cancella</div></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--Game-->
+    <table>
+        <caption>
+            <p class="impostazioni-title" id="game">Impostazioni Gioco</p>
+            <div class="lista-impostazioni">
+                <a class="btn-creat" th:href="@{/giocoForm}"><div class="creazione">Aggiungi Gioco</div></a>
+            </div>
+        </caption>
+        <thead th:if="${!giochi.isEmpty()}">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Genere</th>
+            <th scope="col">Media</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="gioco : ${giochi}">
+            <td data-label="Nome Cognome" th:text="${gioco.nome}"></td>
+            <td data-label="Nazionalita" th:text="${gioco.genere}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${gioco.getMediaVoti()}">04/01/2016</td>
+            <td data-label="">
+                <div class="bottoni">
+                    <div class="btn2">
+                        <a th:href="@{'/admin/updateGiocoForm/' + ${gioco.id}}"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/deleteGioco/' + ${gioco.id}}" ><div class="btn">Cancella</div></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--Book-->
+    <table>
+        <caption>
+            <p class="impostazioni-title" id="book">Impostazioni Libro</p>
+            <div class="lista-impostazioni">
+                <a class="btn-creat" th:href="@{/admin/libro}"><div class="creazione">Aggiungi Libro</div></a>
+            </div>
+        </caption>
+        <thead th:if="${!libri.isEmpty()}">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Autore</th>
+            <th scope="col">Genere</th>
+            <th scope="col">Media</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="libro : ${libri}">
+            <td data-label="Nome Cognome" th:text="${libro.nome}"></td>
+            <td data-label="Nazionalita" th:text="${libro.autore}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${libro.genere}">04/01/2016</td>
+            <td data-label="Nazionalita" th:text="${libro.getMediaVoti()}">04/01/2016</td>
+            <td data-label="">
+                <div class="bottoni">
+                    <div class="btn2">
+                        <a th:href="@{'/admin/updateLibroForm/' + ${libro.id}}"><div class="btn">Modifica</div></a>
+                        <a th:href="@{'/deleteLibro/' + ${libro.id}}" ><div class="btn">Cancella</div></a>
                     </div>
                 </div>
             </td>

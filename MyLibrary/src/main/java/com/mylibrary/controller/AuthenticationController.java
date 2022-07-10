@@ -1,7 +1,9 @@
 package com.mylibrary.controller;
 
-import com.mylibrary.service.FilmService;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,6 @@ import com.mylibrary.controller.validator.CredentialsValidator;
 import com.mylibrary.controller.validator.UserValidator;
 import com.mylibrary.model.Credentials;
 import com.mylibrary.model.User;
-import com.mylibrary.service.CredentialsService;
 
 @Controller
 public class AuthenticationController {
@@ -31,6 +32,18 @@ public class AuthenticationController {
 
 	@Autowired
 	private FilmService filmService;
+
+	@Autowired
+	private SerieTvService serieTvService;
+
+	@Autowired
+	private LibroService libroService;
+
+	@Autowired
+	private  UserService userService;
+
+	@Autowired
+	private GiocoService giocoService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterForm (Model model) {
@@ -55,10 +68,21 @@ public class AuthenticationController {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			model.addAttribute("films", this.filmService.findAllFilms());
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
+
 			return "admin/home";
 		}
-		return "home";
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+			Credentials credentials1 = this.credentialsService.getCredentials(currentUserName);
+			model.addAttribute("user", this.userService.getUser(credentials1.getUser().getId()));
+		}
+		return "/home";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
@@ -82,5 +106,6 @@ public class AuthenticationController {
 		}
 		return "registerUser";
 	}
+
 
 }

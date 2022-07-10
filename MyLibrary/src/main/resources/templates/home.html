@@ -21,61 +21,86 @@
 
 
 <!-- Bookmark Section-->
-<div class="services sfondo" id="bookmarks">
-    <h1>Bookmarks</h1>
-    <div class="services__wrapper">
-        <div class="services__card">
-            <h2>Film 1</h2>
-            <p>Powered Tecnology</p>
-            <div class="services__btn"><button>Vota</button></div>
+<div class="main-box">
+    <div class="title">
+        <h1>Bookmarks</h1>
+    </div>
+    <div class="title2">
+        <h1>Film</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!user.getFilmPreferiti().isEmpty()}"
+             th:each="film : ${user.getFilmPreferiti()}">
+            <span></span>
+            <div class="content">
+                <h2 th:text="${film.nome}">Card One</h2>
+                <p th:text="${film.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/film/' + ${film.id}">Read More</a>
+                    <a th:href="@{'/user/deleteFilmPreferito/' + ${film.id}}">Unbookmark</a>
+                </div>
+            </div>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>Take the lepa</p>
-            <div class="services__btn"><button>Vota</button></div>
+    </div>
+    <div class="title2">
+        <h1>Serie TV</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!user.getSerieTvPreferite().isEmpty()}"
+             th:each="serie : ${user.getSerieTvPreferite()}">
+            <span></span>
+            <div class="content">
+                <h2 th:text="${serie.nome}">Card One</h2>
+                <p th:text="${serie.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/serieTv/' + ${serie.id}">Read More</a>
+                    <a th:href="@{'/user/deleteSerieTvPreferita/' + ${serie.id}}">Unbookmark</a>
+                </div>
+            </div>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>100 Combination</p>
-            <div class="services__btn"><button>Vota</button></div>
+    </div>
+    <div class="title2">
+        <h1>Giochi</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!user.getGiochiPreferiti().isEmpty()}"
+             th:each="gioco : ${user.getGiochiPreferiti()}">
+            <span></span>
+            <div class="content">
+                <h2 th:text="${gioco.nome}">Card One</h2>
+                <p th:text="${gioco.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/gioco/' + ${gioco.id}">Read More</a>
+                    <a th:href="@{'/user/deleteGiocoPreferito/' + ${gioco.id}}">Unbookmark</a>
+                </div>
+            </div>
         </div>
-        <div class="services__card">
-            <h2>Film</h2>
-            <p>1000's of colors</p>
-            <div class="services__btn"><button>Vota</button></div>
+    </div>
+    <div class="title2">
+        <h1>Libri</h1>
+    </div>
+    <div class="container">
+        <div class="box" th:if="${!user.getLibriPreferiti().isEmpty()}"
+             th:each="libro : ${user.getLibriPreferiti()}">
+            <span></span>
+            <div class="content">
+                <h2 th:text="${libro.nome}">Card One</h2>
+                <p th:text="${libro.descrizione}">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <div class="bottoni">
+                    <a th:href="'/libro/' + ${libro.id}">Read More</a>
+                    <a th:href="@{'/user/deleteLibroPreferito/' + ${libro.id}}">Unbookmark</a>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
+
+
 
 
 
 <!-- Footer Section -->
-<div class="footer__container">
-    <div class="footer__links">
-        <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-                <h2>About Us</h2>
-                <a href="/login">How it works</a> <a href="/">Testimonials</a>
-                <a href="/">Careers</a> <a href="/">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-    <section class="social__media">
-        <div class="social__media--wrap">
-            <div class="footer__logo">
-                <a href="/" id="footer__logo">MBG Library</a>
-            </div>
-            <p class="website__rights">© MBG Library 2022. All rights reserved</p>
-            <div class="social__icons">
-                <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-github"></i></a>
-                <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </section>
-</div>
+<div th:replace="fragments/base.html :: fondo"></div>
 
 <script type="text/javascript" th:src="@{/js/home.js}"></script>
 

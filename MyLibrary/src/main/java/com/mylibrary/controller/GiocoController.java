@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mylibrary.model.Commento;
+import com.mylibrary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,62 +17,102 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mylibrary.controller.validator.GiocoValidator;
 import com.mylibrary.model.Gioco;
-import com.mylibrary.service.GiocoService;
 
 @Controller
 public class GiocoController {
-	
+
+	@Autowired
+	private FilmService filmService;
+
+	@Autowired
+	private SerieTvService serieTvService;
+
+	@Autowired
+	private LibroService libroService;
+
 	@Autowired
 	private GiocoService giocoService;
 	
 	@Autowired
 	private GiocoValidator giocoValidator;
-	
+	@Autowired
+	private CommentoService commentoService;
+
 	@PostMapping("/gioco")
-	public String addFilm(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
+	public String addGioco(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
 		this.giocoValidator.validate(gioco, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			this.giocoService.save(gioco);
-			model.addAttribute("gioco", gioco);
-			return "gioco.html";
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
+			return "admin/home";
 		}
 		
-		return "giocoForm.html";
+		return "forms/giocoForm.html";
 	}
 	
-	@PostMapping("/deleteGioco/{id}")
+	@GetMapping("/deleteGioco/{id}")
 	public String deleteGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		this.giocoService.deleteGioco(gioco);
-		return "giochi.html";
+		model.addAttribute("films", filmService.findAllFilms());
+		model.addAttribute("series", serieTvService.serieTvs());
+		model.addAttribute("giochi", giocoService.findAllGiochi());
+		model.addAttribute("libri", libroService.libri());
+		return "admin/home";
 	}
 	
 	@GetMapping("/giocoForm")
 	public String getNewGioco(Model model) {
 		model.addAttribute("gioco", new Gioco());
-		return "giocoForm.html";
+		return "forms/giocoForm.html";
 	}
 	
 	@GetMapping("/gioco/{id}")
-	public String getFilm(@PathVariable("id") Long id, Model model) {
+	public String getGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
-		return "gioco.html";
+		return "gioco";
 	}
 	
 	@GetMapping("/giochi")
-	public String getAllFilms(Model model) {
+	public String getAllGiochi(Model model) {
 		List<Gioco> giochi = this.giocoService.findAllGiochi();
 		model.addAttribute("giochi", giochi);
 		return "giochi.html";
 	}
 	
-	@GetMapping("/modifyGiocoData/{id}")
+	@GetMapping("/admin/updateGiocoForm/{id}")
 	public String modifyGiocoData(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = this.giocoService.findGiocoById(id);
 		model.addAttribute("gioco", gioco);
-		return "modifyGiocoDataForm.html";
+		return "forms/giocoFormUpdate.html";
+	}
+	
+	@PostMapping("/admin/updateGioco")
+	public String modifyGiocoData(@Valid @ModelAttribute("gioco") Gioco gioco, BindingResult bindingResult, Model model) {
+		if(!bindingResult.hasErrors()) {
+			this.giocoService.updateGioco(gioco);
+			model.addAttribute("films", filmService.findAllFilms());
+			model.addAttribute("series", serieTvService.serieTvs());
+			model.addAttribute("giochi", giocoService.findAllGiochi());
+			model.addAttribute("libri", libroService.libri());
+			return "admin/home";
+		}
+		model.addAttribute("gioco", gioco);
+		return "forms/giocoFormUpdate.html";
+	}
+
+	@PostMapping("/giocoCommento/{idG}/{username}")
+	public String inserisciCommento(Model model, @PathVariable("username") String username, @PathVariable("idG") Long idG, @ModelAttribute("commento") Commento commento) {
+		commento.setUsername(username);
+		this.commentoService.save(commento);
+		this.giocoService.aggiungiCommentoAGioco(idG, commento.getId());
+		model.addAttribute("gioco", this.giocoService.findGiocoById(idG));
+		return "gioco";
 	}
 	
 }

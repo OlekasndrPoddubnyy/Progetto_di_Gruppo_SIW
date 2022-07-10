@@ -18,7 +18,7 @@
     <!-- Nav Bar -->
     <nav class="navbar" th:fragment="intestazione">
             <div class="navbar__container">
-                <a href="#home" id="navbar__logo">MBG Library</a>
+                <a th:href="@{/#home}" id="navbar__logo">MBG Library</a>
                 <div class="navbar__toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -26,7 +26,7 @@
                 </div>
                 <ul class="navbar__menu">
                     <li class="navbar__item">
-                        <a href="#home" class="navbar__links" id="home-page">Home</a>
+                        <a th:href="@{/#home}" class="navbar__links" id="home-page">Home</a>
                     </li>
                     <li class="navbar__item">
                         <a th:href="@{/#film}" class="navbar__links" id="films-page">Film</a>
@@ -35,10 +35,10 @@
                         <a th:href="@{/#tv-serie}" class="navbar__links" id="tv-series-page">Serie Tv</a>
                     </li>
                     <li class="navbar__item">
-                        <a th:href="@{/#book}" class="navbar__links" id="books-page">Libri</a>
+                        <a th:href="@{/#game}" class="navbar__links" id="games-page">Giochi</a>
                     </li>
                     <li class="navbar__item">
-                        <a th:href="@{/#game}" class="navbar__links" id="games-page">Giochi</a>
+                        <a th:href="@{/#book}" class="navbar__links" id="books-page">Libri</a>
                     </li>
                     <li class="navbar__btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/default}" class="button user__icon" id="user-page"><i class="fas fa-user"></i></a>
@@ -126,7 +126,7 @@
                 <div class="social__icons">
                     <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/OlekasndrPoddubnyy/Progetto_di_Gruppo_SIW" class="social__icon--link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
