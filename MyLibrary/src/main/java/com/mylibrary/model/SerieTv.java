@@ -20,6 +20,7 @@ public class SerieTv {
     @NotBlank
     private String nome;
 
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descrizione;
 
