@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/form.css}" />
     <link rel="stylesheet" th:href="@{/css/admin.css}" />
 
-    <title>Episodio Form</title>
+    <title>Serie Tv Form Update</title>
 </head>
 <body>
 
@@ -18,9 +18,9 @@
 
 
 <div class="main boxform">
-    <p class="title">Episodio Form</p>
+    <p class="title">Serie Tv Form Update</p>
 
-    <form th:action="@{'/admin/episodio/' + ${serieTv.id}}" method="POST" th:object="${episodio}" >
+    <form th:action="@{/admin/updateSerieTV}" method="POST" th:object="${serieTv}" >
         <div class="errori" th:if="${#fields.hasGlobalErrors()}">
             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
         </div>
@@ -30,14 +30,14 @@
             <div class="errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
         </div>
         <div class="inputBox" >
-            <input type="number" min="0" name="name" required th:field="*{durata}">
-            <span>Durata</span>
-            <div class="errori" th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></div>
+            <input type="text" name="name" required th:field="*{genere}">
+            <span>Genere</span>
+            <div class="errori" th:if="${#fields.hasErrors('genere')}" th:errors="*{genere}"></div>
         </div>
         <div class="inputBox" >
-            <input type="number" min="0" name="name" required th:field="*{stagione}">
-            <span>Stagione</span>
-            <div class="errori" th:if="${#fields.hasErrors('stagione')}" th:errors="*{stagione}"></div>
+            <input type="number" min="0" name="name" required th:field="*{numeroStagioni}">
+            <span>N Stagioni</span>
+            <div class="errori" th:if="${#fields.hasErrors('numeroStagioni')}" th:errors="*{numeroStagioni}"></div>
         </div>
         <div class="inputBox" >
             <textarea type="text" name="description" th:field="*{descrizione}"></textarea>
