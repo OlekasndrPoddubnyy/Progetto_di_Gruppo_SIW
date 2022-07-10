@@ -38,6 +38,7 @@ public class GiocoService {
 
 	@Transactional
 	public void deleteGioco(Gioco gioco) {
+		this.giocoRepository.deleteGiocoPreferito(gioco.getId());
 		this.giocoRepository.delete(gioco);
 	}
 	

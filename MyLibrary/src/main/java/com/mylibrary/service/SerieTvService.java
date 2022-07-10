@@ -20,10 +20,11 @@ public class SerieTvService {
         this.serieTvRepository.save(serieTv);
     }
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
+    	this.serieTvRepository.deleteSerieTvPreferita(id);
         this.serieTvRepository.deleteById(id);
     }
-
+    
     public List<SerieTv> findAllByName(String nome){
         return this.serieTvRepository.findAllByNome(nome);
     }

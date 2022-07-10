@@ -20,6 +20,10 @@ public interface FilmRepository extends CrudRepository<Film,Long> {
 
 	@Modifying
 	@Query(value = "insert into film_commenti (film_id, commenti_id) Values (:idF, :idC)", nativeQuery = true)
-	void collegaFilmACommento(@Param("idF") Long idFilm, @Param("idC") Long idCommento);
+	public void collegaFilmACommento(@Param("idF") Long idFilm, @Param("idC") Long idCommento);
+	
+	@Modifying
+	@Query(value = "delete from users_film_preferiti where film_preferiti_id=:idF", nativeQuery = true)
+	public void deleteFilmPreferito(@Param("idF") Long idFilm);
 	
 }
