@@ -16,12 +16,11 @@
 </head>
 <body>
 
-<!-- Nav Bar -->
+ <!--Nav Bar-->
 <nav th:replace="fragments/base.html :: intestazione"></nav>
 
 <!--Main-->
-
-<div class="center">
+ <div class="center">
     <div class="center-box">
         <h1 th:text="${film.nome}"></h1>
         <div class="info">
@@ -29,10 +28,13 @@
             <div class="genere" th:text="'Genere: ' + ${film.genere}"></div>
             <div class="media-voto" th:text="'Voto: ' + ${film.getMediaVoti()} + '/5'"></div>
         </div>
-        <h3>Description:</h3>
-        <span th:text="${film.descrizione}"></span>
+        <div class="descrip">
+            <h3>Description:</h3>
+            <span th:text="${film.descrizione}"></span>
+        </div>
     </div>
-</div>
+ </div>
+
 
 <!--Feedback-->
 <div class="feed-container">
@@ -43,16 +45,17 @@
             <span th:text="${commento.username}" >Username</span>
             <p th:text="'Voto: ' + ${commento.voto} + '/5'" >Voto</p>
         </div>
-        <div class="description" th:text="${commento.descrizione}">
+        <div class="description" th:text="${commento.descrizione}"><p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Ad aperiam beatae eveniet expedita itaque laboriosam officiis perspiciatis quaerat quas voluptate.
             Aliquid architecto, dignissimos enim illo libero optio sunt unde voluptas.
+        </p>
         </div>
     </div>
 </div>
 
 
-<!-- Footer Section -->
+ <!--Footer Section-->
 <div th:replace="fragments/base.html :: fondo"></div>
 
 <script type="text/javascript" th:src="@{/js/home.js}"></script>
