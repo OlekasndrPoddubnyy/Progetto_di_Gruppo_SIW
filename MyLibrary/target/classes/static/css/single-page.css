@@ -11,7 +11,7 @@
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 4rem;
-    overflow-x: hidden;
+    
 }
 
 .center h1{
@@ -127,7 +127,6 @@ h1 {
 
 @media(max-width:767px) {
     body {
-        max-width: 767px;
         font-size: 14px;
     }
 }
@@ -143,6 +142,7 @@ h1 {
 
 /*----------------------------------------------------*/
 .feed-container{
+    width: 100%;
     margin: 20px 60px;
     padding: 0;
     display: flex;
