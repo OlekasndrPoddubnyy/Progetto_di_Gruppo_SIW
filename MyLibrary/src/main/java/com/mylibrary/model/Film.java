@@ -28,7 +28,7 @@ public class Film {
 	@NotBlank
 	private String genere;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
 	private List<Commento> commenti;
 
 	public Long getId() {
