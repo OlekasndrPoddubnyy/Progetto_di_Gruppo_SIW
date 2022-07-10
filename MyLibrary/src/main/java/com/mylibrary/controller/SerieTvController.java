@@ -66,7 +66,7 @@ public class SerieTvController {
         return "serieTv";
     }
 
-    @GetMapping("serieTv/delete/{id}")
+    @GetMapping("/serieTv/delete/{id}")
     public String deleteById(@PathVariable("id") long id, Model model) {
         this.serieTvService.deleteById(id);
         model.addAttribute("films", filmService.findAllFilms());
