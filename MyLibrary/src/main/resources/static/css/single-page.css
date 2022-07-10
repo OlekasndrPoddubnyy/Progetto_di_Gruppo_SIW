@@ -142,6 +142,7 @@ h1 {
 
 /*----------------------------------------------------*/
 .feed-container{
+    width: 100%;
     margin: 20px 60px;
     padding: 0;
     display: flex;
