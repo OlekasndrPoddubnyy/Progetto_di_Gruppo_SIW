@@ -32,6 +32,7 @@ public class LibroController {
 
     @Autowired
     private LibroValidator libroValidator;
+    @Autowired
     private CommentoService commentoService;
 
 

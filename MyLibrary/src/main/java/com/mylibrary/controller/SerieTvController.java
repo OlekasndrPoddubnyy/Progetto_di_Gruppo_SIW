@@ -33,6 +33,7 @@ public class SerieTvController {
 
     @Autowired
     private SerieTvValidator serieTvValidator;
+    @Autowired
     private CommentoService commentoService;
 
 

@@ -35,6 +35,7 @@ public class GiocoController {
 	
 	@Autowired
 	private GiocoValidator giocoValidator;
+	@Autowired
 	private CommentoService commentoService;
 
 	@PostMapping("/gioco")
